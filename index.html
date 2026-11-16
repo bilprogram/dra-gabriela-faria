@@ -18,6 +18,7 @@
     <meta property="og:type" content="website" />
 
     <!-- Favicon e Ícones de Dispositivo a partir da Logo Oficial -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon/favicon.svg" />
     <link rel="icon" href="./assets/favicon/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
@@ -54,12 +55,12 @@
     <link rel="stylesheet" href="./css/tokens.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/components.css?v=8" />
+    <link rel="stylesheet" href="./css/components.css?v=16" />
     <link rel="stylesheet" href="./css/motion.css" />
     <link rel="stylesheet" href="./css/servicos.css" />
 
     <!-- Script de inicialização com defer -->
-    <script type="module" src="./js/main.js?v=3" defer></script>
+    <script type="module" src="./js/main.js?v=6" defer></script>
   </head>
   <body>
     <!-- Acessibilidade: salto direto para o conteúdo principal -->
@@ -69,8 +70,18 @@
     <header class="site-header" role="banner">
       <div class="container site-header__inner">
         <a class="site-header__logo" href="/" aria-label="Odontologia Dra. Gabriela Faria - Início">
-          <span class="site-header__brand-name">Dra. Gabriela Faria</span>
-          <span class="site-header__brand-sub">Odontologia</span>
+          <img
+            class="site-header__logo-img"
+            src="./assets/logo/logo-simbolo.svg"
+            alt=""
+            width="34"
+            height="34"
+            aria-hidden="true"
+          />
+          <span class="site-header__brand-group">
+            <span class="site-header__brand-name">Dra. Gabriela Faria</span>
+            <span class="site-header__brand-sub">Odontologia</span>
+          </span>
         </a>
 
         <nav class="site-header__nav" aria-label="Navegação primária">
@@ -143,7 +154,7 @@
               <img
                 class="hero__img hero__img--scene-1"
                 src="./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1920.webp"
-                alt="Dra. Gabriela Faria em seu consultório odontológico acolhedor em São José do Rio Pardo"
+                alt="Dra. Gabriela Faria em sua clínica odontológica infantil em São José do Rio Pardo"
                 width="1920"
                 height="1280"
                 fetchpriority="high"
@@ -228,19 +239,16 @@
 
         <!-- Composição Editorial Dinâmica por Cena -->
         <div class="container hero__container">
-          <!-- H1 Semântico Único: Acessível para leitores de tela e SEO (sr-only), sem etiqueta ou linha visual sobre a foto -->
-          <h1 id="hero-title" class="sr-only">
-            Odontopediatria em São José do Rio Pardo
-          </h1>
-
           <!-- Bloco Editorial Cena 1: A Dra. Gabriela (Inferior, sereno, rosto desobstruído) -->
           <div class="hero__content hero__content--scene-1 is-active" data-scene-content="1">
-            <span class="eyebrow hero__eyebrow" aria-hidden="true">
+            <span class="eyebrow hero__eyebrow">
               Dra. Gabriela Faria · Cuidado Humanizado
             </span>
-            <p class="hero__phrase">
-              Um começo de vida<br />
-              merece <em>cuidado.</em>
+            <h1 id="hero-title" class="hero__title">
+              Odontopediatria em <em>São José do Rio Pardo</em>
+            </h1>
+            <p class="hero__phrase hero__phrase--apoio">
+              Um começo de vida merece <em>cuidado.</em>
             </p>
             <div class="hero__actions">
               <a
@@ -377,7 +385,7 @@
               </div>
             </div>
 
-            <div class="sobre-selo reveal-up" style="--delay: 0.25s">
+            <div class="sobre-selo reveal-up" style="--delay: 0.1s">
               <p class="sobre-selo-vidro vidro">
                 <span class="sobre-selo-icone" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -397,17 +405,17 @@
           <div class="sobre-texto">
             <div class="cabeca sobre-cabeca">
               <span class="tag reveal-up">Sobre a Dra. Gabriela</span>
-              <h2 id="sobre-titulo" class="reveal-up" style="--delay: 0.1s">
+              <h2 id="sobre-titulo" class="reveal-up" style="--delay: 0.04s">
                 Cuidado que acolhe,<br />
                 escuta que <span class="h-light">acalma.</span>
               </h2>
             </div>
 
-            <p class="sobre-bio reveal-up" style="--delay: 0.18s">
+            <p class="sobre-bio reveal-up" style="--delay: 0.07s">
               Cada sorriso infantil tem o seu próprio ritmo. No consultório da Dra. Gabriela Faria, a odontopediatria é guiada pelo respeito e pela tranquilidade: um ambiente sereno e preparado para que a criança construa memórias positivas com a saúde bucal desde a primeira consulta.
             </p>
 
-            <figure class="sobre-citacao reveal-up" style="--delay: 0.24s">
+            <figure class="sobre-citacao reveal-up" style="--delay: 0.1s">
               <blockquote class="sobre-citacao-bloco">
                 <p class="sobre-citacao-texto">
                   <span class="sobre-aspa">“</span>O atendimento infantil deve ser leve, seguro e construído no tempo de cada criança.<span class="sobre-aspa">”</span>
@@ -418,7 +426,7 @@
               </figcaption>
             </figure>
 
-            <div class="sobre-formacao reveal-up" style="--delay: 0.3s">
+            <div class="sobre-formacao reveal-up" style="--delay: 0.13s">
               <h3 class="sobre-rotulo" id="sobre-formacao-titulo">Pilares do atendimento</h3>
               <ol class="sobre-lista" role="list" aria-labelledby="sobre-formacao-titulo">
                 <li class="sobre-item">
@@ -448,7 +456,7 @@
               </ol>
             </div>
 
-            <ul class="sobre-numeros reveal-up" role="list" style="--delay: 0.36s">
+            <ul class="sobre-numeros reveal-up" role="list" style="--delay: 0.16s">
               <li class="sobre-numero">
                 <strong class="sobre-num num-shine">5.0 ★</strong>
                 <span class="sobre-num-rotulo">105 avaliações no Google</span>
@@ -463,7 +471,7 @@
               </li>
             </ul>
 
-            <div class="sobre-acoes reveal-up" style="--delay: 0.42s">
+            <div class="sobre-acoes reveal-up" style="--delay: 0.19s">
               <a
                 class="btn btn--primary sobre-cta"
                 href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20filho(a)."
@@ -677,7 +685,7 @@
             </div>
 
             <!-- Rodapé da seção de cards com CTA integrado (Dúvidas e orientações) -->
-            <div class="casos-rodape" id="duvidas">
+            <div class="casos-rodape">
               <p class="casos-rodape-texto">
                 <strong>Não encontrou o que procura?</strong> Toda conduta odontopediátrica começa por uma avaliação individualizada.
               </p>
@@ -1111,52 +1119,571 @@
           </div>
         </div>
       </section>
+
+      <!-- =====================================================================
+           SEÇÃO 5: DÚVIDAS FREQUENTES & EQUIPE (#duvidas)
+           Composição editorial premium:
+           - Coluna Esquerda: cabeçalho + card acolhedor da equipe com _MG_2786.jpg
+           - Coluna Direita: acordeão acessível WAI-ARIA com navegação por teclado
+           ===================================================================== -->
+      <section id="duvidas" class="duvidas-sec" data-dobra="duvidas" aria-labelledby="duvidas-titulo">
+        <div class="duvidas-wrap">
+          <div class="duvidas-grade">
+            <!-- Coluna Esquerda: Cabeçalho editorial e Card acolhedor da equipe -->
+            <div class="duvidas-lado">
+              <header class="duvidas-cabeca cabeca" data-reveal>
+                <span class="tag">Dúvidas Frequentes</span>
+                <h2 id="duvidas-titulo" class="duvidas-titulo">
+                  Respostas para as dúvidas <em>mais comuns da família</em>
+                </h2>
+                <p class="duvidas-apoio">
+                  Reunimos orientações claras e acolhedoras para que você e sua família se sintam seguros em cada etapa do atendimento odontopediátrico.
+                </p>
+              </header>
+
+              <div class="duvidas-equipe" data-reveal data-reveal-delay="0.15">
+                <div class="duvidas-equipe__moldura">
+                  <img
+                    src="./assets/img/_MG_2786.jpg"
+                    alt="Dra. Gabriela Faria e equipe acolhendo com carinho na recepção do consultório"
+                    class="duvidas-equipe__foto"
+                    width="3483"
+                    height="2322"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="duvidas-equipe__corpo">
+                  <div class="duvidas-equipe__selo" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span>Atendimento acolhedor</span>
+                  </div>
+                  <h3 class="duvidas-equipe__titulo">Um cuidado que começa com escuta.</h3>
+                  <p class="duvidas-equipe__texto">
+                    Nossa equipe está preparada para acolher sua família, esclarecer suas dúvidas e ajudar você a se sentir mais seguro em cada etapa do cuidado com seu filho.
+                  </p>
+                  <div class="duvidas-equipe__rodape">
+                    <a
+                      class="btn btn--primary btn--sm duvidas-equipe__cta"
+                      href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Tenho%20uma%20d%C3%BAvida%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o."
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Tirar dúvidas com a equipe pelo WhatsApp (abre em nova aba)"
+                    >
+                      <span>Conversar no WhatsApp</span>
+                      <span class="btn__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                        </svg>
+                      </span>
+                    </a>
+                    <div class="duvidas-equipe__marca" aria-hidden="true">
+                      <img
+                        src="./assets/logo/logo-simbolo.svg"
+                        alt=""
+                        class="duvidas-equipe__logo"
+                        width="54"
+                        height="54"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coluna Direita: Lista de Perguntas Frequentes (Acordeão) + Bloco Editorial de Apoio -->
+            <div class="duvidas-col-faq">
+              <div class="duvidas-lista" data-duvidas>
+              <!-- Dúvida 01 -->
+              <div class="duvidas-item is-aberto" data-reveal>
+                <h3 class="duvidas-item__pergunta">
+                  <button type="button" class="duvidas-item__botao" id="duvida-b1" aria-expanded="true" aria-controls="duvida-r1">
+                    <span class="duvidas-item__num" aria-hidden="true">01</span>
+                    <span class="duvidas-item__texto">Quando devo levar meu bebê pela primeira vez ao dentista?</span>
+                    <span class="duvidas-item__icone" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="duvidas-item__resposta" id="duvida-r1" role="region" aria-labelledby="duvida-b1">
+                  <div class="duvidas-item__clip">
+                    <div class="duvidas-item__corpo">
+                      <p>
+                        A recomendação é que a primeira consulta aconteça assim que despontar o primeiro dentinho ou até o primeiro ano de vida. Essa visita precoce permite avaliar o desenvolvimento das estruturas orais, orientar a família sobre hábitos de higiene e aleitamento e construir um vínculo positivo desde o início.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dúvida 02 -->
+              <div class="duvidas-item" data-reveal>
+                <h3 class="duvidas-item__pergunta">
+                  <button type="button" class="duvidas-item__botao" id="duvida-b2" aria-expanded="false" aria-controls="duvida-r2">
+                    <span class="duvidas-item__num" aria-hidden="true">02</span>
+                    <span class="duvidas-item__texto">Como funciona a primeira consulta de uma criança?</span>
+                    <span class="duvidas-item__icone" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="duvidas-item__resposta" id="duvida-r2" role="region" aria-labelledby="duvida-b2">
+                  <div class="duvidas-item__clip">
+                    <div class="duvidas-item__corpo">
+                      <p>
+                        A consulta é conduzida com calma, no ritmo da criança e de seus responsáveis. Iniciamos com uma conversa acolhedora com os pais, adaptação sensorial ao ambiente do consultório e avaliação clínica cuidadosa, sem pressa e priorizando o bem-estar emocional do pequeno.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dúvida 03 -->
+              <div class="duvidas-item" data-reveal>
+                <h3 class="duvidas-item__pergunta">
+                  <button type="button" class="duvidas-item__botao" id="duvida-b3" aria-expanded="false" aria-controls="duvida-r3">
+                    <span class="duvidas-item__num" aria-hidden="true">03</span>
+                    <span class="duvidas-item__texto">Meu filho tem medo ou ansiedade de dentista. Como vocês lidam?</span>
+                    <span class="duvidas-item__icone" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="duvidas-item__resposta" id="duvida-r3" role="region" aria-labelledby="duvida-b3">
+                  <div class="duvidas-item__clip">
+                    <div class="duvidas-item__corpo">
+                      <p>
+                        O receio é acolhido com respeito, paciência e escuta. Utilizamos técnicas de condicionamento comportamental positivo, recursos lúdicos e linguagem compreensível para a idade. A criança nunca é forçada, e cada etapa é explicada previamente para transmitir previsibilidade e confiança.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dúvida 04 -->
+              <div class="duvidas-item" data-reveal>
+                <h3 class="duvidas-item__pergunta">
+                  <button type="button" class="duvidas-item__botao" id="duvida-b4" aria-expanded="false" aria-controls="duvida-r4">
+                    <span class="duvidas-item__num" aria-hidden="true">04</span>
+                    <span class="duvidas-item__texto">O que é a Ortopedia Funcional dos Maxilares (OFM)?</span>
+                    <span class="duvidas-item__icone" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="duvidas-item__resposta" id="duvida-r4" role="region" aria-labelledby="duvida-b4">
+                  <div class="duvidas-item__clip">
+                    <div class="duvidas-item__corpo">
+                      <p>
+                        A OFM é uma especialidade que estimula e direciona o crescimento harmonioso dos ossos da face e das arcadas dentárias durante a infância, aproveitando os picos de desenvolvimento esquelético. É indicada mediante avaliação clínica individual para prevenir ou corrigir alterações ósseas e respiratórias de forma precoce.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dúvida 05 -->
+              <div class="duvidas-item" data-reveal>
+                <h3 class="duvidas-item__pergunta">
+                  <button type="button" class="duvidas-item__botao" id="duvida-b5" aria-expanded="false" aria-controls="duvida-r5">
+                    <span class="duvidas-item__num" aria-hidden="true">05</span>
+                    <span class="duvidas-item__texto">A sedação consciente com óxido nitroso é segura para crianças?</span>
+                    <span class="duvidas-item__icone" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="duvidas-item__resposta" id="duvida-r5" role="region" aria-labelledby="duvida-b5">
+                  <div class="duvidas-item__clip">
+                    <div class="duvidas-item__corpo">
+                      <p>
+                        Sim. O óxido nitroso é um método consagrado, não invasivo e muito seguro. Durante todo o procedimento, a criança permanece acordada, consciente e responsiva, sentindo uma agradável sensação de relaxamento. A indicação depende sempre de avaliação clínica criteriosa e do consentimento informado dos pais.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dúvida 06 -->
+              <div class="duvidas-item" data-reveal>
+                <h3 class="duvidas-item__pergunta">
+                  <button type="button" class="duvidas-item__botao" id="duvida-b6" aria-expanded="false" aria-controls="duvida-r6">
+                    <span class="duvidas-item__num" aria-hidden="true">06</span>
+                    <span class="duvidas-item__texto">Vocês atendem convênios ou apenas consultas particulares?</span>
+                    <span class="duvidas-item__icone" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="duvidas-item__resposta" id="duvida-r6" role="region" aria-labelledby="duvida-b6">
+                  <div class="duvidas-item__clip">
+                    <div class="duvidas-item__corpo">
+                      <p>
+                        Priorizamos um atendimento personalizado com tempo dedicado e exclusivo para cada criança e família.
+                      </p>
+                      <p class="duvidas-pendente-tag" title="Condições administrativas aguardando confirmação final">
+                        [PENDENTE DE CONFIRMAÇÃO: consultar condições de convênios, parcerias e emissão de recibo para reembolso diretamente com a nossa equipe].
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dúvida 07 -->
+              <div class="duvidas-item" data-reveal>
+                <h3 class="duvidas-item__pergunta">
+                  <button type="button" class="duvidas-item__botao" id="duvida-b7" aria-expanded="false" aria-controls="duvida-r7">
+                    <span class="duvidas-item__num" aria-hidden="true">07</span>
+                    <span class="duvidas-item__texto">Como prevenir cáries e manter a higiene bucal em dia em casa?</span>
+                    <span class="duvidas-item__icone" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="duvidas-item__resposta" id="duvida-r7" role="region" aria-labelledby="duvida-b7">
+                  <div class="duvidas-item__clip">
+                    <div class="duvidas-item__corpo">
+                      <p>
+                        A rotina com escovação diária, pasta fluoretada na quantidade correta para a faixa etária, fio dental e alimentação balanceada é o alicerce da saúde bucal. Durante as consultas, orientamos técnicas práticas para tornar a escovação um momento prazeroso no dia a dia da família.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bloco Editorial Premium: Convite acolhedor integrado ao FAQ -->
+            <div class="duvidas-convite reveal-up">
+              <div class="duvidas-convite__conteudo">
+                <span class="duvidas-convite__tag">Ainda com dúvidas?</span>
+                <p class="duvidas-convite__frase">
+                  Cada criança tem seu tempo. <em>Estamos aqui para acolher sua família.</em>
+                </p>
+                <a
+                  class="duvidas-convite__link"
+                  href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Ainda%20tenho%20d%C3%BAvidas%20e%20gostaria%20de%20conversar%20com%20a%20equipe."
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Fale com a equipe pelo WhatsApp (abre em nova aba)"
+                >
+                  <span>Fale com a equipe</span>
+                  <span class="duvidas-convite__link-seta" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </a>
+              </div>
+              <div class="duvidas-convite__icone-wrap" aria-hidden="true">
+                <img
+                  src="./assets/logo/logo-simbolo.svg"
+                  alt=""
+                  class="duvidas-convite__logo"
+                  width="38"
+                  height="38"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SEÇÃO 6: CONTATO & LOCALIZAÇÃO (#contato)
+           Encerramento acolhedor, sofisticado e funcional da página
+           ===================================================================== -->
+      <section id="contato" class="contato-sec" data-dobra="contato" aria-labelledby="contato-titulo">
+        <div class="contato-wrap">
+          <header class="contato-cabeca cabeca" data-reveal>
+            <span class="tag">Contato &amp; Localização</span>
+            <h2 id="contato-titulo" class="contato-titulo">
+              Venha nos conhecer e <em>conversar com a nossa equipe</em>
+            </h2>
+            <p class="contato-apoio">
+              Estamos prontos para acolher sua família com carinho, escuta atenta e todo o conforto que seu filho merece.
+            </p>
+          </header>
+
+          <div class="contato-grade">
+            <!-- Coluna 1: Informações e Canais de Contato -->
+            <ul class="contato-infos" role="list">
+              <!-- Card 1: Endereço -->
+              <li class="contato-card" data-reveal>
+                <div class="contato-card__icone" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21s-7-6.2-7-11.6a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" />
+                    <circle cx="12" cy="9.4" r="2.6" />
+                  </svg>
+                </div>
+                <div class="contato-card__corpo">
+                  <span class="contato-card__rotulo">Endereço</span>
+                  <address class="contato-card__valor">
+                    R. Pref. João Batista Moreira de Souza, 902
+                  </address>
+                  <p class="contato-card__detalhe">
+                    Jardim Aeroporto · São José do Rio Pardo – SP · CEP 13720-508
+                  </p>
+                  <div class="contato-card__acao">
+                    <a
+                      class="contato-link-inline"
+                      href="https://www.google.com/maps/search/?api=1&amp;query=R.+Pref.+Jo%C3%A3o+Batista+Moreira+de+Souza%2C+902+-+Jardim+Aeroporto%2C+S%C3%A3o+Jos%C3%A9+do+Rio+Pardo+-+SP%2C+13720-508"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Abrir endereço no Google Maps (abre em nova aba)"
+                    >
+                      <span>Abrir no Google Maps</span>
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M7 17L17 7M8 7h9v9" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Card 2: WhatsApp & Agendamento -->
+              <li class="contato-card" data-reveal data-reveal-delay="0.1">
+                <div class="contato-card__icone" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                  </svg>
+                </div>
+                <div class="contato-card__corpo">
+                  <span class="contato-card__rotulo">WhatsApp &amp; Agendamento</span>
+                  <p class="contato-card__valor">(19) 99179-3019</p>
+                  <p class="contato-card__detalhe">
+                    Tire suas dúvidas e agende a consulta do seu filho com a nossa equipe.
+                  </p>
+                  <div class="contato-card__acao">
+                    <a
+                      class="btn btn--primary btn--sm"
+                      href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20filho(a)."
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Conversar pelo WhatsApp com a equipe (abre em nova aba)"
+                    >
+                      <span>Conversar no WhatsApp</span>
+                      <span class="btn__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Card 3: Redes Sociais Oficiais -->
+              <li class="contato-card" data-reveal data-reveal-delay="0.2">
+                <div class="contato-card__icone" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                  </svg>
+                </div>
+                <div class="contato-card__corpo">
+                  <span class="contato-card__rotulo">Redes Sociais Oficiais</span>
+                  <p class="contato-card__valor">Acompanhe nosso trabalho</p>
+                  <p class="contato-card__detalhe">
+                    Conteúdo educativo sobre odontopediatria, dicas de higiene bucal e o dia a dia da clínica.
+                  </p>
+                  <div class="contato-sociais">
+                    <a
+                      class="contato-social-chip"
+                      href="https://www.instagram.com/dragabrielafariaodontologia/"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Instagram da Odontologia Dra. Gabriela Faria (abre em nova aba)"
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                      </svg>
+                      <span>@dragabrielafariaodontologia</span>
+                    </a>
+                    <a
+                      class="contato-social-chip"
+                      href="https://www.facebook.com/gabrielafaria.odontologia"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Facebook da Odontologia Dra. Gabriela Faria (abre em nova aba)"
+                    >
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                        <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95C18.05 21.45 22 17.19 22 12z"/>
+                      </svg>
+                      <span>gabrielafaria.odontologia</span>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Coluna 2: Mapa e Localização Sob Demanda -->
+            <div class="contato-mapa-col">
+              <div class="contato-mapa-card" data-reveal data-reveal-delay="0.15">
+                <div class="contato-mapa-moldura">
+                  <iframe
+                    class="contato-mapa-frame"
+                    src="https://maps.google.com/maps?q=Rua+Prefeito+Joao+Batista+Moreira+de+Souza+902+Sao+Jose+do+Rio+Pardo+SP&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                    width="600"
+                    height="400"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Localização da Odontologia Dra. Gabriela Faria em São José do Rio Pardo"
+                  ></iframe>
+                </div>
+                <div class="contato-mapa-rodape">
+                  <div class="contato-mapa-info">
+                    <span class="contato-mapa-ponto" aria-hidden="true"></span>
+                    <span>Jardim Aeroporto · Fácil acesso na cidade</span>
+                  </div>
+                  <a
+                    class="btn btn--secondary btn--sm"
+                    href="https://www.google.com/maps/search/?api=1&amp;query=R.+Pref.+Jo%C3%A3o+Batista+Moreira+de+Souza%2C+902+-+Jardim+Aeroporto%2C+S%C3%A3o+Jos%C3%A9+do+Rio+Pardo+-+SP%2C+13720-508"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Traçar rota no Google Maps (abre em nova aba)"
+                  >
+                    <span>Traçar rota</span>
+                    <span class="btn__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 17L17 7M8 7h9v9" />
+                      </svg>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- Rodapé Institucional Canônico -->
-    <footer id="contato" class="site-footer" role="contentinfo" style="background: var(--grafite, #2B2523); color: var(--creme, #FBF6F2); padding: clamp(48px, 6vw, 80px) 0 clamp(32px, 4vw, 48px); margin-top: clamp(64px, 8vw, 96px);">
-      <div class="container" style="max-width: var(--container-width, 1360px); margin-inline: auto; padding-inline: var(--gutter, 24px); display: grid; gap: 40px;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 36px;">
-          <div>
-            <p style="font-family: var(--font-display, 'Fraunces', serif); font-size: 1.5rem; margin: 0 0 8px; color: var(--creme, #FBF6F2);">
-              Dra. Gabriela Faria
+    <!-- =====================================================================
+         RODAPÉ INSTITUCIONAL PREMIUM (.site-footer)
+         Encerramento arquitetural com contraste sofisticado e navegação completa
+         ===================================================================== -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__container">
+        <div class="site-footer__topo">
+          <!-- Coluna 1: Marca & Missão -->
+          <div class="site-footer__marca">
+            <a class="site-footer__logo" href="/" aria-label="Odontologia Dra. Gabriela Faria - Ir para a página inicial">
+              <img
+                class="site-footer__logo-img"
+                src="./assets/logo/logo-simbolo-claro.svg"
+                alt=""
+                width="40"
+                height="40"
+                aria-hidden="true"
+              />
+              <span class="site-footer__brand-group">
+                <span class="site-footer__brand-name">Dra. Gabriela Faria</span>
+                <span class="site-footer__brand-sub">Odontologia</span>
+              </span>
+            </a>
+            <p class="site-footer__tagline">
+              Odontopediatria humanizada e acolhimento para o desenvolvimento saudável do sorriso da sua família.
             </p>
-            <p style="font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.8125rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rosa-claro, #EBC4C0); margin: 0 0 16px;">
-              Odontologia · CROSP 95.948
-            </p>
-            <p style="font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.9375rem; line-height: 1.6; color: #D5CCC7; margin: 0; max-width: 34ch;">
-              Odontopediatria humanizada com atendimento acolhedor para bebês, crianças e adolescentes.
+            <p class="site-footer__cro">
+              Responsável Técnica: Dra. Gabriela Faria · CROSP 95.948
             </p>
           </div>
 
-          <div>
-            <p style="font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rosa-claro, #EBC4C0); font-weight: 700; margin: 0 0 14px;">
-              Localização e Contato
-            </p>
-            <address style="font-style: normal; font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.9375rem; line-height: 1.6; color: #D5CCC7;">
-              R. Pref. João Batista Moreira de Souza, 902<br />
-              Jardim Aeroporto · São José do Rio Pardo – SP<br />
-              CEP 13720-508<br />
-              WhatsApp: <a href="https://wa.me/5519991793019" style="color: var(--creme, #FBF6F2); text-decoration: underline;" target="_blank" rel="noopener">(19) 99179-3019</a>
-            </address>
-          </div>
-
-          <div>
-            <p style="font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rosa-claro, #EBC4C0); font-weight: 700; margin: 0 0 14px;">
-              Navegação
-            </p>
-            <nav style="display: grid; gap: 8px; font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.9375rem;">
-              <a href="/" style="color: var(--creme, #FBF6F2); text-decoration: none; font-weight: 600;">Início</a>
-              <a href="#sobre" style="color: #D5CCC7; text-decoration: none;">Sobre a Dra. Gabriela</a>
-              <a href="#cuidado" style="color: #D5CCC7; text-decoration: none;">Cuidados Especiais</a>
-              <a href="servicos.html" style="color: #D5CCC7; text-decoration: none;">Serviços</a>
+          <!-- Coluna 2: Navegação Canônica -->
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-titulo">Navegação</h3>
+            <nav class="site-footer__nav" aria-label="Navegação do rodapé">
+              <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="#sobre">Dra. Gabriela</a></li>
+                <li><a href="#cuidado">Cuidado</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="#duvidas">Dúvidas</a></li>
+                <li><a href="#contato">Contato</a></li>
+              </ul>
             </nav>
+          </div>
+
+          <!-- Coluna 3: Localização Confirmada -->
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-titulo">Localização</h3>
+            <address class="site-footer__address">
+              <span>R. Pref. João Batista Moreira de Souza, 902</span>
+              <span>Jardim Aeroporto</span>
+              <span>São José do Rio Pardo – SP</span>
+              <span>CEP 13720-508</span>
+            </address>
+            <a
+              class="site-footer__maps-link"
+              href="https://www.google.com/maps/search/?api=1&amp;query=R.+Pref.+Jo%C3%A3o+Batista+Moreira+de+Souza%2C+902+-+Jardim+Aeroporto%2C+S%C3%A3o+Jos%C3%A9+do+Rio+Pardo+-+SP%2C+13720-508"
+              target="_blank"
+              rel="noopener"
+              aria-label="Ver localização no Google Maps (abre em nova aba)"
+            >
+              <span>Ver no Google Maps</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7M8 7h9v9" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Coluna 4: Canais de Contato & Redes -->
+          <div class="site-footer__col">
+            <h3 class="site-footer__col-titulo">Atendimento</h3>
+            <div class="site-footer__contatos">
+              <a
+                class="site-footer__contato-link"
+                href="https://wa.me/5519991793019"
+                target="_blank"
+                rel="noopener"
+                aria-label="Falar no WhatsApp (19) 99179-3019 (abre em nova aba)"
+              >
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                </svg>
+                <span>(19) 99179-3019</span>
+              </a>
+
+              <div class="site-footer__sociais">
+                <a
+                  class="site-footer__social-btn"
+                  href="https://www.instagram.com/dragabrielafariaodontologia/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Instagram da Odontologia Dra. Gabriela Faria (abre em nova aba)"
+                >
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                  </svg>
+                </a>
+                <a
+                  class="site-footer__social-btn"
+                  href="https://www.facebook.com/gabrielafaria.odontologia"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Facebook da Odontologia Dra. Gabriela Faria (abre em nova aba)"
+                >
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95C18.05 21.45 22 17.19 22 12z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <a class="site-footer__voltar-topo" href="#inicio" aria-label="Voltar ao início da página">
+              <span>Voltar ao topo</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 19V5M5 12l7-7 7 7"/>
+              </svg>
+            </a>
           </div>
         </div>
 
-        <div style="border-top: 1px solid rgba(251, 246, 242, 0.12); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.8125rem; color: #A89E9A;">
-          <p style="margin: 0;">© 2026 Odontologia Dra. Gabriela Faria. Todos os direitos reservados.</p>
-          <p style="margin: 0;">Responsável Técnica: Dra. Gabriela Faria · CROSP 95.948</p>
+        <!-- Base: Copyright Dinâmico e Legal -->
+        <div class="site-footer__base">
+          <p class="site-footer__copy">
+            © <span data-ano-copyright>2026</span> Odontologia Dra. Gabriela Faria. Todos os direitos reservados.
+          </p>
+          <p class="site-footer__cfo">
+            CROSP 95.948 · Odontopediatria Humanizada
+          </p>
         </div>
       </div>
     </footer>
