@@ -1,0 +1,13 @@
+# =====================================================================
+# robots.txt - Odontologia Dra. Gabriela Faria
+# https://wa.me/5519991793019 · São José do Rio Pardo - SP
+# =====================================================================
+
+User-agent: *
+Allow: /
+
+# Sitemap Canônico
+# [PENDENTE DE DEFINIÇÃO DO DOMÍNIO OFICIAL]:
+# Descomente a linha abaixo e insira o domínio definitivo após a publicação:
+# Sitemap: https://[DOMINIO_OFICIAL]/sitemap.xml
+

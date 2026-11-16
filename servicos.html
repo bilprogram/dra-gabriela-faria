@@ -9,6 +9,10 @@
       content="Conheça os serviços odontopediátricos da Odontologia Dra. Gabriela Faria em São José do Rio Pardo: primeira consulta do bebê, prevenção, OFM, tratamento restaurador e cuidados específicos com acolhimento humanizado."
     />
     <meta name="robots" content="index, follow" />
+
+    <!-- Metadados Canônicos e Redes Sociais
+         [PENDENTE DE DEFINIÇÃO DO DOMÍNIO OFICIAL]:
+         Substituir o caminho canônico relativo './servicos.html' pela URL absoluta final (ex: https://dragabrielafaria.com.br/servicos.html) após publicação. -->
     <link rel="canonical" href="./servicos.html" />
 
     <!-- Open Graph / Meta Social -->
@@ -22,10 +26,19 @@
     <meta property="og:url" content="./servicos.html" />
     <meta property="og:site_name" content="Odontologia Dra. Gabriela Faria" />
     <meta property="og:image" content="./assets/img/_MG_2758.jpg" />
+    <meta property="og:image:alt" content="Dra. Gabriela Faria sentada à mesa de atendimento em seu consultório acolhedor" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Serviços de Odontopediatria em São José do Rio Pardo · Dra. Gabriela Faria" />
+    <meta name="twitter:description" content="Cuidado odontopediátrico humanizado e focado no bem-estar de bebês, crianças e adolescentes em São José do Rio Pardo." />
+    <meta name="twitter:image" content="./assets/img/_MG_2758.jpg" />
+    <meta name="twitter:image:alt" content="Dra. Gabriela Faria sentada à mesa de atendimento em seu consultório acolhedor" />
 
     <!-- Favicon e Ícones -->
     <link rel="icon" type="image/svg+xml" href="./assets/favicon/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="manifest" href="./site.webmanifest" />
 
     <!-- Preload das fontes self-hosted -->
     <link
@@ -46,7 +59,7 @@
     <!-- Folhas de Estilo -->
     <link rel="stylesheet" href="./css/tokens.css" />
     <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/components.css?v=8" />
+    <link rel="stylesheet" href="./css/components.css?v=16" />
     <link rel="stylesheet" href="./css/motion.css" />
     <link rel="stylesheet" href="./css/servicos.css" />
 
@@ -54,15 +67,15 @@
     <script type="module" src="./js/servicos.js" defer></script>
     <script type="module" src="./js/header.js?v=3" defer></script>
 
-    <!-- Schema.org JSON-LD para SEO Local e AEO -->
+    <!-- Schema.org JSON-LD para SEO Local e Mecanismos de IA -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Dentist",
         "name": "Odontologia Dra. Gabriela Faria",
         "description": "Clínica de odontopediatria humanizada em São José do Rio Pardo com foco em acolhimento e desenvolvimento da criança.",
-        "url": "https://dragabrielafaria.com.br/servicos.html",
         "telephone": "+55-19-99179-3019",
+        "image": "./assets/img/_MG_2758.jpg",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "R. Pref. João Batista Moreira de Souza, 902",
@@ -70,6 +83,16 @@
           "addressRegion": "SP",
           "postalCode": "13720-508",
           "addressCountry": "BR"
+        },
+        "sameAs": [
+          "https://www.instagram.com/dragabrielafariaodontologia/",
+          "https://www.facebook.com/gabrielafaria.odontologia"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Dra. Gabriela Faria",
+          "jobTitle": "Odontopediatra - Responsável Técnica",
+          "identifier": "CROSP 95.948"
         },
         "medicalSpecialty": ["PediatricDentistry"],
         "hasOfferCatalog": {

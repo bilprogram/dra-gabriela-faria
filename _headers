@@ -1,0 +1,39 @@
+# =====================================================================
+# Cloudflare Pages - Cabeçalhos HTTP de Segurança e Performance
+# =====================================================================
+
+# Cabeçalhos de segurança padrão para todo o site
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Cache imutável para fontes self-hosted (1 ano)
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache estático para imagens e logos (7 dias com revalidação em segundo plano)
+/assets/img/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/assets/logo/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/assets/favicon/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Cache para estilos e scripts (7 dias com revalidação)
+/css/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/js/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Documentos HTML: revalidação imediata para atualizações instantâneas
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+

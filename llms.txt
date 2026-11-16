@@ -1,0 +1,31 @@
+# Odontologia Dra. Gabriela Faria
+
+> Clínica de odontopediatria humanizada localizada em São José do Rio Pardo, SP, dedicada ao atendimento odontológico acolhedor de bebês, crianças e adolescentes.
+
+## Informações Institucionais e Contato
+- **Clínica:** Odontologia Dra. Gabriela Faria
+- **Responsável Técnica:** Dra. Gabriela Faria · CROSP 95.948
+- **Especialidades:** Odontopediatria e Ortopedia Funcional dos Maxilares (OFM)
+- **Endereço:** R. Pref. João Batista Moreira de Souza, 902, Jardim Aeroporto, São José do Rio Pardo, SP, CEP 13720-508
+- **Telefone / WhatsApp:** (19) 99179-3019
+- **Link de Atendimento WhatsApp:** https://wa.me/5519991793019
+- **Instagram Oficial:** https://www.instagram.com/dragabrielafariaodontologia/
+- **Facebook Oficial:** https://www.facebook.com/gabrielafaria.odontologia
+
+## Estrutura do Site
+- **Página Inicial (`/`):** Apresentação do atendimento humanizado, espaço lúdico da clínica, especialidades, carrossel de cuidados, jornada de serviços, equipe, dúvidas frequentes (FAQ) e localização.
+- **Página de Serviços (`/servicos.html`):** Detalhamento das áreas de atuação odontopediátrica e condutas clínicas para cada momento do desenvolvimento infantil.
+
+## Serviços Odontopediátricos Confirmados
+- **Primeira Consulta do Bebê:** Avaliação inicial das estruturas bucais, orientações aos pais sobre aleitamento, introdução de higiene e construção precoce de vínculo positivo.
+- **Odontopediatria e Atendimento Humanizado:** Atendimento individualizado sem pressa, com foco no bem-estar emocional e técnicas lúdicas para crianças com medo ou ansiedade.
+- **Prevenção e Saúde Bucal Infantil:** Acompanhamento preventivo contínuo, profilaxia cuidadosa e aplicação de flúor sob indicação clínica individual.
+- **Tratamento Restaurador e Cárie Infantil:** Conduta conservadora para restaurações e controle de lesões cariosas na infância.
+- **Ortopedia Funcional dos Maxilares (OFM):** Estímulo e direcionamento precoce do crescimento ósseo facial e das arcadas dentárias durante os picos de crescimento.
+- **Sedação Consciente com Óxido Nitroso:** Procedimento não invasivo de sedação inalatória para conforto e relaxamento de crianças durante atendimentos clínicos, mediante indicação e consentimento dos pais.
+- **Atendimento a Crianças com Necessidades Especiais:** Abordagem adaptada e acolhedora às particularidades sensoriais e de saúde de cada pequeno paciente.
+
+## Orientações de Agendamento
+- Os atendimentos são realizados com hora marcada para assegurar dedicação exclusiva a cada família.
+- Agendamento e esclarecimento de dúvidas administrativas (convênios e formas de pagamento) são feitos diretamente pelo WhatsApp oficial: (19) 99179-3019.
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  =====================================================================
+  SITEMAP: Odontologia Dra. Gabriela Faria
+  Rotas Canônicas Oficiais: Home (/) e Serviços (/servicos.html)
+  
+  [PENDENTE DE DEFINIÇÃO DO DOMÍNIO OFICIAL]:
+  Para ativar o sitemap após o registro e publicação do domínio:
+  1. Descomente os blocos <url> abaixo.
+  2. Substitua 'https://[DOMINIO_OFICIAL]' pela URL canônica definitiva (ex: https://dragabrielafaria.com.br).
+  3. Envie a URL final no Google Search Console e Bing Webmaster Tools.
+  =====================================================================
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!--
+  <url>
+    <loc>https://[DOMINIO_OFICIAL]/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://[DOMINIO_OFICIAL]/servicos.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+</urlset>
+

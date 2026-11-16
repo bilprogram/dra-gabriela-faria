@@ -1,0 +1,7 @@
+# =====================================================================
+# Cloudflare Pages - Regras de Redirecionamento
+# =====================================================================
+
+# Redirecionamento amigável para a página de serviços
+/servicos    /servicos.html    301
+

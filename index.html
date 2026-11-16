@@ -10,12 +10,25 @@
     />
     <meta name="theme-color" content="#2B2523" />
 
+    <!-- Metadados Canônicos e Redes Sociais
+         [PENDENTE DE DEFINIÇÃO DO DOMÍNIO OFICIAL]:
+         Substituir o caminho canônico relativo '/' pela URL absoluta (ex: https://dragabrielafaria.com.br/) após publicação. -->
     <link rel="canonical" href="/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Odontologia Dra. Gabriela Faria" />
     <meta property="og:title" content="Odontologia Dra. Gabriela Faria · Odontopediatria Humanizada em São José do Rio Pardo" />
     <meta property="og:description" content="Clínica de odontopediatria humanizada em São José do Rio Pardo. Primeira consulta do bebê, sedação consciente com óxido nitroso e ortopedia funcional dos maxilares." />
     <meta property="og:url" content="/" />
-    <meta property="og:site_name" content="Odontologia Dra. Gabriela Faria" />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1280.webp" />
+    <meta property="og:image:alt" content="Dra. Gabriela Faria em sua clínica odontológica infantil em São José do Rio Pardo" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Odontologia Dra. Gabriela Faria · Odontopediatria Humanizada em São José do Rio Pardo" />
+    <meta name="twitter:description" content="Clínica de odontopediatria humanizada em São José do Rio Pardo. Primeira consulta do bebê, sedação consciente com óxido nitroso e ortopedia funcional dos maxilares." />
+    <meta name="twitter:image" content="./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1280.webp" />
+    <meta name="twitter:image:alt" content="Dra. Gabriela Faria em sua clínica odontológica infantil em São José do Rio Pardo" />
 
     <!-- Favicon e Ícones de Dispositivo a partir da Logo Oficial -->
     <link rel="icon" type="image/svg+xml" href="./assets/favicon/favicon.svg" />
@@ -23,6 +36,107 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+
+    <!-- Dados Estruturados Schema.org (JSON-LD) para SEO Local e Mecanismos de IA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Dentist",
+          "@id": "#clinica",
+          "name": "Odontologia Dra. Gabriela Faria",
+          "description": "Clínica de odontopediatria humanizada em São José do Rio Pardo. Primeira consulta do bebê, sedação consciente com óxido nitroso e ortopedia funcional dos maxilares.",
+          "telephone": "+55-19-99179-3019",
+          "image": "./assets/img/_MG_2758.jpg",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "R. Pref. João Batista Moreira de Souza, 902",
+            "addressLocality": "São José do Rio Pardo",
+            "addressRegion": "SP",
+            "postalCode": "13720-508",
+            "addressCountry": "BR"
+          },
+          "medicalSpecialty": [
+            "PediatricDentistry"
+          ],
+          "sameAs": [
+            "https://www.instagram.com/dragabrielafariaodontologia/",
+            "https://www.facebook.com/gabrielafaria.odontologia"
+          ],
+          "founder": {
+            "@type": "Person",
+            "name": "Dra. Gabriela Faria",
+            "jobTitle": "Odontopediatra - Responsável Técnica",
+            "identifier": "CROSP 95.948"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Quando devo levar meu bebê pela primeira vez ao dentista?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A recomendação é que a primeira consulta aconteça assim que despontar o primeiro dentinho ou até o primeiro ano de vida. Essa visita precoce permite avaliar o desenvolvimento das estruturas orais, orientar a família sobre hábitos de higiene e aleitamento e construir um vínculo positivo desde o início."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como funciona a primeira consulta de uma criança?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A consulta é conduzida com calma, no ritmo da criança e de seus responsáveis. Iniciamos com uma conversa acolhedora com os pais, adaptação sensorial ao ambiente do consultório e avaliação clínica cuidadosa, sem pressa e priorizando o bem-estar emocional do pequeno."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Meu filho tem medo ou ansiedade de dentista. Como vocês lidam?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "O receio é acolhido com respeito, paciência e escuta. Utilizamos técnicas de condicionamento comportamental positivo, recursos lúdicos e linguagem compreensível para a idade. A criança nunca é forçada, e cada etapa é explicada previamente para transmitir previsibilidade e confiança."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "O que é a Ortopedia Funcional dos Maxilares (OFM)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A OFM é uma especialidade que estimula e direciona o crescimento harmonioso dos ossos da face e das arcadas dentárias durante a infância, aproveitando os picos de desenvolvimento esquelético. É indicada mediante avaliação clínica individual para prevenir ou corrigir alterações ósseas e respiratórias de forma precoce."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "A sedação consciente com óxido nitroso é segura para crianças?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim. O óxido nitroso é um método consagrado, não invasivo e muito seguro. Durante todo o procedimento, a criança permanece acordada, consciente e responsiva, sentindo uma agradável sensação de relaxamento. A indicação depende sempre de avaliação clínica criteriosa e do consentimento informado dos pais."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Vocês atendem convênios ou apenas consultas particulares?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Priorizamos um atendimento personalizado com tempo dedicado e exclusivo para cada criança e família."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como prevenir cáries e manter a higiene bucal em dia em casa?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A rotina com escovação diária, pasta fluoretada na quantidade correta para a faixa etária, fio dental e alimentação balanceada é o alicerce da saúde bucal. Durante as consultas, orientamos técnicas práticas para tornar a escovação um momento prazeroso no dia a dia da família."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <!-- Preload das fontes principais (Fraunces Display e Manrope) para LCP imediato -->
     <link

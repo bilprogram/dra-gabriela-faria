@@ -1,0 +1,29 @@
+{
+  "name": "Odontologia Dra. Gabriela Faria",
+  "short_name": "Dra. Gabriela Faria",
+  "description": "Clínica de odontopediatria humanizada em São José do Rio Pardo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF6F2",
+  "theme_color": "#2B2523",
+  "icons": [
+    {
+      "src": "./assets/favicon/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/favicon/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+
