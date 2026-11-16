@@ -10,6 +10,13 @@
     />
     <meta name="theme-color" content="#2B2523" />
 
+    <link rel="canonical" href="/" />
+    <meta property="og:title" content="Odontologia Dra. Gabriela Faria · Odontopediatria Humanizada em São José do Rio Pardo" />
+    <meta property="og:description" content="Clínica de odontopediatria humanizada em São José do Rio Pardo. Primeira consulta do bebê, sedação consciente com óxido nitroso e ortopedia funcional dos maxilares." />
+    <meta property="og:url" content="/" />
+    <meta property="og:site_name" content="Odontologia Dra. Gabriela Faria" />
+    <meta property="og:type" content="website" />
+
     <!-- Favicon e Ícones de Dispositivo a partir da Logo Oficial -->
     <link rel="icon" href="./assets/favicon/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
@@ -61,15 +68,16 @@
     <!-- Header Transparente Fixo no Topo (Passo 5 Refinamento) -->
     <header class="site-header" role="banner">
       <div class="container site-header__inner">
-        <a class="site-header__logo" href="#inicio" aria-label="Odontologia Dra. Gabriela Faria">
+        <a class="site-header__logo" href="/" aria-label="Odontologia Dra. Gabriela Faria - Início">
           <span class="site-header__brand-name">Dra. Gabriela Faria</span>
           <span class="site-header__brand-sub">Odontologia</span>
         </a>
 
         <nav class="site-header__nav" aria-label="Navegação primária">
-          <a class="site-header__link is-active" href="#cuidado">Cuidado</a>
-          <a class="site-header__link" href="servicos.html">Serviços</a>
+          <a class="site-header__link is-active" href="/" aria-current="page">Início</a>
           <a class="site-header__link" href="#sobre">Dra. Gabriela</a>
+          <a class="site-header__link" href="#cuidado">Cuidado</a>
+          <a class="site-header__link" href="servicos.html">Serviços</a>
           <a class="site-header__link" href="#duvidas">Dúvidas</a>
           <a class="site-header__link" href="#contato">Contato</a>
         </nav>
@@ -668,8 +676,8 @@
               </div>
             </div>
 
-            <!-- Rodapé da seção de cards com CTA integrado -->
-            <div class="casos-rodape">
+            <!-- Rodapé da seção de cards com CTA integrado (Dúvidas e orientações) -->
+            <div class="casos-rodape" id="duvidas">
               <p class="casos-rodape-texto">
                 <strong>Não encontrou o que procura?</strong> Toda conduta odontopediátrica começa por uma avaliação individualizada.
               </p>
@@ -1104,5 +1112,53 @@
         </div>
       </section>
     </main>
+
+    <!-- Rodapé Institucional Canônico -->
+    <footer id="contato" class="site-footer" role="contentinfo" style="background: var(--grafite, #2B2523); color: var(--creme, #FBF6F2); padding: clamp(48px, 6vw, 80px) 0 clamp(32px, 4vw, 48px); margin-top: clamp(64px, 8vw, 96px);">
+      <div class="container" style="max-width: var(--container-width, 1360px); margin-inline: auto; padding-inline: var(--gutter, 24px); display: grid; gap: 40px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 36px;">
+          <div>
+            <p style="font-family: var(--font-display, 'Fraunces', serif); font-size: 1.5rem; margin: 0 0 8px; color: var(--creme, #FBF6F2);">
+              Dra. Gabriela Faria
+            </p>
+            <p style="font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.8125rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rosa-claro, #EBC4C0); margin: 0 0 16px;">
+              Odontologia · CROSP 95.948
+            </p>
+            <p style="font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.9375rem; line-height: 1.6; color: #D5CCC7; margin: 0; max-width: 34ch;">
+              Odontopediatria humanizada com atendimento acolhedor para bebês, crianças e adolescentes.
+            </p>
+          </div>
+
+          <div>
+            <p style="font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rosa-claro, #EBC4C0); font-weight: 700; margin: 0 0 14px;">
+              Localização e Contato
+            </p>
+            <address style="font-style: normal; font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.9375rem; line-height: 1.6; color: #D5CCC7;">
+              R. Pref. João Batista Moreira de Souza, 902<br />
+              Jardim Aeroporto · São José do Rio Pardo – SP<br />
+              CEP 13720-508<br />
+              WhatsApp: <a href="https://wa.me/5519991793019" style="color: var(--creme, #FBF6F2); text-decoration: underline;" target="_blank" rel="noopener">(19) 99179-3019</a>
+            </address>
+          </div>
+
+          <div>
+            <p style="font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rosa-claro, #EBC4C0); font-weight: 700; margin: 0 0 14px;">
+              Navegação
+            </p>
+            <nav style="display: grid; gap: 8px; font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.9375rem;">
+              <a href="/" style="color: var(--creme, #FBF6F2); text-decoration: none; font-weight: 600;">Início</a>
+              <a href="#sobre" style="color: #D5CCC7; text-decoration: none;">Sobre a Dra. Gabriela</a>
+              <a href="#cuidado" style="color: #D5CCC7; text-decoration: none;">Cuidados Especiais</a>
+              <a href="servicos.html" style="color: #D5CCC7; text-decoration: none;">Serviços</a>
+            </nav>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(251, 246, 242, 0.12); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-family: var(--font-body, 'Manrope', sans-serif); font-size: 0.8125rem; color: #A89E9A;">
+          <p style="margin: 0;">© 2026 Odontologia Dra. Gabriela Faria. Todos os direitos reservados.</p>
+          <p style="margin: 0;">Responsável Técnica: Dra. Gabriela Faria · CROSP 95.948</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
