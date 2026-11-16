@@ -169,6 +169,7 @@ export function initCuidadosCarousel() {
       return;
     }
     cancelAnimationFrame(animRaf);
+    palco.classList.add('is-animando');
     animStartTime = performance.now();
     animStartPos = estado.pos;
     animTargetPos = target;
@@ -185,6 +186,7 @@ export function initCuidadosCarousel() {
       } else {
         estado.pos = animTargetPos;
         scheduleRender();
+        palco.classList.remove('is-animando');
       }
     }
     animRaf = requestAnimationFrame(step);

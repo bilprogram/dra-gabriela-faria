@@ -29,6 +29,29 @@ export function initServicosJornada() {
     atualizarScroll();
   });
 
+  // Medidas em cache do layout e limites dos passos (evita layout thrashing no scroll)
+  let cachedLimites = [];
+  let cachedInicio = 0;
+  let cachedFim = 0;
+
+  function recalcularCentros() {
+    if (passos.length < 2) return;
+    const scrollY = window.scrollY || window.pageYOffset;
+    const centros = passos.map((p) => {
+      const el = p.querySelector('h2, h3') || p;
+      const rect = el.getBoundingClientRect();
+      return rect.top + scrollY + rect.height / 2;
+    });
+
+    cachedLimites = centros.map((c, i) => {
+      if (i === 0) return centros[0] - window.innerHeight * 0.25;
+      return (centros[i - 1] + centros[i]) / 2;
+    });
+
+    cachedInicio = centros[0];
+    cachedFim = centros[total - 1];
+  }
+
   // Atualiza medidas do trilho vertical
   function atualizarLayout() {
     if (!nos[0] || !nos[total - 1]) return;
@@ -41,79 +64,71 @@ export function initServicosJornada() {
 
     etapas.style.setProperty('--jor-t0', `${t0.toFixed(1)}px`);
     etapas.style.setProperty('--jor-th', `${tH.toFixed(1)}px`);
+
+    recalcularCentros();
   }
 
   let ativoIndex = -1;
+  let ultimoProgresso = -1;
 
   function atualizarEstado(index, progressoFrac = 0) {
-    if (index === ativoIndex && isReducedMotion) return;
+    const novoIndex = Math.max(0, Math.min(total - 1, index));
+    const mudouIndex = novoIndex !== ativoIndex;
 
-    ativoIndex = Math.max(0, Math.min(total - 1, index));
-    container.style.setProperty('--jor-i', ativoIndex);
+    if (mudouIndex) {
+      ativoIndex = novoIndex;
+      container.style.setProperty('--jor-i', ativoIndex);
 
-    // Atualiza classes dos passos
-    passos.forEach((p, i) => {
-      const isAtivo = i === ativoIndex;
-      const isFeito = i <= ativoIndex;
-      p.classList.toggle('is-ativo', isAtivo);
-      p.classList.toggle('is-feito', isFeito);
-    });
+      // Atualiza classes dos passos
+      passos.forEach((p, i) => {
+        const isAtivo = i === ativoIndex;
+        const isFeito = i <= ativoIndex;
+        p.classList.toggle('is-ativo', isAtivo);
+        p.classList.toggle('is-feito', isFeito);
+      });
 
-    // Atualiza quadros de imagem
-    quadros.forEach((q, i) => {
-      q.classList.toggle('is-ativo', i === ativoIndex);
-    });
+      // Atualiza quadros de imagem
+      quadros.forEach((q, i) => {
+        q.classList.toggle('is-ativo', i === ativoIndex);
+      });
 
-    // Atualiza nomes na legenda
-    nomes.forEach((nome, i) => {
-      nome.classList.toggle('is-ativo', i === ativoIndex);
-      nome.classList.toggle('is-antes', i < ativoIndex);
-    });
+      // Atualiza nomes na legenda
+      nomes.forEach((nome, i) => {
+        nome.classList.toggle('is-ativo', i === ativoIndex);
+        nome.classList.toggle('is-antes', i < ativoIndex);
+      });
 
-    // Atualiza botões de navegação
-    botoes.forEach((btn, i) => {
-      if (i === ativoIndex) {
-        btn.setAttribute('aria-current', 'step');
-      } else {
-        btn.removeAttribute('aria-current');
-      }
-    });
+      // Atualiza botões de navegação
+      botoes.forEach((btn, i) => {
+        if (i === ativoIndex) {
+          btn.setAttribute('aria-current', 'step');
+        } else {
+          btn.removeAttribute('aria-current');
+        }
+      });
+    }
 
-    // Atualiza progresso da barra vertical
-    if (trilhoFill) {
-      trilhoFill.style.transform = `scaleY(${Math.max(0, Math.min(1, progressoFrac))})`;
+    // Atualiza progresso da barra vertical apenas quando houver delta perceptível
+    if (trilhoFill && Math.abs(progressoFrac - ultimoProgresso) > 0.003) {
+      ultimoProgresso = progressoFrac;
+      trilhoFill.style.transform = `scaleY(${Math.max(0, Math.min(1, progressoFrac)).toFixed(4)})`;
     }
   }
 
   function calcularProgresso() {
-    if (passos.length < 2) return { index: 0, progresso: 1 };
+    if (passos.length < 2 || !cachedLimites.length) return { index: 0, progresso: 1 };
 
-    const scrollY = window.scrollY;
+    const scrollY = window.scrollY || window.pageYOffset;
     const triggerY = scrollY + window.innerHeight * 0.5;
 
-    // Centro focal de cada passo baseado no título ou nó
-    const centros = passos.map((p) => {
-      const el = p.querySelector('h2, h3') || p;
-      const rect = el.getBoundingClientRect();
-      return rect.top + scrollY + rect.height / 2;
-    });
-
-    // Limites de transição: ponto médio exato entre passos consecutivos
-    const limites = centros.map((c, i) => {
-      if (i === 0) return centros[0] - window.innerHeight * 0.25;
-      return (centros[i - 1] + centros[i]) / 2;
-    });
-
     let index = 0;
-    limites.forEach((limite, i) => {
-      if (triggerY >= limite) {
+    for (let i = 0; i < cachedLimites.length; i++) {
+      if (triggerY >= cachedLimites[i]) {
         index = i;
       }
-    });
+    }
 
-    const inicio = centros[0];
-    const fim = centros[total - 1];
-    const progresso = (triggerY - inicio) / Math.max(1, fim - inicio);
+    const progresso = (triggerY - cachedInicio) / Math.max(1, cachedFim - cachedInicio);
 
     return {
       index: Math.max(0, Math.min(total - 1, index)),
@@ -165,21 +180,67 @@ export function initServicosJornada() {
     }
   });
 
+  // Gerenciamento de rolagem condicional via IntersectionObserver
+  // (Ativa o listener de scroll somente quando a seção está próxima ou no viewport,
+  // eliminando qualquer custo de CPU/GPU nas seções anteriores como #sobre e #cuidado)
+  let isScrollAttached = false;
+  let isIntersecting = false;
+
+  function attachScroll() {
+    if (!isScrollAttached) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      isScrollAttached = true;
+    }
+  }
+
+  function detachScroll() {
+    if (isScrollAttached) {
+      window.removeEventListener('scroll', onScroll);
+      isScrollAttached = false;
+    }
+  }
+
   // Observador de redimensionamento
   if ('ResizeObserver' in window) {
     const ro = new ResizeObserver(() => {
       atualizarLayout();
-      atualizarScroll();
+      if (isIntersecting || !('IntersectionObserver' in window)) {
+        atualizarScroll();
+      }
     });
     ro.observe(etapas);
   } else {
     window.addEventListener('resize', () => {
       atualizarLayout();
-      atualizarScroll();
+      if (isIntersecting || !('IntersectionObserver' in window)) {
+        atualizarScroll();
+      }
     }, { passive: true });
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.target === container) {
+            isIntersecting = entry.isIntersecting;
+            if (isIntersecting) {
+              recalcularCentros();
+              atualizarLayout();
+              atualizarScroll();
+              attachScroll();
+            } else {
+              detachScroll();
+            }
+          }
+        }
+      },
+      { rootMargin: '350px 0px 350px 0px' }
+    );
+    io.observe(container);
+  } else {
+    attachScroll();
+  }
 
   // Inicialização inicial
   document.documentElement.classList.add('js');

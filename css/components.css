@@ -841,6 +841,7 @@
 .sobre-midia {
   width: 100%;
   position: relative;
+  contain: layout paint;
 }
 
 .sobre-moldura {
@@ -1560,12 +1561,17 @@ html.js .sobre-numeros.is-revealed .sobre-numero:nth-child(3) {
   margin-left: calc(var(--casos-cw) / -2);
   border-radius: var(--casos-raio);
   transform-origin: 50%;
-  will-change: transform;
   position: absolute;
   left: 50%;
   box-shadow: 0 42px 74px -32px rgba(43, 37, 35, 0.32),
               0 16px 32px -16px rgba(43, 37, 35, 0.18);
   container-type: inline-size;
+  contain: layout paint;
+}
+
+.casos-palco.is-arrastando .casos-card,
+.casos-palco.is-animando .casos-card {
+  will-change: transform, opacity;
 }
 
 /* Posições padrão estáticas de fallback (substituídas dinamicamente pelo JS) */
