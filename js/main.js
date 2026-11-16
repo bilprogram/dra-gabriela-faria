@@ -4,7 +4,7 @@
  */
 
 import { initReveal } from './reveal.js';
-import { initHeader } from './header.js';
+import { initHeader } from './header.js?v=3';
 import { initHero } from './hero.js';
 import { initHeroScenes } from './hero-scenes.js';
 import { initCuidadosCarousel } from './cuidados.js';

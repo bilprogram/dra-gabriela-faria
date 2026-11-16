@@ -1,36 +1,36 @@
 /**
  * CONTROLE DO HEADER: Odontologia Dra. Gabriela Faria
- * Recolhe ao rolar para baixo, reaparece ao rolar para cima.
- * Aplica fundo fosco (.is-scrolled) quando sai do topo.
+ * Mantém o nav visível e estável ao longo de toda a página.
+ * Aplica efeito de vidro fosco translúcido (.is-scrolled) ao rolar e
+ * restaura a transparência suavemente ao retornar ao topo.
  */
 
 export function initHeader() {
   const header = document.querySelector('.site-header');
-  if (!header) return;
+  if (!header || header.dataset.headerInitialized === 'true') return;
+  header.dataset.headerInitialized = 'true';
 
-  let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+  // Em páginas dedicadas de fundo claro (como servicos.html), mantém o estado fosco ativo
+  const isDedicatedLightPage = document.body.classList.contains('servicos-pagina') || !document.getElementById('inicio');
+
   let ticking = false;
 
   function updateHeader() {
+    if (isDedicatedLightPage) {
+      header.classList.add('is-scrolled');
+      ticking = false;
+      return;
+    }
+
     const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
 
-    // Fundo fosco com blur após 40px
+    // Fundo de vidro fosco premium a partir de 40px de rolagem
     if (currentScrollY > 40) {
       header.classList.add('is-scrolled');
     } else {
       header.classList.remove('is-scrolled');
     }
 
-    // Comportamento esconde/mostra
-    if (currentScrollY > 120 && currentScrollY > lastScrollY) {
-      // Rolando para baixo -> esconde
-      header.classList.add('is-hidden');
-    } else {
-      // Rolando para cima -> mostra
-      header.classList.remove('is-hidden');
-    }
-
-    lastScrollY = Math.max(0, currentScrollY);
     ticking = false;
   }
 
@@ -44,5 +44,16 @@ export function initHeader() {
     },
     { passive: true }
   );
+
+  // Sincroniza estado no carregamento inicial
+  updateHeader();
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeader);
+  } else {
+    initHeader();
+  }
 }
 

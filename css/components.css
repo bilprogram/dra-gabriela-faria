@@ -18,27 +18,30 @@
   padding-block: clamp(14px, 2.2vw, 22px);
   /* Proteção sutil de degradê no topo para garantir legibilidade e profundidade */
   background: linear-gradient(180deg, rgba(30, 24, 22, 0.42) 0%, rgba(30, 24, 22, 0.16) 60%, transparent 100%);
-  border: none;
-  border-bottom: none;
-  transition: transform var(--dur-base) var(--ease-natural),
-              background var(--dur-base) var(--ease-natural),
-              padding var(--dur-base) var(--ease-natural),
-              box-shadow var(--dur-base) var(--ease-natural);
-  will-change: transform, background;
-}
-
-.site-header.is-hidden {
-  transform: translateY(-110%);
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 4px 20px transparent;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+  transition: background var(--dur-base) var(--ease-natural),
+              border-color var(--dur-base) var(--ease-natural),
+              box-shadow var(--dur-base) var(--ease-natural),
+              -webkit-backdrop-filter var(--dur-base) var(--ease-natural),
+              backdrop-filter var(--dur-base) var(--ease-natural);
 }
 
 .site-header.is-scrolled {
-  background: rgba(43, 37, 35, 0.88);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  border: none;
-  border-bottom: none;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding-block: 12px;
+  background: rgba(251, 246, 242, 0.82);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid rgba(43, 37, 35, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(43, 37, 35, 0.06);
+}
+
+/* Fallback de compatibilidade caso o navegador não suporte backdrop-filter */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header.is-scrolled {
+    background: rgba(251, 246, 242, 0.96);
+  }
 }
 
 .site-header__inner {
@@ -78,6 +81,8 @@
   letter-spacing: -0.015em;
   color: var(--creme);
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  transition: color var(--dur-base) var(--ease-natural),
+              text-shadow var(--dur-base) var(--ease-natural);
 }
 
 .site-header__brand-sub {
@@ -91,6 +96,8 @@
   opacity: 0.88;
   position: relative;
   top: -1px;
+  transition: color var(--dur-base) var(--ease-natural),
+              opacity var(--dur-base) var(--ease-natural);
 }
 
 /* Navegação Central: espaçamento equilibrado e indicador refinado */
@@ -111,8 +118,9 @@
   padding: 6px 2px;
   opacity: 0.86;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
-  transition: opacity var(--dur-fast) var(--ease-natural),
-              color var(--dur-fast) var(--ease-natural);
+  transition: color var(--dur-base) var(--ease-natural),
+              text-shadow var(--dur-base) var(--ease-natural),
+              opacity var(--dur-fast) var(--ease-natural);
 }
 
 .site-header__link::after {
@@ -126,7 +134,8 @@
   transform: scaleX(0);
   transform-origin: center;
   transition: transform var(--dur-fast) var(--ease-natural),
-              opacity var(--dur-fast) var(--ease-natural);
+              opacity var(--dur-fast) var(--ease-natural),
+              background-color var(--dur-base) var(--ease-natural);
   opacity: 0.9;
   border-radius: 1px;
 }
@@ -150,6 +159,45 @@
   outline-offset: 4px;
   border-radius: var(--r-field);
   opacity: 1;
+}
+
+/* Adaptação refinada de contraste dos textos e links no estado de vidro fosco */
+.site-header.is-scrolled .site-header__brand-name {
+  color: var(--grafite);
+  text-shadow: none;
+}
+
+.site-header.is-scrolled .site-header__brand-sub {
+  color: var(--rosa-profundo);
+  opacity: 1;
+}
+
+.site-header.is-scrolled .site-header__link {
+  color: var(--grafite);
+  opacity: 0.88;
+  text-shadow: none;
+}
+
+.site-header.is-scrolled .site-header__link:hover {
+  color: var(--rosa-profundo);
+  opacity: 1;
+}
+
+.site-header.is-scrolled .site-header__link::after {
+  background-color: var(--rosa-profundo);
+}
+
+.site-header.is-scrolled .site-header__link.is-active::after {
+  background-color: var(--rosa-profundo);
+}
+
+.site-header.is-scrolled .site-header__logo:focus-visible,
+.site-header.is-scrolled .site-header__link:focus-visible {
+  outline-color: var(--rosa-profundo);
+}
+
+.site-header.is-scrolled .site-header__cta:focus-visible {
+  outline-color: var(--rosa-profundo);
 }
 
 /* Botão de Contato / WhatsApp integrado e equilibrado */
@@ -211,6 +259,8 @@
 @media (prefers-reduced-motion: reduce) {
   .site-header,
   .site-header__logo,
+  .site-header__brand-name,
+  .site-header__brand-sub,
   .site-header__link,
   .site-header__link::after,
   .site-header__cta {
