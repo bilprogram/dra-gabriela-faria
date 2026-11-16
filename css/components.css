@@ -1,0 +1,1890 @@
+/**
+ * COMPONENTES DE INTERFACE: Odontologia Dra. Gabriela Faria
+ * Passo 5 (Revisão): Hero com sequência de 3 cenas e Header transparente / fixo
+ * Estritamente compatível com tokens.css e base.css
+ */
+
+/* =====================================================================
+   1. HEADER TRANSPARENTE E FIXO NO TOPO
+   Composição editorial refinada: transparente com proteção sutil no topo
+   e transição suave para barra fosca/compacta ao rolar.
+   ===================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  padding-block: clamp(14px, 2.2vw, 22px);
+  /* Proteção sutil de degradê no topo para garantir legibilidade e profundidade */
+  background: linear-gradient(180deg, rgba(30, 24, 22, 0.42) 0%, rgba(30, 24, 22, 0.16) 60%, transparent 100%);
+  border: none;
+  border-bottom: none;
+  transition: transform var(--dur-base) var(--ease-natural),
+              background var(--dur-base) var(--ease-natural),
+              padding var(--dur-base) var(--ease-natural),
+              box-shadow var(--dur-base) var(--ease-natural);
+  will-change: transform, background;
+}
+
+.site-header.is-hidden {
+  transform: translateY(-110%);
+}
+
+.site-header.is-scrolled {
+  background: rgba(43, 37, 35, 0.88);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: none;
+  border-bottom: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding-block: 12px;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* Wordmark da Clínica: Dra. Gabriela Faria + Odontologia refinado */
+.site-header__logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--creme);
+  flex-shrink: 0;
+  outline: none;
+  border-radius: var(--r-field);
+  transition: opacity var(--dur-fast) var(--ease-natural);
+}
+
+.site-header__logo:hover {
+  opacity: 0.92;
+}
+
+.site-header__logo:focus-visible {
+  outline: 2px solid var(--rosa-claro);
+  outline-offset: 4px;
+}
+
+.site-header__brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: var(--creme);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+.site-header__brand-sub {
+  font-family: var(--font-body);
+  font-size: 0.6875rem; /* ~11px */
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rosa-claro);
+  opacity: 0.88;
+  position: relative;
+  top: -1px;
+}
+
+/* Navegação Central: espaçamento equilibrado e indicador refinado */
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 30px);
+}
+
+.site-header__link {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.8125rem; /* var(--fs-xs) */
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--creme);
+  text-decoration: none;
+  padding: 6px 2px;
+  opacity: 0.86;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+  transition: opacity var(--dur-fast) var(--ease-natural),
+              color var(--dur-fast) var(--ease-natural);
+}
+
+.site-header__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background-color: var(--rosa-claro);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-fast) var(--ease-natural),
+              opacity var(--dur-fast) var(--ease-natural);
+  opacity: 0.9;
+  border-radius: 1px;
+}
+
+.site-header__link:hover {
+  opacity: 1;
+  color: #FFFFFF;
+}
+
+.site-header__link:hover::after {
+  transform: scaleX(1);
+}
+
+.site-header__link.is-active::after {
+  transform: scaleX(1);
+  background-color: var(--rosa-claro);
+}
+
+.site-header__link:focus-visible {
+  outline: 2px solid var(--rosa-claro);
+  outline-offset: 4px;
+  border-radius: var(--r-field);
+  opacity: 1;
+}
+
+/* Botão de Contato / WhatsApp integrado e equilibrado */
+.site-header__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 8px 18px;
+  font-size: 0.8125rem; /* 13px */
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: var(--r-pill);
+  background-color: var(--rosa-profundo);
+  color: var(--creme);
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
+  flex-shrink: 0;
+  transition: transform var(--dur-fast) var(--ease-natural),
+              background-color var(--dur-fast) var(--ease-natural),
+              box-shadow var(--dur-fast) var(--ease-natural);
+}
+
+.site-header__cta:hover {
+  background-color: #9F5953;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  color: #FFFFFF;
+}
+
+.site-header__cta:focus-visible {
+  outline: 2px solid var(--creme);
+  outline-offset: 3px;
+}
+
+.site-header__cta .btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adaptação Responsiva */
+@media (max-width: 900px) {
+  .site-header__nav {
+    display: none;
+  }
+
+  .site-header__brand-sub {
+    display: none;
+  }
+
+  .site-header__cta {
+    padding: 7px 14px;
+    font-size: 0.75rem;
+    min-height: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header__logo,
+  .site-header__link,
+  .site-header__link::after,
+  .site-header__cta {
+    transition: none !important;
+  }
+}
+
+/* =====================================================================
+   2. HERO EM TELA CHEIA (100svh) COM SEQUÊNCIA DE 3 CENAS
+   ===================================================================== */
+/* =====================================================================
+   2. HERO EM TELA CHEIA (100svh) COM COMPOSIÇÃO EDITORIAL
+   ===================================================================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  display: block;
+  overflow: hidden;
+  background-color: var(--grafite);
+  color: var(--creme);
+}
+
+/* Contêiner de Slides / Fundo */
+.hero__slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Estrutura de Cada Cena com Transição Suave e Ágil (Crossfade de 0.75s) */
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.75s var(--ease-natural);
+  pointer-events: none;
+}
+
+.hero__slide.is-transitioning {
+  will-change: opacity;
+}
+
+.hero__slide.is-transitioning .hero__img {
+  will-change: transform;
+}
+
+.hero__slide--active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.hero__slide--leaving {
+  opacity: 0;
+  z-index: 1;
+}
+
+.hero__picture,
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Efeito de Zoom Muito Sutil na Entrada: 1.025 para 1.00 */
+.hero__slide .hero__img {
+  transform: scale(1.025);
+  transition: transform 0.9s var(--ease-natural);
+}
+
+.hero__slide.hero__slide--active .hero__img {
+  transform: scale(1.00);
+}
+
+/* Enquadramento Calibrado por Cena */
+/* Cena 1: Dra. Gabriela no consultório (_MG_2727) - Preserva rosto na metade superior */
+.hero__img--scene-1 {
+  object-position: 78% 30%;
+}
+
+@media (max-width: 1024px) {
+  .hero__img--scene-1 {
+    object-position: 75% 26%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__img--scene-1 {
+    object-position: 74% 18%;
+  }
+}
+
+/* Cena 2: Fachada com arco de balões (_MG_2865) - Arquitetura central e calçada livres */
+.hero__img--scene-2 {
+  object-position: 28% 48%;
+}
+
+@media (max-width: 768px) {
+  .hero__img--scene-2 {
+    object-position: 40% 30%;
+  }
+}
+
+/* Cena 3: Consultório humanizado (_MG_2695) - Foco central harmonioso */
+.hero__img--scene-3 {
+  object-position: 68% 44%;
+}
+
+@media (max-width: 768px) {
+  .hero__img--scene-3 {
+    object-position: 65% 25%;
+  }
+}
+
+/* Proteções de Leitura Localizadas e Sutis (SEM escurecer a foto inteira) */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Cena 1: Proteção apenas na base inferior onde repousa o texto */
+.hero__overlay--scene-1 {
+  background: linear-gradient(180deg, transparent 40%, rgba(43, 37, 35, 0.42) 70%, rgba(43, 37, 35, 0.78) 96%);
+}
+
+/* Cena 2: Proteção sutil apenas no quadrante inferior direito onde fica o texto */
+.hero__overlay--scene-2 {
+  background: radial-gradient(ellipse 48% 44% at 85% 72%, rgba(43, 37, 35, 0.58) 0%, rgba(43, 37, 35, 0.22) 55%, transparent 100%);
+}
+
+/* Cena 3: Fundo translúcido radial ultra-suave apenas atrás das palavras */
+.hero__overlay--scene-3 {
+  background: radial-gradient(ellipse 50% 45% at 50% 52%, rgba(43, 37, 35, 0.42) 0%, rgba(43, 37, 35, 0.18) 55%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+  .hero__overlay--scene-1,
+  .hero__overlay--scene-2,
+  .hero__overlay--scene-3 {
+    background: linear-gradient(180deg, transparent 20%, rgba(43, 37, 35, 0.38) 50%, rgba(43, 37, 35, 0.86) 84%);
+  }
+}
+
+/* Contêiner Hero com Posicionamento Absoluto no Viewport */
+.hero__container {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  width: 100%;
+  max-width: 1360px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-inline: var(--space-4);
+}
+
+/* H1 Semântico Único e Fixo: Assinatura local discreta integrada, sempre acessível */
+/* Blocos Editoriais por Cena */
+.hero__content {
+  position: absolute;
+  z-index: 4;
+  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s var(--ease-natural),
+              transform 0.5s var(--ease-natural),
+              visibility 0.5s;
+}
+
+.hero__content.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s var(--ease-natural),
+              transform 0.7s var(--ease-natural),
+              visibility 0.7s;
+}
+
+/* CENA 1: Inferior, centralizado / levemente à esquerda, rosto da Dra. totalmente desimpedido */
+.hero__content--scene-1 {
+  bottom: clamp(3rem, 6.5vw, 5.5rem);
+  left: clamp(20px, 5vw, 60px);
+  max-width: 520px;
+  text-align: left;
+  transform: translateY(18px);
+}
+
+.hero__content--scene-1.is-active {
+  transform: translateY(0);
+}
+
+.hero__content--scene-1 .hero__actions {
+  justify-content: flex-start;
+}
+
+/* CENA 2: Reposicionado para a região inferior direita (sem cobrir fachada, letreiro ou Dra) */
+.hero__content--scene-2 {
+  bottom: clamp(3rem, 6.5vw, 5.5rem);
+  right: clamp(20px, 5vw, 70px);
+  max-width: 440px;
+  text-align: right;
+  transform: translateY(18px);
+}
+
+.hero__content--scene-2.is-active {
+  transform: translateY(0);
+}
+
+.hero__content--scene-2 .hero__actions {
+  justify-content: flex-end;
+}
+
+/* CENA 3: Centralizado no meio da tela, minimalista e arejado */
+.hero__content--scene-3 {
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 18px));
+  max-width: 520px;
+  text-align: center;
+}
+
+.hero__content--scene-3.is-active {
+  transform: translate(-50%, -50%);
+}
+
+.hero__content--scene-3 .hero__actions {
+  justify-content: center;
+}
+
+/* Mobile: Todos os blocos se ancoram com elegância na base inferior */
+@media (max-width: 768px) {
+  .hero__content--scene-1,
+  .hero__content--scene-2,
+  .hero__content--scene-3 {
+    top: auto;
+    bottom: clamp(2.5rem, 7vw, 4.5rem);
+    left: var(--space-4);
+    right: var(--space-4);
+    transform: translateY(16px);
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero__content--scene-1.is-active,
+  .hero__content--scene-2.is-active,
+  .hero__content--scene-3.is-active {
+    transform: translateY(0);
+  }
+
+  .hero__content--scene-1 .hero__actions,
+  .hero__content--scene-2 .hero__actions,
+  .hero__content--scene-3 .hero__actions {
+    justify-content: center;
+  }
+}
+
+/* Tipografia Editorial da Hero */
+.hero__eyebrow,
+.hero__eyebrow-tag {
+  display: block;
+  font-family: var(--font-body);
+  color: var(--rosa-claro);
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(43, 37, 35, 0.6);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s var(--ease-natural), transform 0.5s var(--ease-natural);
+}
+
+.hero__content.is-active .hero__eyebrow,
+.hero__content.is-active .hero__eyebrow-tag {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+.hero__phrase {
+  color: var(--creme);
+  margin-bottom: var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.15rem + 2.4vw, 3.25rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 10px rgba(43, 37, 35, 0.65);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s var(--ease-natural), transform 0.6s var(--ease-natural);
+}
+
+.hero__content.is-active .hero__phrase {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.28s;
+}
+
+.hero__phrase em {
+  font-style: italic;
+  color: var(--rosa-claro);
+}
+
+/* Botão Único Discreto de WhatsApp */
+.hero__actions {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: var(--space-2);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s var(--ease-natural), transform 0.5s var(--ease-natural);
+}
+
+.hero__content.is-active .hero__actions {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.42s;
+}
+
+.hero__actions .btn {
+  box-shadow: 0 4px 16px rgba(43, 37, 35, 0.35);
+  font-size: var(--fs-xs);
+  min-height: 48px;
+  padding: 10px 22px;
+}
+
+/* Botão Secundário Contorno em Creme */
+.btn--secondary-creme {
+  background-color: transparent;
+  color: var(--creme);
+  border-color: rgba(251, 246, 242, 0.85);
+}
+
+.btn--secondary-creme:hover {
+  background-color: var(--creme);
+  color: var(--grafite);
+  border-color: var(--creme);
+}
+
+/* Prova Social Discreta */
+.hero__social-proof {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  color: rgba(251, 246, 242, 0.85);
+  letter-spacing: 0.02em;
+  margin-top: var(--space-2);
+  text-shadow: 0 1px 2px rgba(43, 37, 35, 0.5);
+}
+
+/* Indicador de Rolagem */
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: rgba(251, 246, 242, 0.75);
+  transition: color var(--dur-fast) var(--ease-natural),
+              opacity var(--dur-fast) var(--ease-natural);
+}
+
+.hero__scroll-indicator:hover {
+  color: var(--creme);
+}
+
+.hero__scroll-track {
+  width: 1px;
+  height: 36px;
+  background-color: rgba(251, 246, 242, 0.25);
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+}
+
+.hero__scroll-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 12px;
+  background-color: var(--rosa-claro);
+  animation: hero-scroll-drop 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes hero-scroll-drop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(220%);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(220%);
+    opacity: 0;
+  }
+}
+
+/* =====================================================================
+   3. CONTROLE DA SEQUÊNCIA DE CENAS (Apenas Barra de Progresso Minimalista)
+   Linha delicada, sutil e perfeitamente centralizada na base da Hero.
+   ===================================================================== */
+.hero__scene-bar {
+  position: absolute;
+  bottom: clamp(20px, 3.5svh, 32px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  background: rgba(30, 24, 22, 0.35);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(251, 246, 242, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
+.hero__scene-progress-track {
+  width: clamp(100px, 12vw, 150px);
+  height: 2.5px;
+  background-color: rgba(251, 246, 242, 0.22);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero__scene-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--rosa-claro);
+  transform-origin: left center;
+  transform: scaleX(0);
+  border-radius: 2px;
+}
+
+@media (max-width: 640px) {
+  .hero__scene-bar {
+    bottom: 18px;
+    padding: 5px 10px;
+  }
+
+  .hero__scene-progress-track {
+    width: 90px;
+    height: 2px;
+  }
+}
+
+/* =====================================================================
+   PAINÉIS E ESTRUTURA GLOBAL (Padrão canônico de arquitetura modular)
+   ===================================================================== */
+.painel {
+  border-radius: var(--r-panel);
+  padding: var(--pad-section-y) var(--pad-panel-x);
+  isolation: isolate;
+  position: relative;
+  overflow: clip;
+}
+
+.painel--surface {
+  background: linear-gradient(180deg, var(--creme) 0%, var(--areia) 100%);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+}
+
+.cabeca {
+  justify-items: start;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.cabeca .tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--rosa-profundo);
+  background: rgba(196, 133, 126, 0.14);
+  border: 1px solid rgba(196, 133, 126, 0.25);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+}
+
+/* =====================================================================
+   FAIXA EDITORIAL DE TRANSIÇÃO (HERO -> SEGUNDA DOBRA)
+   Loop horizontal suave e contínuo em CSS puro.
+   Contraste refinado entre a Hero e a segunda dobra.
+   ===================================================================== */
+.faixa-transicao {
+  position: relative;
+  z-index: 10;
+  background-color: var(--rosa-profundo);
+  color: var(--creme);
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(43, 37, 35, 0.08);
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(43, 37, 35, 0.08);
+}
+
+.faixa-transicao .marquee {
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  outline: none;
+  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+}
+
+.faixa-transicao .marquee:focus-visible {
+  outline: 2px solid var(--salvia);
+  outline-offset: -2px;
+}
+
+.faixa-transicao .marquee__inner {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 100%;
+  animation: marquee-scroll 28s linear infinite;
+  padding-right: var(--space-4);
+  will-change: transform;
+}
+
+.faixa-transicao .marquee:hover .marquee__inner,
+.faixa-transicao .marquee:focus-within .marquee__inner {
+  animation-play-state: paused;
+}
+
+.faixa-transicao .marquee__item {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 0.68rem + 0.2vw, 0.84rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--creme);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.faixa-transicao .marquee__sep {
+  display: inline-block;
+  color: var(--rosa-claro);
+  font-size: 0.625rem;
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faixa-transicao .marquee__inner {
+    animation: none !important;
+  }
+  .faixa-transicao .marquee__inner + .marquee__inner {
+    display: none;
+  }
+  .faixa-transicao .marquee {
+    justify-content: center;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
+/* =====================================================================
+   3. DOBRA 2: SOBRE A DRA. GABRIELA & EXPERIÊNCIA DE ATENDIMENTO
+   Arquitetura de 2 colunas com mídia sticky e narrativa editorial fluida.
+   Inspirada no design system e no padrão canônico de referência.
+   ===================================================================== */
+.sobre {
+  --sobre-apoio: var(--text-muted);
+  --sobre-raio: var(--r-card);
+  position: relative;
+}
+
+.sobre-grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(36px, 5vw, 64px);
+}
+
+/* Coluna da mídia (sticky no desktop) */
+.sobre-midia {
+  width: 100%;
+  position: relative;
+}
+
+.sobre-moldura {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--sobre-raio);
+  background: var(--areia);
+  isolation: isolate;
+  width: 100%;
+  max-height: min(64svh, 580px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-suave);
+}
+
+.sobre-moldura::after {
+  content: "";
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.sobre-paralaxe {
+  position: absolute;
+  inset: 0;
+}
+
+.sobre-camada {
+  position: absolute;
+  inset: 0;
+}
+
+.sobre-picture,
+.sobre-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 46%;
+  display: block;
+}
+
+.sobre-brilho {
+  aspect-ratio: 1;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(235, 196, 192, 0.5) 0%, rgba(196, 133, 126, 0.15) 45%, transparent 100%);
+  border-radius: 50%;
+  width: 60%;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Selo de Registro Glassmorphism */
+.sobre-selo {
+  z-index: 3;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+
+.sobre-selo-vidro {
+  border-radius: var(--r-md);
+  background: rgba(251, 246, 242, 0.90);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px 8px 10px;
+  display: flex;
+  box-shadow: 0 10px 30px rgba(43, 37, 35, 0.12);
+}
+
+.sobre-selo-icone {
+  background: var(--rosa-profundo);
+  color: var(--creme);
+  border-radius: 12px;
+  flex: none;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  box-shadow: 0 4px 12px rgba(142, 79, 74, 0.35);
+}
+
+.sobre-selo-icone svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sobre-selo-texto {
+  gap: 2px;
+  line-height: 1.2;
+  display: grid;
+}
+
+.sobre-selo-texto strong {
+  color: var(--grafite);
+  letter-spacing: -0.01em;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.sobre-selo-texto span {
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+}
+
+/* Coluna Editorial */
+.sobre-texto {
+  align-content: start;
+  display: grid;
+}
+
+.sobre-cabeca h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 3.25rem);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--track-h2);
+  color: var(--grafite);
+}
+
+.sobre-cabeca h2 .h-light {
+  color: var(--rosa-profundo);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.sobre-bio {
+  margin-top: var(--space-4);
+  max-width: 54ch;
+  color: #4A423F;
+  font-family: var(--font-body);
+  font-size: var(--fs-lead);
+  line-height: var(--lh-body);
+}
+
+/* Citação / Destaque de voz */
+.sobre-citacao {
+  margin-top: clamp(24px, 2.6vw, 36px);
+}
+
+.sobre-citacao-bloco {
+  border-left: 3px solid var(--rosa-profundo);
+  padding-left: var(--space-4);
+}
+
+.sobre-citacao-texto {
+  max-width: 44ch;
+  color: var(--grafite);
+  font-family: var(--font-display);
+  font-size: clamp(1.1875rem, 1.05rem + 0.6vw, 1.45rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.sobre-aspa {
+  color: var(--rosa-profundo);
+  font-style: normal;
+}
+
+.sobre-assinatura {
+  margin-top: var(--space-3);
+  color: var(--grafite);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  letter-spacing: -0.005em;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  font-weight: 700;
+  display: flex;
+}
+
+.sobre-assinatura::before {
+  content: "";
+  background: var(--rosa-profundo);
+  border-radius: 2px;
+  width: 24px;
+  height: 2px;
+}
+
+.sobre-assinatura-cargo {
+  color: var(--sobre-apoio);
+  font-weight: 500;
+}
+
+/* Pilares / Formação */
+.sobre-formacao {
+  margin-top: clamp(28px, 3vw, 40px);
+}
+
+.sobre-rotulo {
+  margin-bottom: var(--space-3);
+  color: var(--rosa-profundo);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.sobre-lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sobre-item {
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: baseline;
+  padding: 14px 0 13px;
+  display: grid;
+  position: relative;
+  gap: 8px;
+}
+
+.sobre-traco {
+  background: linear-gradient(90deg, var(--rosa-profundo) 0 24px, var(--line) 24px 100%);
+  transform-origin: 0;
+  height: 1px;
+  position: absolute;
+  inset: 0 0 auto;
+}
+
+.sobre-item-num {
+  color: var(--rosa-profundo);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+.sobre-item-corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sobre-item-corpo strong {
+  color: var(--grafite);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sobre-item-texto {
+  color: #574F4C;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* Números / Prova Real */
+.sobre-numeros {
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-suave);
+  background: rgba(251, 246, 242, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: clamp(24px, 2.5vw, 32px) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+}
+
+.sobre-numero {
+  align-content: start;
+  gap: 6px;
+  padding: 16px clamp(12px, 1.4vw, 20px) 18px;
+  display: grid;
+}
+
+.sobre-numero + .sobre-numero {
+  border-left: 1px solid var(--line);
+}
+
+.sobre-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
+  letter-spacing: -0.03em;
+  color: var(--rosa-profundo);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.sobre-num-rotulo {
+  color: var(--sobre-apoio);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  text-wrap: balance;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* Ações WhatsApp e Endereço */
+.sobre-acoes {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: clamp(28px, 3vw, 40px);
+  display: flex;
+}
+
+.sobre-cta {
+  box-shadow: 0 4px 18px rgba(142, 79, 74, 0.24);
+  font-size: var(--fs-body);
+  min-height: 52px;
+  padding: 12px 28px;
+}
+
+.sobre-local {
+  color: var(--sobre-apoio);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  align-items: center;
+  gap: 10px;
+  line-height: 1.35;
+  display: inline-flex;
+}
+
+.sobre-local svg {
+  color: var(--rosa-profundo);
+  flex-shrink: 0;
+}
+
+.sobre-local-texto {
+  display: grid;
+  gap: 1px;
+}
+
+.sobre-local-texto span:first-child {
+  color: var(--grafite);
+  font-weight: 600;
+}
+
+.sobre-local-cidade {
+  color: var(--sobre-apoio);
+}
+
+/* =====================================================================
+   COMPORTAMENTO RESPONSIVO & STICKY REFINED
+   Desktop (>= 960px e altura suficiente): Mídia estabilizada (sticky)
+   Mobile (< 960px): Fluxo natural vertical sem retenção de scroll
+   ===================================================================== */
+@media (max-width: 959px) {
+  .sobre-moldura {
+    aspect-ratio: 4 / 3.4;
+    max-height: 420px;
+  }
+
+  .sobre-foto {
+    object-position: 58% 44%;
+  }
+}
+
+@media (min-width: 960px) {
+  .sobre-grade {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+    align-items: start;
+    column-gap: clamp(48px, 6vw, 96px);
+  }
+
+  .sobre-moldura {
+    aspect-ratio: 3 / 4;
+    max-height: calc(100svh - 180px);
+  }
+
+  .sobre-selo {
+    bottom: clamp(16px, 2vw, 24px);
+    left: clamp(16px, 2vw, 24px);
+  }
+}
+
+@media (min-width: 960px) and (min-height: 600px) {
+  .sobre-midia {
+    position: sticky;
+    top: clamp(88px, 11vh, 120px);
+  }
+}
+
+@media (max-width: 599px) {
+  .sobre-numeros {
+    grid-template-columns: 1fr;
+  }
+  .sobre-numero + .sobre-numero {
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+  .sobre-acoes {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .sobre-acoes .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =====================================================================
+   MOVIMENTO SUTIL DO TEXTO EDITORIAL DA SEGUNDA DOBRA
+   Entrada refinada por micro-etapas (citação, traços e métricas).
+   ===================================================================== */
+html.js .sobre-citacao-texto {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s var(--ease-natural) 0.1s,
+              transform 0.8s var(--ease-natural) 0.1s;
+}
+
+html.js .sobre-citacao.is-revealed .sobre-citacao-texto {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html.js .sobre-traco {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.85s var(--ease-natural);
+}
+
+html.js .sobre-formacao.is-revealed .sobre-traco {
+  transform: scaleX(1);
+}
+
+html.js .sobre-formacao.is-revealed .sobre-item:nth-child(1) .sobre-traco {
+  transition-delay: 0.08s;
+}
+
+html.js .sobre-formacao.is-revealed .sobre-item:nth-child(2) .sobre-traco {
+  transition-delay: 0.20s;
+}
+
+html.js .sobre-formacao.is-revealed .sobre-item:nth-child(3) .sobre-traco {
+  transition-delay: 0.32s;
+}
+
+html.js .sobre-item-corpo {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.75s var(--ease-natural),
+              transform 0.75s var(--ease-natural);
+}
+
+html.js .sobre-formacao.is-revealed .sobre-item-corpo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html.js .sobre-formacao.is-revealed .sobre-item:nth-child(1) .sobre-item-corpo {
+  transition-delay: 0.12s;
+}
+
+html.js .sobre-formacao.is-revealed .sobre-item:nth-child(2) .sobre-item-corpo {
+  transition-delay: 0.24s;
+}
+
+html.js .sobre-formacao.is-revealed .sobre-item:nth-child(3) .sobre-item-corpo {
+  transition-delay: 0.36s;
+}
+
+html.js .sobre-numero {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.75s var(--ease-natural),
+              transform 0.75s var(--ease-natural);
+}
+
+html.js .sobre-numeros.is-revealed .sobre-numero:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.08s;
+}
+
+html.js .sobre-numeros.is-revealed .sobre-numero:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.20s;
+}
+
+html.js .sobre-numeros.is-revealed .sobre-numero:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.32s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre-midia {
+    position: relative !important;
+    top: auto !important;
+  }
+  .sobre-moldura,
+  .sobre-selo,
+  .sobre-cabeca,
+  .sobre-bio,
+  .sobre-citacao,
+  .sobre-formacao,
+  .sobre-numeros,
+  .sobre-acoes,
+  html.js .sobre-citacao-texto,
+  html.js .sobre-traco,
+  html.js .sobre-item-corpo,
+  html.js .sobre-numero {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* =====================================================================
+   4. DOBRA 3: CUIDADOS E ESPECIALIDADES (LEQUE DE 5 CARDS)
+   Fidelidade matemática e visual de movimento à referência Henrique Salles,
+   vestida com o design system acolhedor, nobre e limpo da Dra. Gabriela Faria.
+   ===================================================================== */
+.casos {
+  --casos-cw: clamp(250px, 27vw, 372px);
+  --casos-ch: calc(var(--casos-cw) * 1.25);
+  --casos-topo: calc(var(--casos-cw) * 0.14);
+  --casos-raio: clamp(22px, 2.3vw, 32px);
+  --casos-largura: calc(min(100vw, 1600px) - 2 * var(--gap-panel) + 4px);
+  --casos-apoio: var(--text-muted);
+  background-color: var(--areia);
+  padding: var(--pad-section-y) var(--pad-panel-x);
+  position: relative;
+  overflow: clip;
+}
+
+.casos-nobr {
+  white-space: nowrap;
+}
+
+.casos-cabeca {
+  justify-items: center;
+  text-align: center;
+  max-width: 760px;
+  margin-inline: auto;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.casos-cabeca .tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--rosa-profundo);
+  background: rgba(196, 133, 126, 0.14);
+  border: 1px solid rgba(196, 133, 126, 0.25);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+}
+
+.casos-cabeca h2 {
+  font-family: var(--font-display);
+  font-size: min(var(--fs-h2), 8.4vw);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--track-h2);
+  color: var(--grafite);
+}
+
+.casos-cabeca h2 .h-light {
+  color: var(--rosa-profundo);
+  font-weight: 400;
+  display: inline-block;
+}
+
+.casos-carrossel {
+  margin-top: clamp(22px, 2.4vw, 32px);
+  position: relative;
+}
+
+.casos-controles {
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  display: flex;
+}
+
+/* Botões pílula de navegação com gradiente suave na paleta Dra. Gabriela */
+.seta {
+  border-radius: var(--r-pill);
+  background: linear-gradient(110deg, var(--rosa-profundo) 0%, #A4635D 35%, #BA7872 50%, #A4635D 65%, var(--rosa-profundo) 100%);
+  color: #fff;
+  width: 56px;
+  height: 38px;
+  transition: transform var(--dur-fast) var(--ease-natural),
+              opacity var(--dur-fast) var(--ease-natural),
+              box-shadow var(--dur-fast) var(--ease-natural);
+  background-size: 250% 100%;
+  border: 0;
+  place-items: center;
+  display: grid;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(142, 79, 74, 0.28);
+}
+
+.seta svg {
+  width: 18px;
+  height: 18px;
+  stroke: #fff;
+  transition: transform var(--dur-fast) var(--ease-natural);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .seta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(142, 79, 74, 0.38);
+  }
+  .seta[data-dir="prev"]:hover svg {
+    transform: translate(-3px);
+  }
+  .seta[data-dir="next"]:hover svg {
+    transform: translate(3px);
+  }
+}
+
+.seta:focus-visible {
+  outline: 2px solid var(--rosa-profundo);
+  outline-offset: 3px;
+}
+
+.seta:disabled,
+.seta[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.casos-contador {
+  min-width: 64px;
+  color: var(--casos-apoio);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  -webkit-user-select: none;
+  user-select: none;
+  justify-content: center;
+  align-items: baseline;
+  gap: 6px;
+  font-weight: 600;
+  line-height: 1.2;
+  display: inline-flex;
+}
+
+.casos-contador-atual {
+  color: var(--grafite);
+  display: inline-grid;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 1.0625rem;
+}
+
+.casos-contador-atual > span {
+  grid-area: 1/1;
+  display: block;
+}
+
+.casos-contador-sep {
+  color: var(--cinza-metal);
+  opacity: 0.6;
+}
+
+.casos-contador-total {
+  color: var(--casos-apoio);
+}
+
+/* Palco de cards do leque */
+.casos-palco {
+  width: var(--casos-largura);
+  height: calc(var(--casos-cw) * 1.5);
+  margin-top: clamp(8px, 1.4vw, 20px);
+  margin-left: calc(50% - var(--casos-largura) / 2);
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - var(--casos-cw) * 0.15), transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - var(--casos-cw) * 0.15), transparent 100%);
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  outline: none;
+}
+
+.casos-deck {
+  position: absolute;
+  inset: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .casos-palco {
+    cursor: grab;
+  }
+  .casos-palco.is-arrastando,
+  .casos-palco.is-arrastando * {
+    cursor: grabbing;
+  }
+}
+
+.casos-card {
+  top: var(--casos-topo);
+  width: var(--casos-cw);
+  height: var(--casos-ch);
+  margin-left: calc(var(--casos-cw) / -2);
+  border-radius: var(--casos-raio);
+  transform-origin: 50%;
+  will-change: transform;
+  position: absolute;
+  left: 50%;
+  box-shadow: 0 42px 74px -32px rgba(43, 37, 35, 0.32),
+              0 16px 32px -16px rgba(43, 37, 35, 0.18);
+  container-type: inline-size;
+}
+
+/* Posições padrão estáticas de fallback (substituídas dinamicamente pelo JS) */
+.casos-card[data-pos="0"] {
+  z-index: 5;
+  transform: translateY(calc(var(--casos-cw) * -0.07));
+}
+
+.casos-card[data-pos="1"],
+.casos-card[data-pos="-1"] {
+  z-index: 4;
+}
+
+.casos-card[data-pos="1"] {
+  transform: translate(calc(var(--casos-cw) * 0.88), calc(var(--casos-cw) * 0.085)) rotate(11deg) scale(0.935);
+}
+
+.casos-card[data-pos="-1"] {
+  transform: translate(calc(var(--casos-cw) * -0.88), calc(var(--casos-cw) * 0.085)) rotate(-11deg) scale(0.935);
+}
+
+.casos-card[data-pos="2"],
+.casos-card[data-pos="-2"] {
+  z-index: 3;
+}
+
+.casos-card[data-pos="2"] .casos-card-topo,
+.casos-card[data-pos="-2"] .casos-card-topo {
+  opacity: 0;
+}
+
+.casos-card[data-pos="2"] {
+  transform: translate(calc(var(--casos-cw) * 1.73), calc(var(--casos-cw) * 0.34)) rotate(22deg) scale(0.87);
+}
+
+.casos-card[data-pos="-2"] {
+  transform: translate(calc(var(--casos-cw) * -1.73), calc(var(--casos-cw) * 0.34)) rotate(-22deg) scale(0.87);
+}
+
+.casos-card-in {
+  border-radius: inherit;
+  isolation: isolate;
+  background: var(--creme);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.casos-card-media {
+  position: absolute;
+  inset: 0;
+}
+
+.casos-card-media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.casos-card-media img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.75s var(--ease-natural);
+  -webkit-user-drag: none;
+  transform: scale(1.001);
+}
+
+.casos-card-media::after {
+  content: "";
+  background: linear-gradient(180deg, rgba(43, 37, 35, 0.42) 0%, rgba(43, 37, 35, 0) 38%);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.casos-card-veu {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(241, 230, 222, 0.85) 0%, rgba(241, 230, 222, 0.95) 100%);
+  position: absolute;
+  inset: 0;
+}
+
+.casos-card-in::before {
+  content: "";
+  z-index: 2;
+  background: radial-gradient(circle at var(--casos-mx, 50%) var(--casos-my, 30%), rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 46%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s var(--ease-natural);
+  position: absolute;
+  inset: 0;
+}
+
+.casos-card-in::after {
+  content: "";
+  z-index: 4;
+  border-radius: inherit;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(251, 246, 242, 0.28);
+}
+
+.casos-card.is-tilt .casos-card-in::before {
+  opacity: 1;
+}
+
+.casos-card.is-tilt .casos-card-media img,
+.casos-card.is-centro:focus-within .casos-card-media img {
+  transform: scale(1.04);
+}
+
+/* Badge no topo do card com título e texto */
+.casos-card-topo {
+  --casos-margem: clamp(10px, 3.8cqi, 14px);
+  top: var(--casos-margem);
+  right: var(--casos-margem);
+  left: var(--casos-margem);
+  z-index: 3;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(8px, 2.6cqi, 10px);
+  display: flex;
+  position: absolute;
+  transition: opacity 0.35s var(--ease-natural);
+}
+
+.casos-rotulo {
+  color: #fff;
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  background: rgba(30, 24, 22, 0.72);
+  border: 1px solid rgba(251, 246, 242, 0.2);
+  border-radius: clamp(13px, 4.3cqi, 16px);
+  min-width: 0;
+  max-width: 82%;
+  padding: clamp(10px, 3.2cqi, 12px) clamp(11px, 3.8cqi, 14px) clamp(11px, 3.5cqi, 13px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.casos-rotulo h3 {
+  color: #fff;
+  font-family: var(--font-display);
+  letter-spacing: -0.012em;
+  font-size: clamp(0.875rem, 4.35cqi, 1.0625rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.casos-rotulo p {
+  color: rgba(251, 246, 242, 0.88);
+  font-family: var(--font-body);
+  text-wrap: pretty;
+  margin-top: 4px;
+  font-size: clamp(0.75rem, 3.3cqi, 0.8125rem);
+  line-height: 1.4;
+}
+
+/* Botão circular no canto superior direito do card ativo */
+.casos-ir {
+  width: clamp(38px, 11.8cqi, 44px);
+  height: clamp(38px, 11.8cqi, 44px);
+  color: var(--grafite);
+  -webkit-user-drag: none;
+  transition: background-color 0.45s var(--ease-natural),
+              color 0.45s var(--ease-natural),
+              transform 0.45s var(--ease-natural);
+  background: var(--creme);
+  border-radius: 50%;
+  flex: none;
+  place-items: center;
+  display: grid;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(43, 37, 35, 0.22);
+  text-decoration: none;
+}
+
+.casos-ir svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  transition: transform 0.4s var(--ease-natural);
+  grid-area: 1/1;
+}
+
+.casos-ir svg + svg {
+  transform: translate(-150%, 150%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .casos-card.is-centro .casos-ir:hover {
+    background: var(--rosa-profundo);
+    color: #fff;
+    transform: scale(1.06);
+  }
+  .casos-card.is-centro .casos-ir:hover svg:first-child {
+    transform: translate(150%, -150%);
+  }
+  .casos-card.is-centro .casos-ir:hover svg + svg {
+    transform: translate(0, 0);
+  }
+}
+
+.casos-ir:focus-visible {
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--rosa-profundo);
+  border-radius: 50%;
+  outline: 2px solid var(--creme);
+}
+
+.casos-card:not(.is-centro) {
+  cursor: pointer;
+}
+
+.casos-card:not(.is-centro) .casos-ir {
+  pointer-events: none;
+}
+
+/* Rodapé da seção de cuidados com CTA integrado */
+.casos-rodape {
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: clamp(4px, 1vw, 12px);
+  display: flex;
+}
+
+.casos-rodape-texto {
+  color: var(--casos-apoio);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+}
+
+.casos-rodape-texto strong {
+  color: var(--grafite);
+  font-weight: 600;
+}
+
+/* Responsivo para mobile */
+@media (max-width: 720px) {
+  .casos {
+    --casos-cw: min(62vw, 268px);
+    --casos-raio: 22px;
+    padding: clamp(3.5rem, 8vw, 5rem) var(--pad-panel-x);
+  }
+  .casos-card {
+    box-shadow: 0 28px 50px -24px rgba(43, 37, 35, 0.32),
+                0 10px 20px -12px rgba(43, 37, 35, 0.18);
+  }
+  .casos-card[data-pos="1"] {
+    transform: translate(calc(var(--casos-cw) * 0.8), calc(var(--casos-cw) * 0.063)) rotate(9deg) scale(0.935);
+  }
+  .casos-card[data-pos="-1"] {
+    transform: translate(calc(var(--casos-cw) * -0.8), calc(var(--casos-cw) * 0.063)) rotate(-9deg) scale(0.935);
+  }
+  .casos-card[data-pos="2"] {
+    transform: translate(calc(var(--casos-cw) * 1.58), calc(var(--casos-cw) * 0.25)) rotate(18deg) scale(0.87);
+  }
+  .casos-card[data-pos="-2"] {
+    transform: translate(calc(var(--casos-cw) * -1.58), calc(var(--casos-cw) * 0.25)) rotate(-18deg) scale(0.87);
+  }
+  .casos-card[data-pos="1"] .casos-card-topo,
+  .casos-card[data-pos="-1"] .casos-card-topo {
+    opacity: 0;
+  }
+  .casos-ir svg {
+    width: 16px;
+    height: 16px;
+  }
+  .casos-rodape {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .casos-rodape-texto {
+    max-width: 32ch;
+    font-size: var(--fs-sm);
+  }
+  .casos-rodape-texto strong {
+    font-size: var(--fs-body);
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .casos-card-media img,
+  .casos-ir,
+  .casos-ir svg,
+  .seta {
+    transition: none !important;
+  }
+}
+
+/* Desativação em Movimento Reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-dot {
+    animation: none !important;
+    top: 50%;
+    transform: translateY(-50%) !important;
+    opacity: 0.8;
+  }
+  .site-header {
+    transition: none !important;
+  }
+  .hero__slide {
+    transition: none !important;
+  }
+  .hero__slide .hero__img {
+    transition: none !important;
+    transform: none !important;
+  }
+  .hero__scene-progress-bar {
+    transition: none !important;
+  }
+}
+
+
+/* =====================================================================
+   5. DOBRA 4: APRESENTAÇÃO DA PÁGINA DE SERVIÇOS (#servicos)
+   Apresentação sequencial que reutiliza os estilos canônicos de css/servicos.css
+   ===================================================================== */
+.painel--creme {
+  background: var(--creme, #FBF6F2);
+}

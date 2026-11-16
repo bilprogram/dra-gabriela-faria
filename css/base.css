@@ -1,0 +1,254 @@
+/**
+ * RESET MODERNO & ESTILOS BASE: Odontologia Dra. Gabriela Faria
+ * Conforme Seção 5 do DIRECAO-SITE.md
+ * Utiliza estritamente os tokens de /css/tokens.css
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--space-7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  min-height: 100vh;
+}
+
+/* =====================================================================
+   TIPOGRAFIA BASE & ESCALA FLUIDA
+   ===================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  font-weight: 300;
+  line-height: var(--lh-h1);
+  letter-spacing: var(--track-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  line-height: var(--lh-h2);
+  letter-spacing: var(--track-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: var(--lh-h3);
+}
+
+p {
+  max-width: var(--max-ch-body);
+  text-wrap: pretty;
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+em, i {
+  font-style: italic;
+  font-family: var(--font-display);
+  color: var(--text-accent);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+/* =====================================================================
+   MÍDIAS (Imagens e Vídeos)
+   ===================================================================== */
+img,
+video,
+svg,
+picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* =====================================================================
+   ACESSIBILIDADE: SKIP-LINK, SR-ONLY & FOCO
+   ===================================================================== */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: var(--z-modal);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--grafite);
+  color: var(--creme);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  border-radius: var(--r-pill);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-natural);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: var(--ring-focus);
+}
+
+:focus-visible {
+  outline: var(--ring-focus);
+  outline-offset: 3px;
+}
+
+/* =====================================================================
+   ESTRUTURA DE CONTAINER & GRID (1360px)
+   ===================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--pad-panel-x);
+}
+
+.section {
+  padding-block: var(--pad-section-y);
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols-desktop), minmax(0, 1fr));
+  gap: var(--grid-gutter);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(var(--grid-cols-mobile), minmax(0, 1fr));
+  }
+}
+
+/* =====================================================================
+   BOTÕES BASE (Primário e Secundário)
+   ===================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: var(--btn-min-h);
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  text-decoration: none;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transition: background-color var(--dur-base) var(--ease-natural),
+              color var(--dur-base) var(--ease-natural),
+              border-color var(--dur-base) var(--ease-natural),
+              transform var(--dur-fast) var(--ease-natural);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Botão Primário: pílula --rosa-profundo, texto --creme, hover desliza --grafite */
+.btn--primary {
+  background-color: var(--rosa-profundo);
+  color: var(--creme);
+  border-color: var(--rosa-profundo);
+}
+
+.btn--primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--grafite);
+  transform: translateY(100%);
+  transition: transform var(--dur-base) var(--ease-natural);
+  z-index: 0;
+}
+
+.btn--primary:hover::before {
+  transform: translateY(0);
+}
+
+.btn--primary > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Botão Secundário: contorno 1px --grafite, hover preenche --areia */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--grafite);
+  border-color: var(--grafite);
+}
+
+.btn--secondary:hover {
+  background-color: var(--areia);
+}
+
+.btn__icon {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+

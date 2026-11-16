@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Odontologia Dra. Gabriela Faria · Odontopediatria Humanizada em São José do Rio Pardo</title>
+    <meta
+      name="description"
+      content="Clínica de odontopediatria humanizada em São José do Rio Pardo. Primeira consulta do bebê, sedação consciente com óxido nitroso e ortopedia funcional dos maxilares."
+    />
+    <meta name="theme-color" content="#2B2523" />
+
+    <!-- Favicon e Ícones de Dispositivo a partir da Logo Oficial -->
+    <link rel="icon" href="./assets/favicon/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+
+    <!-- Preload das fontes principais (Fraunces Display e Manrope) para LCP imediato -->
+    <link
+      rel="preload"
+      href="./assets/fonts/fraunces-variable-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/manrope-variable-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Preload da nova imagem LCP Hero (_MG_2727: Dra. Gabriela à direita com fundo clean à esquerda) -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      href="./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1920.avif"
+      imagesrcset="./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-768.avif 768w, ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1280.avif 1280w, ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1920.avif 1920w, ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-2560.avif 2560w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+
+    <!-- Encadeamento modular de CSS na ordem canônica de design tokens -->
+    <link rel="stylesheet" href="./css/tokens.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/components.css?v=6" />
+    <link rel="stylesheet" href="./css/motion.css" />
+    <link rel="stylesheet" href="./css/servicos.css" />
+
+    <!-- Script de inicialização com defer -->
+    <script type="module" src="./js/main.js?v=2" defer></script>
+  </head>
+  <body>
+    <!-- Acessibilidade: salto direto para o conteúdo principal -->
+    <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
+
+    <!-- Header Transparente Fixo no Topo (Passo 5 Refinamento) -->
+    <header class="site-header" role="banner">
+      <div class="container site-header__inner">
+        <a class="site-header__logo" href="#inicio" aria-label="Odontologia Dra. Gabriela Faria">
+          <span class="site-header__brand-name">Dra. Gabriela Faria</span>
+          <span class="site-header__brand-sub">Odontologia</span>
+        </a>
+
+        <nav class="site-header__nav" aria-label="Navegação primária">
+          <a class="site-header__link is-active" href="#cuidado">Cuidado</a>
+          <a class="site-header__link" href="servicos.html">Serviços</a>
+          <a class="site-header__link" href="#sobre">Dra. Gabriela</a>
+          <a class="site-header__link" href="#duvidas">Dúvidas</a>
+          <a class="site-header__link" href="#contato">Contato</a>
+        </nav>
+
+        <a
+          class="btn btn--primary site-header__cta"
+          href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20filho(a)."
+          target="_blank"
+          rel="noopener"
+          aria-label="Agendar consulta pelo WhatsApp (abre em nova aba)"
+        >
+          <span class="btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+            </svg>
+          </span>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- =====================================================================
+           DOBRA 1: HERO EM TELA CHEIA (100svh)
+           Acolhimento, luxo silencioso e posicionamento clínico humanizado.
+           Estruturado como contêiner de slides para futura expansão em carrossel.
+           ===================================================================== -->
+      <section id="inicio" class="hero" aria-labelledby="hero-title">
+        <!-- 
+          [PENDENTE VÍDEO]: Se houver arquivo de vídeo para o hero no futuro,
+          ele poderá entrar aqui substituindo ou complementando a tag <picture>:
+          <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-1920.webp">
+            <source src="./assets/video/hero.webm" type="video/webm">
+            <source src="./assets/video/hero.mp4" type="video/mp4">
+          </video>
+        -->
+
+        <!-- Contêiner de Fundo / Sequência de 3 Cenas (Jornada de Chegada) -->
+        <div class="hero__slides" aria-hidden="true">
+          <!-- Cena 1: A Doutora (Dra. Gabriela no consultório humanizado · _MG_2727) -->
+          <div class="hero__slide hero__slide--active" data-scene="1">
+            <picture class="hero__picture">
+              <source
+                type="image/avif"
+                srcset="
+                  ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-768.avif 768w,
+                  ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1280.avif 1280w,
+                  ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1920.avif 1920w,
+                  ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-2560.avif 2560w
+                "
+                sizes="100vw"
+              />
+              <source
+                type="image/webp"
+                srcset="
+                  ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-768.webp 768w,
+                  ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1280.webp 1280w,
+                  ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1920.webp 1920w,
+                  ./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-2560.webp 2560w
+                "
+                sizes="100vw"
+              />
+              <img
+                class="hero__img hero__img--scene-1"
+                src="./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1920.webp"
+                alt="Dra. Gabriela Faria em seu consultório odontológico acolhedor em São José do Rio Pardo"
+                width="1920"
+                height="1280"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
+            <div class="hero__overlay hero__overlay--scene-1"></div>
+          </div>
+
+          <!-- Cena 2: A Chegada (Fachada luminosa da clínica com arco de boas-vindas · _MG_2865) -->
+          <div class="hero__slide" data-scene="2">
+            <picture class="hero__picture">
+              <source
+                type="image/avif"
+                data-srcset="
+                  ./assets/img/clinica-odontopediatria-fachada-sao-jose-do-rio-pardo-hero-02-768.avif 768w,
+                  ./assets/img/clinica-odontopediatria-fachada-sao-jose-do-rio-pardo-hero-02-1280.avif 1280w,
+                  ./assets/img/clinica-odontopediatria-fachada-sao-jose-do-rio-pardo-hero-02-1920.avif 1920w,
+                  ./assets/img/clinica-odontopediatria-fachada-sao-jose-do-rio-pardo-hero-02-2560.avif 2560w
+                "
+                sizes="100vw"
+              />
+              <source
+                type="image/webp"
+                data-srcset="
+                  ./assets/img/clinica-odontopediatria-fachada-sao-jose-do-rio-pardo-hero-02-768.webp 768w,
+                  ./assets/img/clinica-odontopediatria-fachada-sao-jose-do-rio-pardo-hero-02-1280.webp 1280w,
+                  ./assets/img/clinica-odontopediatria-fachada-sao-jose-do-rio-pardo-hero-02-1920.webp 1920w,
+                  ./assets/img/clinica-odontopediatria-fachada-sao-jose-do-rio-pardo-hero-02-2560.webp 2560w
+                "
+                sizes="100vw"
+              />
+              <img
+                class="hero__img hero__img--scene-2"
+                data-src="./assets/img/clinica-odontopediatria-fachada-sao-jose-do-rio-pardo-hero-02-1920.webp"
+                alt="Fachada iluminada e acolhedora da clínica de odontopediatria em São José do Rio Pardo"
+                width="1920"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <div class="hero__overlay hero__overlay--scene-2"></div>
+          </div>
+
+          <!-- Cena 3: O Consultório (Ambiente humanizado, tons suaves e mesa de atendimento · _MG_2695) -->
+          <div class="hero__slide" data-scene="3">
+            <picture class="hero__picture">
+              <source
+                type="image/avif"
+                data-srcset="
+                  ./assets/img/consultorio-odontopediatria-sao-jose-do-rio-pardo-hero-03-768.avif 768w,
+                  ./assets/img/consultorio-odontopediatria-sao-jose-do-rio-pardo-hero-03-1280.avif 1280w,
+                  ./assets/img/consultorio-odontopediatria-sao-jose-do-rio-pardo-hero-03-1920.avif 1920w,
+                  ./assets/img/consultorio-odontopediatria-sao-jose-do-rio-pardo-hero-03-2560.avif 2560w
+                "
+                sizes="100vw"
+              />
+              <source
+                type="image/webp"
+                data-srcset="
+                  ./assets/img/consultorio-odontopediatria-sao-jose-do-rio-pardo-hero-03-768.webp 768w,
+                  ./assets/img/consultorio-odontopediatria-sao-jose-do-rio-pardo-hero-03-1280.webp 1280w,
+                  ./assets/img/consultorio-odontopediatria-sao-jose-do-rio-pardo-hero-03-1920.webp 1920w,
+                  ./assets/img/consultorio-odontopediatria-sao-jose-do-rio-pardo-hero-03-2560.webp 2560w
+                "
+                sizes="100vw"
+              />
+              <img
+                class="hero__img hero__img--scene-3"
+                data-src="./assets/img/consultorio-odontopediatria-sao-jose-do-rio-pardo-hero-03-1920.webp"
+                alt="Consultório humanizado de odontopediatria com a Dra. Gabriela Faria"
+                width="1920"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <div class="hero__overlay hero__overlay--scene-3"></div>
+          </div>
+        </div>
+
+        <!-- Composição Editorial Dinâmica por Cena -->
+        <div class="container hero__container">
+          <!-- H1 Semântico Único: Acessível para leitores de tela e SEO (sr-only), sem etiqueta ou linha visual sobre a foto -->
+          <h1 id="hero-title" class="sr-only">
+            Odontopediatria em São José do Rio Pardo
+          </h1>
+
+          <!-- Bloco Editorial Cena 1: A Dra. Gabriela (Inferior, sereno, rosto desobstruído) -->
+          <div class="hero__content hero__content--scene-1 is-active" data-scene-content="1">
+            <span class="eyebrow hero__eyebrow" aria-hidden="true">
+              Dra. Gabriela Faria · Cuidado Humanizado
+            </span>
+            <p class="hero__phrase">
+              Um começo de vida<br />
+              merece <em>cuidado.</em>
+            </p>
+            <div class="hero__actions">
+              <a
+                class="btn btn--primary"
+                href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20filho(a)."
+                target="_blank"
+                rel="noopener"
+                aria-label="Agendar consulta de odontopediatria pelo WhatsApp (abre em nova aba)"
+              >
+                <span class="btn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                  </svg>
+                </span>
+                <span>Agendar pelo WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Bloco Editorial Cena 2: A Fachada (Deslocado à direita, arquitetura luminosa livre) -->
+          <div class="hero__content hero__content--scene-2" data-scene-content="2" aria-hidden="true">
+            <span class="eyebrow hero__eyebrow" aria-hidden="true">
+              Clínica &amp; Acolhimento
+            </span>
+            <p class="hero__phrase">
+              Um espaço pensado<br />
+              para <em>receber.</em>
+            </p>
+            <div class="hero__actions">
+              <a
+                class="btn btn--primary"
+                href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20filho(a)."
+                target="_blank"
+                rel="noopener"
+                aria-label="Agendar consulta de odontopediatria pelo WhatsApp (abre em nova aba)"
+                tabindex="-1"
+              >
+                <span class="btn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                  </svg>
+                </span>
+                <span>Agendar pelo WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Bloco Editorial Cena 3: O Consultório (Centralizado, lúdico e sereno) -->
+          <div class="hero__content hero__content--scene-3" data-scene-content="3" aria-hidden="true">
+            <span class="eyebrow hero__eyebrow" aria-hidden="true">
+              Ambiente Lúdico &amp; Sereno
+            </span>
+            <p class="hero__phrase">
+              Cada visita,<br />
+              <em>no tempo</em> da criança.
+            </p>
+            <div class="hero__actions">
+              <a
+                class="btn btn--primary"
+                href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20filho(a)."
+                target="_blank"
+                rel="noopener"
+                aria-label="Agendar consulta de odontopediatria pelo WhatsApp (abre em nova aba)"
+                tabindex="-1"
+              >
+                <span class="btn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                  </svg>
+                </span>
+                <span>Agendar pelo WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Indicador de Cena Minimalista Centralizado na Base (Apenas Barra de Progresso) -->
+        <div class="hero__scene-bar" aria-label="Progresso da sequência de fotos">
+          <div class="hero__scene-progress-track" aria-hidden="true">
+            <div class="hero__scene-progress-bar" data-hero-progress></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           FAIXA EDITORIAL DE TRANSIÇÃO (HERO -> SEGUNDA DOBRA)
+           Texto: "DENTISTA INFANTIL EM SÃO JOSÉ DO RIO PARDO" em loop contínuo CSS.
+           Acessibilidade: anunciado apenas uma única vez para leitores de tela.
+           ===================================================================== -->
+      <aside class="faixa-transicao" aria-label="Especialidade e localização">
+        <div class="sr-only">Dentista infantil em São José do Rio Pardo</div>
+        <div class="marquee" aria-hidden="true" tabindex="0">
+          <div class="marquee__inner">
+            <span class="marquee__item">Dentista infantil em São José do Rio Pardo <span class="marquee__sep" aria-hidden="true">✦</span></span>
+            <span class="marquee__item">Dentista infantil em São José do Rio Pardo <span class="marquee__sep" aria-hidden="true">✦</span></span>
+            <span class="marquee__item">Dentista infantil em São José do Rio Pardo <span class="marquee__sep" aria-hidden="true">✦</span></span>
+            <span class="marquee__item">Dentista infantil em São José do Rio Pardo <span class="marquee__sep" aria-hidden="true">✦</span></span>
+          </div>
+          <div class="marquee__inner" aria-hidden="true">
+            <span class="marquee__item">Dentista infantil em São José do Rio Pardo <span class="marquee__sep" aria-hidden="true">✦</span></span>
+            <span class="marquee__item">Dentista infantil em São José do Rio Pardo <span class="marquee__sep" aria-hidden="true">✦</span></span>
+            <span class="marquee__item">Dentista infantil em São José do Rio Pardo <span class="marquee__sep" aria-hidden="true">✦</span></span>
+            <span class="marquee__item">Dentista infantil em São José do Rio Pardo <span class="marquee__sep" aria-hidden="true">✦</span></span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- =====================================================================
+           DOBRA 2: SOBRE A DRA. GABRIELA E EXPERIÊNCIA DE ATENDIMENTO
+           Composição editorial boutique, inspirada na arquitetura canônica
+           da referência Dr. Henrique Salles e no Design System oficial.
+           Fotografia: Dra. Gabriela sentada à mesa no consultório (_MG_2758.jpg).
+           ===================================================================== -->
+      <section id="sobre" class="painel painel--surface sobre" aria-labelledby="sobre-titulo" data-dobra="sobre">
+        <div class="wrap sobre-grade">
+          <!-- Coluna da Mídia: Retrato Protagonista com Selo Glassmorphism -->
+          <div class="sobre-midia">
+            <div class="sobre-moldura reveal-blur">
+              <div class="sobre-paralaxe">
+                <div class="sobre-camada">
+                  <picture class="sobre-picture">
+                    <img
+                      class="sobre-foto"
+                      src="./assets/img/_MG_2758.jpg"
+                      alt="Dra. Gabriela Faria sentada à mesa de atendimento em seu consultório acolhedor em São José do Rio Pardo"
+                      width="3834"
+                      height="2556"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                  <span class="sobre-brilho" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sobre-selo reveal-up" style="--delay: 0.25s">
+              <p class="sobre-selo-vidro vidro">
+                <span class="sobre-selo-icone" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3.2 18.8 6v5.2c0 4.3-2.9 7.9-6.8 9.6-3.9-1.7-6.8-5.3-6.8-9.6V6L12 3.2Z" />
+                    <path d="m9.2 12.1 2 2 3.8-3.9" />
+                  </svg>
+                </span>
+                <span class="sobre-selo-texto">
+                  <strong>CROSP 95.948</strong>
+                  <span>Responsável técnica</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Coluna Editorial: Narrativa Acolhedora, Pilares e Ação -->
+          <div class="sobre-texto">
+            <div class="cabeca sobre-cabeca">
+              <span class="tag reveal-up">Sobre a Dra. Gabriela</span>
+              <h2 id="sobre-titulo" class="reveal-up" style="--delay: 0.1s">
+                Cuidado que acolhe,<br />
+                escuta que <span class="h-light">acalma.</span>
+              </h2>
+            </div>
+
+            <p class="sobre-bio reveal-up" style="--delay: 0.18s">
+              Cada sorriso infantil tem o seu próprio ritmo. No consultório da Dra. Gabriela Faria, a odontopediatria é guiada pelo respeito e pela tranquilidade: um ambiente sereno e preparado para que a criança construa memórias positivas com a saúde bucal desde a primeira consulta.
+            </p>
+
+            <figure class="sobre-citacao reveal-up" style="--delay: 0.24s">
+              <blockquote class="sobre-citacao-bloco">
+                <p class="sobre-citacao-texto">
+                  <span class="sobre-aspa">“</span>O atendimento infantil deve ser leve, seguro e construído no tempo de cada criança.<span class="sobre-aspa">”</span>
+                </p>
+              </blockquote>
+              <figcaption class="sobre-assinatura">
+                Dra. Gabriela Faria <span class="sobre-assinatura-cargo">Odontopediatria Humanizada</span>
+              </figcaption>
+            </figure>
+
+            <div class="sobre-formacao reveal-up" style="--delay: 0.3s">
+              <h3 class="sobre-rotulo" id="sobre-formacao-titulo">Pilares do atendimento</h3>
+              <ol class="sobre-lista" role="list" aria-labelledby="sobre-formacao-titulo">
+                <li class="sobre-item">
+                  <span class="sobre-traco" aria-hidden="true"></span>
+                  <span class="sobre-item-num" aria-hidden="true">01</span>
+                  <div class="sobre-item-corpo">
+                    <strong>Tempo da criança</strong>
+                    <span class="sobre-item-texto">Consultas sem pressa, respeitando cada momento e adaptando o ritmo ao bem-estar do pequeno.</span>
+                  </div>
+                </li>
+                <li class="sobre-item">
+                  <span class="sobre-traco" aria-hidden="true"></span>
+                  <span class="sobre-item-num" aria-hidden="true">02</span>
+                  <div class="sobre-item-corpo">
+                    <strong>Parceria com as famílias</strong>
+                    <span class="sobre-item-texto">Diálogo aberto, transparente e acolhedor de mãe para mãe com segurança clínica.</span>
+                  </div>
+                </li>
+                <li class="sobre-item">
+                  <span class="sobre-traco" aria-hidden="true"></span>
+                  <span class="sobre-item-num" aria-hidden="true">03</span>
+                  <div class="sobre-item-corpo">
+                    <strong>Estrutura humanizada</strong>
+                    <span class="sobre-item-texto">Espaço lúdico planejado em São José do Rio Pardo para prevenir o medo de dentista.</span>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <ul class="sobre-numeros reveal-up" role="list" style="--delay: 0.36s">
+              <li class="sobre-numero">
+                <strong class="sobre-num num-shine">5.0 ★</strong>
+                <span class="sobre-num-rotulo">105 avaliações no Google</span>
+              </li>
+              <li class="sobre-numero">
+                <strong class="sobre-num num-shine">100%</strong>
+                <span class="sobre-num-rotulo">acolhimento humanizado</span>
+              </li>
+              <li class="sobre-numero">
+                <strong class="sobre-num num-shine">Lúdico</strong>
+                <span class="sobre-num-rotulo">espaço sem medo de dentista</span>
+              </li>
+            </ul>
+
+            <div class="sobre-acoes reveal-up" style="--delay: 0.42s">
+              <a
+                class="btn btn--primary sobre-cta"
+                href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20filho(a)."
+                target="_blank"
+                rel="noopener"
+                aria-label="Agendar consulta com a Dra. Gabriela pelo WhatsApp (abre em nova aba)"
+              >
+                <span class="btn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                  </svg>
+                </span>
+                <span>Agendar pelo WhatsApp</span>
+              </a>
+              <p class="sobre-local">
+                <svg class="icone" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 21s-6.8-5.9-6.8-11.3a6.8 6.8 0 0 1 13.6 0C18.8 15.1 12 21 12 21Z" />
+                  <circle cx="12" cy="9.7" r="2.4" />
+                </svg>
+                <span class="sobre-local-texto">
+                  <span>Atendimento em consultório acolhedor</span>
+                  <span class="sobre-local-cidade">São José do Rio Pardo – SP</span>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           DOBRA 3: CUIDADOS E ESPECIALIDADES (LEQUE DE 5 CARDS)
+           Fidelidade total de mecânica e movimento ao layout de referência,
+           aplicando a paleta de cores nobre e acolhedora da Dra. Gabriela.
+           ===================================================================== -->
+      <section id="cuidado" class="painel painel--surface casos" data-dobra="casos" aria-labelledby="casos-titulo">
+        <div class="wrap">
+          <header class="cabeca cabeca--centro casos-cabeca">
+            <span class="tag">Cuidados e Especialidades</span>
+            <h2 id="casos-titulo">
+              Um cuidado que acompanha<br />
+              <span class="h-light">cada fase do crescimento</span>
+            </h2>
+          </header>
+
+          <div
+            class="casos-carrossel"
+            role="region"
+            aria-roledescription="carrossel"
+            aria-label="Especialidades e cuidados clínicos"
+            data-casos-carrossel
+          >
+            <!-- Controles: Anterior, Contador e Próximo -->
+            <div class="casos-controles">
+              <button
+                type="button"
+                class="seta casos-seta"
+                data-dir="prev"
+                aria-controls="casos-deck"
+                aria-label="Cuidado anterior"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 12H5M11 6l-6 6 6 6" />
+                </svg>
+              </button>
+              <p class="casos-contador" aria-hidden="true">
+                <span class="casos-contador-atual"><span>01</span></span>
+                <span class="casos-contador-sep">/</span>
+                <span class="casos-contador-total">05</span>
+              </p>
+              <button
+                type="button"
+                class="seta casos-seta"
+                data-dir="next"
+                aria-controls="casos-deck"
+                aria-label="Próximo cuidado"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Região Live acessível para leitores de tela -->
+            <p class="sr-only" aria-live="polite" aria-atomic="true" data-casos-status>1 de 5: Primeira consulta do bebê</p>
+
+            <!-- Palco dos 5 cards com perspectiva circular -->
+            <div class="casos-palco" data-casos-palco>
+              <div class="casos-deck" id="casos-deck">
+
+                <!-- Card 1: Primeira consulta do bebê -->
+                <article class="casos-card is-centro" data-pos="0" role="group" aria-roledescription="slide" aria-label="1 de 5: Primeira consulta do bebê">
+                  <div class="casos-card-in">
+                    <div class="casos-card-media">
+                      <picture>
+                        <source type="image/avif" srcset="./assets/img/cards/primeira-consulta-bebe-odontopediatria-sao-jose-do-rio-pardo-480.avif 480w, ./assets/img/cards/primeira-consulta-bebe-odontopediatria-sao-jose-do-rio-pardo-800.avif 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <source type="image/webp" srcset="./assets/img/cards/primeira-consulta-bebe-odontopediatria-sao-jose-do-rio-pardo-480.webp 480w, ./assets/img/cards/primeira-consulta-bebe-odontopediatria-sao-jose-do-rio-pardo-800.webp 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <img src="./assets/img/cards/primeira-consulta-bebe-odontopediatria-sao-jose-do-rio-pardo-800.webp" alt="Mãe com bebê em consulta odontológica acolhedora" width="800" height="600" loading="lazy" decoding="async" draggable="false" />
+                      </picture>
+                    </div>
+                    <span class="casos-card-veu" aria-hidden="true"></span>
+                    <div class="casos-card-topo">
+                      <div class="casos-rotulo">
+                        <h3>Primeira consulta do bebê</h3>
+                        <p>Um primeiro encontro para conhecer a criança, orientar a família e conversar sobre saúde bucal desde os primeiros meses.</p>
+                      </div>
+                      <a class="casos-ir" href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20conversar%20sobre%20a%20Primeira%20Consulta%20do%20Beb%C3%AA." target="_blank" rel="noopener" aria-label="Tirar dúvidas sobre a primeira consulta do bebê pelo WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Card 2: Prevenção e cuidado restaurador -->
+                <article class="casos-card" data-pos="1" role="group" aria-roledescription="slide" aria-label="2 de 5: Prevenção e cuidado restaurador">
+                  <div class="casos-card-in">
+                    <div class="casos-card-media">
+                      <picture>
+                        <source type="image/avif" srcset="./assets/img/cards/prevencao-cuidado-restaurador-odontopediatria-sao-jose-do-rio-pardo-480.avif 480w, ./assets/img/cards/prevencao-cuidado-restaurador-odontopediatria-sao-jose-do-rio-pardo-800.avif 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <source type="image/webp" srcset="./assets/img/cards/prevencao-cuidado-restaurador-odontopediatria-sao-jose-do-rio-pardo-480.webp 480w, ./assets/img/cards/prevencao-cuidado-restaurador-odontopediatria-sao-jose-do-rio-pardo-800.webp 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <img src="./assets/img/cards/prevencao-cuidado-restaurador-odontopediatria-sao-jose-do-rio-pardo-800.webp" alt="Criança sorridente com dentes saudáveis em atendimento odontopediátrico" width="800" height="600" loading="lazy" decoding="async" draggable="false" />
+                      </picture>
+                    </div>
+                    <span class="casos-card-veu" aria-hidden="true"></span>
+                    <div class="casos-card-topo">
+                      <div class="casos-rotulo">
+                        <h3>Prevenção e cuidado restaurador</h3>
+                        <p>Acompanhamento preventivo e cuidado restaurador definidos de acordo com a avaliação de cada criança.</p>
+                      </div>
+                      <a class="casos-ir" href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20saber%20mais%20sobre%20preven%C3%A7%C3%A3o%20e%20cuidado%20restaurador." target="_blank" rel="noopener" tabindex="-1" aria-label="Tirar dúvidas sobre prevenção e cuidado restaurador pelo WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Card 3: Ortopedia Funcional dos Maxilares -->
+                <article class="casos-card" data-pos="2" role="group" aria-roledescription="slide" aria-label="3 de 5: Ortopedia Funcional dos Maxilares">
+                  <div class="casos-card-in">
+                    <div class="casos-card-media">
+                      <picture>
+                        <source type="image/avif" srcset="./assets/img/cards/ortopedia-funcional-maxilares-infantil-sao-jose-do-rio-pardo-480.avif 480w, ./assets/img/cards/ortopedia-funcional-maxilares-infantil-sao-jose-do-rio-pardo-800.avif 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <source type="image/webp" srcset="./assets/img/cards/ortopedia-funcional-maxilares-infantil-sao-jose-do-rio-pardo-480.webp 480w, ./assets/img/cards/ortopedia-funcional-maxilares-infantil-sao-jose-do-rio-pardo-800.webp 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <img src="./assets/img/cards/ortopedia-funcional-maxilares-infantil-sao-jose-do-rio-pardo-800.webp" alt="Avaliação orofacial carinhosa da dentista com espelho infantil" width="800" height="600" loading="lazy" decoding="async" draggable="false" />
+                      </picture>
+                    </div>
+                    <span class="casos-card-veu" aria-hidden="true"></span>
+                    <div class="casos-card-topo">
+                      <div class="casos-rotulo">
+                        <h3>Ortopedia Funcional dos Maxilares</h3>
+                        <p>Avaliação do desenvolvimento das estruturas orofaciais e orientação sobre possibilidades de cuidado, conforme indicação profissional.</p>
+                      </div>
+                      <a class="casos-ir" href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20de%20ortopedia%20funcional%20dos%20maxilares." target="_blank" rel="noopener" tabindex="-1" aria-label="Tirar dúvidas sobre ortopedia funcional pelo WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Card 4: Sedação consciente com óxido nitroso -->
+                <article class="casos-card" data-pos="-2" role="group" aria-roledescription="slide" aria-label="4 de 5: Sedação consciente com óxido nitroso">
+                  <div class="casos-card-in">
+                    <div class="casos-card-media">
+                      <picture>
+                        <source type="image/avif" srcset="./assets/img/cards/sedacao-consciente-oxido-nitroso-infantil-sao-jose-do-rio-pardo-480.avif 480w, ./assets/img/cards/sedacao-consciente-oxido-nitroso-infantil-sao-jose-do-rio-pardo-800.avif 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <source type="image/webp" srcset="./assets/img/cards/sedacao-consciente-oxido-nitroso-infantil-sao-jose-do-rio-pardo-480.webp 480w, ./assets/img/cards/sedacao-consciente-oxido-nitroso-infantil-sao-jose-do-rio-pardo-800.webp 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <img src="./assets/img/cards/sedacao-consciente-oxido-nitroso-infantil-sao-jose-do-rio-pardo-800.webp" alt="Atendimento infantil acolhedor com equipamento de sedação consciente ao fundo" width="800" height="600" loading="lazy" decoding="async" draggable="false" />
+                      </picture>
+                    </div>
+                    <span class="casos-card-veu" aria-hidden="true"></span>
+                    <div class="casos-card-topo">
+                      <div class="casos-rotulo">
+                        <h3>Sedação consciente com óxido nitroso</h3>
+                        <p>Recurso que pode ser considerado durante o atendimento, após avaliação profissional e conforme a indicação para cada paciente.</p>
+                      </div>
+                      <a class="casos-ir" href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20seda%C3%A7%C3%A3o%20consciente%20com%20%C3%B3xido%20nitroso." target="_blank" rel="noopener" tabindex="-1" aria-label="Tirar dúvidas sobre sedação consciente pelo WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Card 5: Laserterapia e frenectomia -->
+                <article class="casos-card" data-pos="-1" role="group" aria-roledescription="slide" aria-label="5 de 5: Laserterapia e frenectomia">
+                  <div class="casos-card-in">
+                    <div class="casos-card-media">
+                      <picture>
+                        <source type="image/avif" srcset="./assets/img/cards/laserterapia-frenectomia-linguagem-bebe-sao-jose-do-rio-pardo-480.avif 480w, ./assets/img/cards/laserterapia-frenectomia-linguagem-bebe-sao-jose-do-rio-pardo-800.avif 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <source type="image/webp" srcset="./assets/img/cards/laserterapia-frenectomia-linguagem-bebe-sao-jose-do-rio-pardo-480.webp 480w, ./assets/img/cards/laserterapia-frenectomia-linguagem-bebe-sao-jose-do-rio-pardo-800.webp 800w" sizes="(max-width: 720px) 262px, 372px" />
+                        <img src="./assets/img/cards/laserterapia-frenectomia-linguagem-bebe-sao-jose-do-rio-pardo-800.webp" alt="Orientação atenta de anatomia bucal e saúde para bebê e mãe" width="800" height="600" loading="lazy" decoding="async" draggable="false" />
+                      </picture>
+                    </div>
+                    <span class="casos-card-veu" aria-hidden="true"></span>
+                    <div class="casos-card-topo">
+                      <div class="casos-rotulo">
+                        <h3>Laserterapia e frenectomia</h3>
+                        <p>Procedimentos avaliados individualmente pela profissional, conforme a necessidade e a indicação clínica.</p>
+                      </div>
+                      <a class="casos-ir" href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20conversar%20sobre%20laserterapia%20e%20frenectomia." target="_blank" rel="noopener" tabindex="-1" aria-label="Tirar dúvidas sobre laserterapia e frenectomia pelo WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+            <!-- Rodapé da seção de cards com CTA integrado -->
+            <div class="casos-rodape">
+              <p class="casos-rodape-texto">
+                <strong>Não encontrou o que procura?</strong> Toda conduta odontopediátrica começa por uma avaliação individualizada.
+              </p>
+              <a
+                class="btn btn--primary"
+                href="https://wa.me/5519991793019?text=Ol%C3%A1%2C%20Dra.%20Gabriela!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20meu%20filho(a)."
+                target="_blank"
+                rel="noopener"
+              >
+                <span>Agendar avaliação</span>
+                <span class="btn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           5. DOBRA 4: APRESENTAÇÃO DA PÁGINA DE SERVIÇOS (#servicos)
+           Reutiliza exatamente o layout visual canônico de servicos.html (.jor)
+           com palco fixo e fotos ativas à esquerda, trilho vertical e etapas à direita,
+           e CTA conduzindo para a rota completa servicos.html
+           ===================================================================== -->
+      <section id="servicos" class="servicos-sec jor" data-dobra="servicos" aria-labelledby="servicos-home-titulo">
+        <div class="servicos-sec__inner">
+          <header class="servicos-hero__cabeca" style="padding-top: clamp(64px, 8vw, 96px); padding-bottom: clamp(32px, 4vw, 56px);">
+            <span class="servicos-hero__tag">Atendimento e Especialidades</span>
+            <h2 id="servicos-home-titulo" class="servicos-hero__titulo">
+              Serviços pensados para cada momento da <span class="h-destaque">infância</span>
+            </h2>
+            <p class="servicos-hero__apoio">
+              Da primeira consulta do bebê à ortopedia funcional e procedimentos específicos, cada atendimento é planejado com escuta atenta, paciência e respeito ao tempo da criança.
+            </p>
+          </header>
+
+          <div class="jor-corpo">
+            <!-- Palco Fixo / Sticky (Desktop): Imagem ativa com transição e legenda flutuante -->
+            <div class="jor-palco" aria-hidden="true">
+              <div class="jor-moldura">
+                <div class="jor-quadros">
+                  <!-- Quadro 0: Odontopediatria e atendimento humanizado -->
+                  <figure class="jor-quadro is-ativo" data-i="0">
+                    <img
+                      src="./assets/img/_MG_2727.jpg"
+                      alt=""
+                      width="3750"
+                      height="2500"
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </figure>
+
+                  <!-- Quadro 1: Primeira consulta do bebê -->
+                  <figure class="jor-quadro" data-i="1">
+                    <img
+                      src="./assets/img/cards/primeira-consulta-bebe-odontopediatria-sao-jose-do-rio-pardo-800.webp"
+                      alt=""
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+
+                  <!-- Quadro 2: Prevenção e saúde bucal -->
+                  <figure class="jor-quadro" data-i="2">
+                    <img
+                      src="./assets/img/cards/prevencao-cuidado-restaurador-odontopediatria-sao-jose-do-rio-pardo-800.webp"
+                      alt=""
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+
+                  <!-- Quadro 3: Tratamento restaurador e cárie infantil -->
+                  <figure class="jor-quadro" data-i="3">
+                    <img
+                      src="./assets/img/_MG_2695.jpg"
+                      alt=""
+                      width="3596"
+                      height="2397"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+
+                  <!-- Quadro 4: Ortopedia Funcional dos Maxilares (OFM) -->
+                  <figure class="jor-quadro" data-i="4">
+                    <img
+                      src="./assets/img/cards/ortopedia-funcional-maxilares-infantil-sao-jose-do-rio-pardo-800.webp"
+                      alt=""
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+
+                  <!-- Quadro 5: Cuidados específicos e sedação consciente -->
+                  <figure class="jor-quadro" data-i="5">
+                    <img
+                      src="./assets/img/cards/sedacao-consciente-oxido-nitroso-infantil-sao-jose-do-rio-pardo-800.webp"
+                      alt=""
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                </div>
+
+                <!-- Barra Flutuante de Legenda e Indicadores de Navegação -->
+                <div class="jor-legenda">
+                  <p class="jor-legenda__conta">
+                    <span class="jor-legenda__rolo">
+                      <span class="jor-legenda__fita">
+                        <span>01</span>
+                        <span>02</span>
+                        <span>03</span>
+                        <span>04</span>
+                        <span>05</span>
+                        <span>06</span>
+                      </span>
+                    </span>
+                    <span class="jor-legenda__total">/ 06</span>
+                  </p>
+                  <span class="jor-legenda__sep"></span>
+                  <div class="jor-legenda__nomes">
+                    <span class="jor-legenda__nome is-ativo">Odontopediatria e atendimento humanizado</span>
+                    <span class="jor-legenda__nome">Primeira consulta do bebê</span>
+                    <span class="jor-legenda__nome">Prevenção e saúde bucal infantil</span>
+                    <span class="jor-legenda__nome">Tratamento restaurador e cárie infantil</span>
+                    <span class="jor-legenda__nome">Ortopedia Funcional dos Maxilares (OFM)</span>
+                    <span class="jor-legenda__nome">Cuidados específicos e sedação consciente</span>
+                  </div>
+                  <nav class="jor-nav" aria-label="Navegar entre serviços">
+                    <button type="button" class="jor-nav__btn" data-step="0" aria-label="Ir para serviço 1: Odontopediatria e atendimento humanizado" aria-current="step">
+                      <span></span>
+                    </button>
+                    <button type="button" class="jor-nav__btn" data-step="1" aria-label="Ir para serviço 2: Primeira consulta do bebê">
+                      <span></span>
+                    </button>
+                    <button type="button" class="jor-nav__btn" data-step="2" aria-label="Ir para serviço 3: Prevenção e saúde bucal infantil">
+                      <span></span>
+                    </button>
+                    <button type="button" class="jor-nav__btn" data-step="3" aria-label="Ir para serviço 4: Tratamento restaurador e cárie infantil">
+                      <span></span>
+                    </button>
+                    <button type="button" class="jor-nav__btn" data-step="4" aria-label="Ir para serviço 5: Ortopedia Funcional dos Maxilares (OFM)">
+                      <span></span>
+                    </button>
+                    <button type="button" class="jor-nav__btn" data-step="5" aria-label="Ir para serviço 6: Cuidados específicos e sedação consciente">
+                      <span></span>
+                    </button>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coluna de Etapas Sequenciais (com trilho vertical interativo) -->
+            <div class="jor-etapas">
+              <div class="jor-trilho" aria-hidden="true">
+                <span class="jor-trilho__fill"></span>
+              </div>
+
+              <ol class="jor-passos" role="list">
+                <!-- 1. Odontopediatria e atendimento humanizado -->
+                <li class="jor-passo is-ativo is-feito" id="servico-home-1">
+                  <figure class="jor-passo__midia">
+                    <img
+                      src="./assets/img/_MG_2727.jpg"
+                      alt="Dra. Gabriela no consultório odontopediátrico com iluminação suave e equipamentos dedicados"
+                      width="3750"
+                      height="2500"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="jor-passo__corpo">
+                    <span class="jor-passo__no" aria-hidden="true"></span>
+                    <span class="jor-passo__num" aria-hidden="true">01</span>
+                    <p class="jor-passo__quando">Atendimento integral</p>
+                    <h3 tabindex="-1">Odontopediatria e atendimento humanizado</h3>
+                    <p class="jor-passo__texto">
+                      Apresentação geral do cuidado odontopediátrico voltado a bebês, crianças e adolescentes, com foco em acolhimento, escuta atenta e respeito às particularidades de cada idade.
+                    </p>
+                    <ul class="jor-passo__lista" role="list">
+                      <li>Respeito à individualidade e ao ritmo da criança, sem protocolos rígidos universais</li>
+                      <li>Ambiente preparado para que a consulta seja um momento sereno e livre de temores</li>
+                      <li>Plano de acompanhamento individualizado estabelecido após criteriosa avaliação clínica</li>
+                    </ul>
+                    <div class="jor-passo__acao">
+                      <a
+                        class="jor-passo__link"
+                        href="servicos.html#servico-1"
+                        aria-label="Ver detalhes de Odontopediatria e atendimento humanizado na página de serviços"
+                      >
+                        <span>Conhecer este serviço completo</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- 2. Primeira consulta do bebê -->
+                <li class="jor-passo" id="servico-home-2">
+                  <figure class="jor-passo__midia">
+                    <img
+                      src="./assets/img/cards/primeira-consulta-bebe-odontopediatria-sao-jose-do-rio-pardo-800.webp"
+                      alt="Primeira consulta odontológica do bebê acolhida com delicadeza e orientação aos pais"
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="jor-passo__corpo">
+                    <span class="jor-passo__no" aria-hidden="true"></span>
+                    <span class="jor-passo__num" aria-hidden="true">02</span>
+                    <p class="jor-passo__quando">Primeiros meses e infância</p>
+                    <h3 tabindex="-1">Primeira consulta do bebê</h3>
+                    <p class="jor-passo__texto">
+                      Acolhimento da família, orientações sobre hábitos bucais, higiene da primeira dentição e avaliação cuidadosa do desenvolvimento dos freios e tecidos orais.
+                    </p>
+                    <ul class="jor-passo__lista" role="list">
+                      <li>Escuta atenta das dúvidas da família sobre rotina, higiene bucal e amamentação</li>
+                      <li>Avaliação gentil dos tecidos moles, freios orais e desenvolvimento inicial das arcadas</li>
+                      <li>Orientações preventivas personalizadas para cada momento do crescimento do bebê</li>
+                    </ul>
+                    <div class="jor-passo__acao">
+                      <a
+                        class="jor-passo__link"
+                        href="servicos.html#servico-2"
+                        aria-label="Ver detalhes da Primeira consulta do bebê na página de serviços"
+                      >
+                        <span>Conhecer este serviço completo</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- 3. Prevenção e saúde bucal infantil -->
+                <li class="jor-passo" id="servico-home-3">
+                  <figure class="jor-passo__midia">
+                    <img
+                      src="./assets/img/cards/prevencao-cuidado-restaurador-odontopediatria-sao-jose-do-rio-pardo-800.webp"
+                      alt="Criança sorridente recebendo cuidados preventivos e orientação prática de escovação"
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="jor-passo__corpo">
+                    <span class="jor-passo__no" aria-hidden="true"></span>
+                    <span class="jor-passo__num" aria-hidden="true">03</span>
+                    <p class="jor-passo__quando">Acompanhamento contínuo</p>
+                    <h3 tabindex="-1">Prevenção e saúde bucal infantil</h3>
+                    <p class="jor-passo__texto">
+                      Manutenção periódica, profilaxia cuidadosa e educação em saúde bucal pensadas para construir autonomia e preservar o sorriso em desenvolvimento.
+                    </p>
+                    <ul class="jor-passo__lista" role="list">
+                      <li>Profilaxia e limpeza preventiva delicada, respeitando a sensibilidade da criança</li>
+                      <li>Aplicação profissional de flúor indicada individualmente conforme a necessidade clínica</li>
+                      <li>Instrução lúdica e prática de escovação e uso do fio dental adaptada à família</li>
+                    </ul>
+                    <div class="jor-passo__acao">
+                      <a
+                        class="jor-passo__link"
+                        href="servicos.html#servico-3"
+                        aria-label="Ver detalhes de Prevenção e saúde bucal infantil na página de serviços"
+                      >
+                        <span>Conhecer este serviço completo</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- 4. Tratamento restaurador e cárie infantil -->
+                <li class="jor-passo" id="servico-home-4">
+                  <figure class="jor-passo__midia">
+                    <img
+                      src="./assets/img/_MG_2695.jpg"
+                      alt="Instrumentos e materiais odontopediátricos seguros e selecionados com rigor técnico"
+                      width="3596"
+                      height="2397"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="jor-passo__corpo">
+                    <span class="jor-passo__no" aria-hidden="true"></span>
+                    <span class="jor-passo__num" aria-hidden="true">04</span>
+                    <p class="jor-passo__quando">Saúde e reabilitação</p>
+                    <h3 tabindex="-1">Tratamento restaurador e cárie infantil</h3>
+                    <p class="jor-passo__texto">
+                      Abordagem conservadora e precisa para lesões de cárie e alterações estruturais do dente, restabelecendo função, conforto mastigatório e harmonia estética.
+                    </p>
+                    <ul class="jor-passo__lista" role="list">
+                      <li>Exame criterioso para diagnosticar lesões em estágios iniciais ou avançados</li>
+                      <li>Conduta conservadora e adaptada às necessidades clínicas específicas da criança</li>
+                      <li>Diálogo transparente com os pais antes de qualquer procedimento para segurança total</li>
+                    </ul>
+                    <div class="jor-passo__acao">
+                      <a
+                        class="jor-passo__link"
+                        href="servicos.html#servico-4"
+                        aria-label="Ver detalhes de Tratamento restaurador na página de serviços"
+                      >
+                        <span>Conhecer este serviço completo</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- 5. Ortopedia Funcional dos Maxilares (OFM) -->
+                <li class="jor-passo" id="servico-home-5">
+                  <figure class="jor-passo__midia">
+                    <img
+                      src="./assets/img/cards/ortopedia-funcional-maxilares-infantil-sao-jose-do-rio-pardo-800.webp"
+                      alt="Acompanhamento do desenvolvimento orofacial e oclusão harmônica durante a infância"
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="jor-passo__corpo">
+                    <span class="jor-passo__no" aria-hidden="true"></span>
+                    <span class="jor-passo__num" aria-hidden="true">05</span>
+                    <p class="jor-passo__quando">Desenvolvimento orofacial</p>
+                    <h3 tabindex="-1">Ortopedia Funcional dos Maxilares (OFM)</h3>
+                    <p class="jor-passo__texto">
+                      Diagnóstico precoce de desequilíbrios na mordida e nas arcadas ósseas da criança, aproveitando o potencial natural de crescimento orofacial.
+                    </p>
+                    <ul class="jor-passo__lista" role="list">
+                      <li>Avaliação precoce da relação entre maxila e mandíbula em momentos oportunos do crescimento</li>
+                      <li>Estímulos funcionais que auxiliam no direcionamento equilibrado das estruturas ósseas e musculares</li>
+                      <li>Planejamento individualizado e indicação de aparelhos funcionais quando recomendados</li>
+                    </ul>
+                    <div class="jor-passo__acao">
+                      <a
+                        class="jor-passo__link"
+                        href="servicos.html#servico-5"
+                        aria-label="Ver detalhes de Ortopedia Funcional dos Maxilares na página de serviços"
+                      >
+                        <span>Conhecer este serviço completo</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- 6. Cuidados específicos e sedação consciente -->
+                <li class="jor-passo" id="servico-home-6">
+                  <figure class="jor-passo__midia">
+                    <img
+                      src="./assets/img/cards/sedacao-consciente-oxido-nitroso-infantil-sao-jose-do-rio-pardo-800.webp"
+                      alt="Atendimento infantil com tecnologia de sedação consciente inalatória e ambiente calmo"
+                      width="800"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="jor-passo__corpo">
+                    <span class="jor-passo__no" aria-hidden="true"></span>
+                    <span class="jor-passo__num" aria-hidden="true">06</span>
+                    <p class="jor-passo__quando">Procedimentos e conforto</p>
+                    <h3 tabindex="-1">Cuidados específicos e sedação consciente</h3>
+                    <p class="jor-passo__texto">
+                      Atendimentos e procedimentos oferecidos pela clínica para situações específicas, como laserterapia, frenectomia e sedação consciente com óxido nitroso.
+                    </p>
+                    <ul class="jor-passo__lista" role="list">
+                      <li>Laserterapia como suporte terapêutico para alívio de sensibilidade e reparação tecidual</li>
+                      <li>Avaliação criteriosa de freios labiais e linguais (frenectomia) sob indicação profissional</li>
+                      <li>Sedação consciente com óxido nitroso: indicação estritamente condicionada à avaliação profissional prévia e às necessidades individuais de cada criança (não aplicável universalmente)</li>
+                    </ul>
+                    <div class="jor-passo__acao">
+                      <a
+                        class="jor-passo__link"
+                        href="servicos.html#servico-6"
+                        aria-label="Ver detalhes de Cuidados específicos e sedação consciente na página de serviços"
+                      >
+                        <span>Conhecer este serviço completo</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Rodapé de Condução da Seção na Home -->
+          <div class="servicos-home__rodape" style="margin-top: clamp(48px, 6vw, 80px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid var(--borda, rgba(142, 79, 74, 0.15)); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+            <p style="font-family: var(--font-body, 'Manrope', sans-serif); font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem); color: var(--grafite, #2B2523); max-width: 54ch; margin: 0; line-height: 1.55;">
+              <strong>Quer saber mais sobre cada atendimento?</strong> Conheça nossa página completa de serviços com todos os detalhes e orientações para a sua família.
+            </p>
+            <div class="servicos-home__rodape-acao">
+              <a class="btn btn--primary" href="servicos.html" aria-label="Conheça nossos serviços completos de odontopediatria">
+                <span>Conheça todos os nossos serviços</span>
+                <span class="btn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

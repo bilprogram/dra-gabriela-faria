@@ -1,0 +1,176 @@
+/**
+ * TOKENS DE DESIGN: Odontologia Dra. Gabriela Faria
+ * Fonte única de verdade de design tokens conforme Seção 5 do DIRECAO-SITE.md
+ * Nomenclatura, modularidade e estrutura espelhadas da arquitetura canônica.
+ * Proibido declarar cores, fontes ou medidas arbitrárias fora deste arquivo.
+ */
+
+:root {
+  /* =====================================================================
+     1. PALETA DE CORES (Extraída das fotos e do logo - Seção 5.1)
+     ===================================================================== */
+  --creme: #FBF6F2;           /* Fundo principal (substitui branco puro) */
+  --areia: #F1E6DE;           /* Seções alternadas, cards e superfícies secundárias */
+  --rosa-claro: #EBC4C0;      /* Detalhes, hover suave, fundos de destaque */
+  --rosa-queimado: #C4857E;   /* Elementos gráficos grandes, linhas, ícones (NÃO para texto pequeno) */
+  --rosa-profundo: #8E4F4A;   /* Botões primários, links, títulos de destaque (contraste ~5.8:1 sobre creme) */
+  --salvia: #A9B79A;          /* Fundos de seção, círculos decorativos e arcos */
+  --salvia-profundo: #5E6E55; /* Texto secundário de destaque, ícones (contraste ~5:1) */
+  --madeira: #8A6A4F;         /* Texturas, bordas, fundo da seção escura */
+  --grafite: #2B2523;         /* Texto principal e fundo escuro (contraste > 14:1 sobre creme) */
+  --cinza-metal: #8C8586;     /* Legendas grandes, linhas finas */
+
+  /* Mapeamento Semântico de Aplicação */
+  --bg-primary: var(--creme);
+  --bg-secondary: var(--areia);
+  --bg-accent: var(--salvia);
+  --bg-dark: var(--grafite);
+  --bg-dark-warm: var(--madeira);
+
+  --text-primary: var(--grafite);
+  --text-muted: #574F4C;
+  --text-soft: var(--cinza-metal);
+  --text-on-dark: var(--creme);
+  --text-on-dark-muted: rgba(251, 246, 242, 0.78);
+  --text-accent: var(--rosa-profundo);
+  --text-accent-salvia: var(--salvia-profundo);
+
+  --line: rgba(43, 37, 35, 0.08);
+  --line-strong: rgba(43, 37, 35, 0.16);
+  --line-on-dark: rgba(251, 246, 242, 0.12);
+  --line-on-dark-strong: rgba(251, 246, 242, 0.22);
+
+  /* Gradiente de Assinatura Único (exclusivo para detalhes, linhas e o símbolo) */
+  --gradiente-assinatura: linear-gradient(135deg, var(--rosa-claro) 0%, var(--cinza-metal) 100%);
+
+  /* =====================================================================
+     2. TIPOGRAFIA FLUIDA (Seção 5.2 - Fraunces / Cormorant + Manrope)
+     ===================================================================== */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-handwriting: "DraGabrielaSignature", cursive, serif;
+
+  /* Escala Fluida com clamp() */
+  --fs-h1: clamp(2.75rem, 1.6rem + 5.5vw, 6.5rem);
+  --fs-h2: clamp(2rem, 1.3rem + 3vw, 3.75rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.8vw, 1.75rem);
+  --fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --fs-sm: 0.9375rem;
+  --fs-xs: 0.8125rem;
+  --fs-eyebrow: 0.75rem;
+
+  /* Entrelinhas (Line-Heights) */
+  --lh-h1: 1.02;
+  --lh-h2: 1.1;
+  --lh-h3: 1.25;
+  --lh-title: 1.1;
+  --lh-body: 1.65;
+  --lh-tight: 1;
+
+  /* Espaçamento entre Letras (Letter-Spacing / Tracking) */
+  --track-h1: -0.02em;
+  --track-h2: -0.015em;
+  --track-eyebrow: 0.22em;
+
+  /* Comprimento Ideal de Leitura */
+  --max-ch-body: 62ch;
+
+  /* =====================================================================
+     3. ESPAÇAMENTO MODULAR (Base 8 - Seção 5.3)
+     ===================================================================== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 72px;
+  --space-8: 112px;
+  --space-9: 160px;
+
+  /* Padding Vertical de Seções */
+  --pad-section-y: clamp(5rem, 10vw, 10rem);
+  --pad-panel-x: clamp(20px, 4.5vw, 64px);
+  --gap-panel: 16px;
+
+  /* =====================================================================
+     4. RAIOS DE CURVATURA (Border-Radius - Seção 5.3)
+     ===================================================================== */
+  --r-field: 4px;           /* Campos de formulário */
+  --r-sm: 8px;              /* Tags e elementos menores */
+  --r-card: 24px;           /* Cards e recipientes */
+  --r-panel: 36px;          /* Grandes painéis modulares */
+  --r-pill: 999px;          /* Botões em pílula */
+  --r-arc-top: 180px 180px 0 0; /* Recorte em arco superior */
+
+  /* =====================================================================
+     5. SOMBRAS (Exatamente duas sombras suaves - Seção 5.3)
+     ===================================================================== */
+  --shadow-suave: 0 10px 40px rgba(43, 37, 35, 0.08);
+  --shadow-elevada: 0 24px 60px rgba(43, 37, 35, 0.14);
+
+  /* =====================================================================
+     6. ASSINATURA DE MOVIMENTO & CINEMÁTICA (Seção 6)
+     ===================================================================== */
+  --ease-natural: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.25s;
+  --dur-base: 0.55s;
+  --dur-reveal: 0.9s;
+  --dur-slow: 1.2s;
+
+  /* =====================================================================
+     7. GRID & CONTAINERS (Seção 5.3)
+     ===================================================================== */
+  --container-max: 1360px;
+  --grid-gutter: 24px;
+  --grid-cols-desktop: 12;
+  --grid-cols-mobile: 4;
+
+  /* Breakpoints: 480px, 768px, 1024px, 1280px, 1680px */
+  --bp-xs: 480px;
+  --bp-sm: 768px;
+  --bp-md: 1024px;
+  --bp-lg: 1280px;
+  --bp-xl: 1680px;
+
+  /* Dimensões de Toque & Acessibilidade */
+  --btn-min-h: 52px;
+  --tap-min: 48px;
+  --ring-focus: 3px solid var(--salvia-profundo);
+
+  /* Camadas Z-Index */
+  --z-base: 1;
+  --z-nav: 50;
+  --z-floating: 80;
+  --z-modal: 90;
+  --z-preloader: 100;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gap-panel: 8px;
+    --r-panel: 24px;
+    --r-card: 18px;
+    --grid-gutter: 16px;
+    --pad-panel-x: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms;
+    --dur-base: 0.01ms;
+    --dur-reveal: 0.01ms;
+    --dur-slow: 0.01ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

@@ -1,0 +1,1596 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Living Design System & Pattern Library · Dr. Henrique Salles</title>
+    <meta name="description" content="Especificação viva, tipografia, cores, superfícies, componentes canônicos e padrões de layout e movimento extraídos do website original." />
+    <meta name="theme-color" content="#e5e6e9" />
+    <link rel="icon" href="./assets/favicon-D-kZIdQF.svg" type="image/svg+xml" />
+    
+    <!-- Script de movimento oficial do projeto -->
+    <script>
+      (function () {
+        var h = document.documentElement;
+        h.classList.add('js');
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          h.classList.add('js-motion');
+          setTimeout(function () {
+            if (!window.__movimentoOk) h.classList.remove('js-motion');
+          }, 8000);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-pvOuaALi.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-N7qcymKx.css">
+    
+    <style>
+      /* Design System Documentation Structural Styles (reusing variables from original CSS) */
+      .ds-top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: #ffffffeb;
+        -webkit-backdrop-filter: blur(20px) saturate(1.6);
+        backdrop-filter: blur(20px) saturate(1.6);
+        border-bottom: 1px solid var(--line-2);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+      .ds-top-bar__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-block: 12px;
+        gap: var(--space-4);
+      }
+      .ds-nav {
+        display: flex;
+        align-items: center;
+        gap: clamp(10px, 1.6vw, 24px);
+        overflow-x: auto;
+        padding-block: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .ds-nav .hero-link {
+        font-size: var(--fs-xs);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 6px 10px;
+        border-radius: var(--r-pill);
+        transition: color var(--dur-fast), background-color var(--dur-fast);
+      }
+      .ds-nav .hero-link:hover {
+        color: var(--ink);
+        background-color: var(--surface);
+      }
+      .ds-top-bar__meta {
+        display: none;
+      }
+      @media (min-width: 900px) {
+        .ds-top-bar__meta {
+          display: block;
+        }
+      }
+
+      /* Spec table & rows */
+      .ds-spec-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        margin-top: var(--space-6);
+      }
+      .ds-spec-row {
+        background: var(--bg);
+        border-radius: var(--r-card);
+        border: 1px solid var(--line);
+        padding: clamp(20px, 3vw, 32px);
+        box-shadow: var(--shadow-sm);
+        display: grid;
+        grid-template-columns: minmax(130px, 180px) 1fr auto;
+        gap: var(--space-4);
+        align-items: baseline;
+      }
+      @media (max-width: 768px) {
+        .ds-spec-row {
+          grid-template-columns: 1fr;
+          gap: var(--space-3);
+        }
+      }
+      .ds-spec-label {
+        font-size: var(--fs-xs);
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+      }
+      .ds-spec-content {
+        min-width: 0;
+      }
+      .ds-spec-meta {
+        font-size: var(--fs-xs);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        color: var(--soft);
+        text-align: right;
+        white-space: nowrap;
+        align-self: flex-start;
+      }
+
+      /* Color grid */
+      .ds-color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: var(--space-4);
+        margin-top: var(--space-6);
+      }
+      .ds-swatch {
+        background: var(--bg);
+        border-radius: var(--r-md);
+        border: 1px solid var(--line);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+      }
+      .ds-swatch__preview {
+        height: 100px;
+        width: 100%;
+        border-bottom: 1px solid var(--line);
+      }
+      .ds-swatch__body {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .ds-swatch__name {
+        font-size: var(--fs-sm);
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .ds-swatch__val {
+        font-size: var(--fs-xs);
+        font-family: ui-monospace, SFMono-Regular, monospace;
+        color: var(--muted);
+      }
+      .ds-swatch__desc {
+        font-size: var(--fs-xs);
+        color: var(--soft);
+        margin-top: 4px;
+      }
+
+      /* Surfaces demonstration */
+      .ds-surface-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: var(--space-5);
+        margin-top: var(--space-6);
+      }
+      .ds-surface-card {
+        border-radius: var(--r-card);
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+
+      /* UI components matrix */
+      .ds-matrix-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: var(--space-5);
+        margin-top: var(--space-6);
+      }
+      .ds-component-card {
+        background: var(--bg);
+        border-radius: var(--r-card);
+        border: 1px solid var(--line);
+        padding: clamp(24px, 3vw, 36px);
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+      .ds-component-card--dark {
+        background: var(--dark);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .ds-state-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        margin-top: var(--space-2);
+      }
+      .ds-state-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .ds-state-badge {
+        font-size: var(--fs-xs);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+      }
+      .ds-component-card--dark .ds-state-badge {
+        color: var(--on-dark-muted);
+      }
+
+      /* Icons showcase grid */
+      .ds-icon-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: var(--space-4);
+        margin-top: var(--space-6);
+      }
+      .ds-icon-cell {
+        background: var(--bg);
+        border-radius: var(--r-md);
+        border: 1px solid var(--line);
+        padding: 24px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: transform var(--dur-fast), border-color var(--dur-fast);
+      }
+      .ds-icon-cell:hover {
+        transform: translateY(-2px);
+        border-color: var(--blue);
+      }
+      .ds-icon-preview {
+        color: var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ds-icon-name {
+        font-size: var(--fs-xs);
+        font-weight: 600;
+        color: var(--ink-2);
+      }
+      .ds-icon-usage {
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+
+      /* Spacing scale visualization */
+      .ds-spacing-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: var(--space-6);
+      }
+      .ds-spacing-row {
+        background: var(--bg);
+        border-radius: var(--r-sm);
+        border: 1px solid var(--line);
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .ds-spacing-label {
+        font-size: var(--fs-xs);
+        font-family: ui-monospace, SFMono-Regular, monospace;
+        font-weight: 700;
+        min-width: 130px;
+        color: var(--ink);
+      }
+      .ds-spacing-bar-wrap {
+        flex: 1;
+        background: var(--surface);
+        border-radius: 4px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        padding-inline: 4px;
+      }
+      .ds-spacing-bar {
+        background: var(--blue);
+        height: 16px;
+        border-radius: 2px;
+      }
+
+      /* Motion gallery */
+      .ds-motion-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: var(--space-5);
+        margin-top: var(--space-6);
+      }
+      .ds-motion-card {
+        background: var(--bg);
+        border-radius: var(--r-card);
+        border: 1px solid var(--line);
+        padding: 28px;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      .ds-motion-stage {
+        height: 110px;
+        background: var(--surface);
+        border-radius: var(--r-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Section Documentation Title Utility */
+      .ds-section-intro {
+        margin-bottom: var(--space-5);
+      }
+      .ds-section-divider {
+        margin-top: var(--space-8);
+        border-top: 1px solid var(--line);
+        padding-top: var(--space-6);
+      }
+    </style>
+
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    
+    <!-- Top Horizontal Navigation for Design System Documentation -->
+    <header class="ds-top-bar" role="banner">
+      <div class="wrap ds-top-bar__inner">
+        <a class="hero-marca" href="#topo">
+          <svg class="hero-marca-simbolo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 3C4.8 3 3 4.8 3 7.2c0 2.3.9 3.8 1.5 5.6.6 1.9.7 4.2 1.4 6.4.4 1.2 1.9 1.3 2.4.1.6-1.5.9-3.8 1.7-4.9.4-.5 1.6-.5 2 0 .8 1.1 1.1 3.4 1.7 4.9.5 1.2 2 1.1 2.4-.1.7-2.2.8-4.5 1.4-6.4.6-1.8 1.5-3.3 1.5-5.6C21 4.8 19.2 3 17 3c-1.9 0-3 1-5 1S8.9 3 7 3z" /></svg>
+          <span class="hero-marca-nome">Living Design System</span>
+        </a>
+        <nav class="ds-nav" aria-label="Navegação do Design System">
+          <a class="hero-link" href="#topo">00 Hero</a>
+          <a class="hero-link" href="#typography">01 Tipografia</a>
+          <a class="hero-link" href="#colors-surfaces">02 Cores & Superfícies</a>
+          <a class="hero-link" href="#components">03 Componentes</a>
+          <a class="hero-link" href="#layout-spacing">04 Layout & Spacing</a>
+          <a class="hero-link" href="#motion">05 Movimento</a>
+          <a class="hero-link" href="#icons">06 Ícones</a>
+        </nav>
+        <div class="ds-top-bar__meta">
+          <span class="tag">v2.0 Canônica</span>
+        </div>
+      </div>
+    </header>
+
+
+    <main id="conteudo" class="paineis">
+
+      <!-- =====================================================================
+           0) HERO (Direct Clone, Text Adapted for Living Design System)
+           ===================================================================== -->
+      <!-- =====================================================================
+     Topo (hero + navegação) · três peças, CSS em sections/hero.css e JS em
+     sections/hero.js:
+     1) .hero-flutuante  pílula de vidro fixa no alto; aparece depois que o
+                         topo sai da tela, some ao rolar para baixo e volta
+                         ao rolar para cima.
+     2) #hero-menu       menu do celular/tablet (diálogo); abre a partir do
+                         botão de dois traços, que vira X.
+     3) #topo            o painel cinza: nav, título, CTA, números e retrato.
+     ===================================================================== -->
+<div class="hero-flutuante" data-hero-flutuante inert>
+  <div class="hero-flutuante-pilula">
+    <a class="hero-marca" href="#topo">
+      <svg class="hero-marca-simbolo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 3C4.8 3 3 4.8 3 7.2c0 2.3.9 3.8 1.5 5.6.6 1.9.7 4.2 1.4 6.4.4 1.2 1.9 1.3 2.4.1.6-1.5.9-3.8 1.7-4.9.4-.5 1.6-.5 2 0 .8 1.1 1.1 3.4 1.7 4.9.5 1.2 2 1.1 2.4-.1.7-2.2.8-4.5 1.4-6.4.6-1.8 1.5-3.3 1.5-5.6C21 4.8 19.2 3 17 3c-1.9 0-3 1-5 1S8.9 3 7 3z" /></svg>
+      <span class="hero-marca-nome">Design System</span>
+    </a>
+    <nav class="hero-links" aria-label="Atalhos da página">
+      <a class="hero-link" href="#typography">Tipografia</a>
+      <a class="hero-link" href="#colors-surfaces">Cores & Superfícies</a>
+      <a class="hero-link" href="#components">Componentes</a>
+      <a class="hero-link" href="#layout-spacing">Layout & Spacing</a>
+      <a class="hero-link" href="#motion">Movimento</a>
+      <a class="hero-link" href="#icons">Ícones</a>
+    </nav>
+    <a class="btn btn--sm btn--primario hero-flutuante-cta" href="#components">
+      <span class="btn__rotulo">Explorar</span>
+      <span class="btn__icone" aria-hidden="true">+</span>
+      <span class="sr-only">(abre o WhatsApp)</span>
+    </a>
+    <button type="button" class="hero-burger" data-hero-menu aria-controls="hero-menu" aria-expanded="false" aria-label="Menu">
+      <span class="hero-burger-traco" aria-hidden="true"></span>
+      <span class="hero-burger-traco" aria-hidden="true"></span>
+    </button>
+  </div>
+</div>
+
+<div class="hero-menu" id="hero-menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="hero-menu-veu" data-hero-menu-fechar></div>
+  <div class="hero-menu-painel" data-lenis-prevent>
+    <div class="hero-menu-topo">
+      <a class="hero-marca" href="#topo">
+        <svg class="hero-marca-simbolo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 3C4.8 3 3 4.8 3 7.2c0 2.3.9 3.8 1.5 5.6.6 1.9.7 4.2 1.4 6.4.4 1.2 1.9 1.3 2.4.1.6-1.5.9-3.8 1.7-4.9.4-.5 1.6-.5 2 0 .8 1.1 1.1 3.4 1.7 4.9.5 1.2 2 1.1 2.4-.1.7-2.2.8-4.5 1.4-6.4.6-1.8 1.5-3.3 1.5-5.6C21 4.8 19.2 3 17 3c-1.9 0-3 1-5 1S8.9 3 7 3z" /></svg>
+        <span class="hero-marca-nome">Design System</span>
+      </a>
+      <button type="button" class="hero-burger hero-menu-fechar" aria-label="Fechar menu" data-hero-menu-fechar>
+        <span class="hero-burger-traco" aria-hidden="true"></span>
+        <span class="hero-burger-traco" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <nav class="hero-menu-nav" aria-label="Menu principal">
+      <ol class="hero-menu-lista" role="list">
+        <li class="hero-menu-linha">
+          <a class="hero-menu-link" href="#tratamentos"><span class="hero-menu-item"><span class="hero-menu-num" aria-hidden="true">01</span><span class="hero-menu-texto">Tratamentos</span><svg class="hero-menu-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
+        </li>
+        <li class="hero-menu-linha">
+          <a class="hero-menu-link" href="#all-on-4"><span class="hero-menu-item"><span class="hero-menu-num" aria-hidden="true">02</span><span class="hero-menu-texto">All-on-4</span><svg class="hero-menu-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
+        </li>
+        <li class="hero-menu-linha">
+          <a class="hero-menu-link" href="#jornada"><span class="hero-menu-item"><span class="hero-menu-num" aria-hidden="true">03</span><span class="hero-menu-texto">Como funciona</span><svg class="hero-menu-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
+        </li>
+        <li class="hero-menu-linha">
+          <a class="hero-menu-link" href="#sobre"><span class="hero-menu-item"><span class="hero-menu-num" aria-hidden="true">04</span><span class="hero-menu-texto">Sobre</span><svg class="hero-menu-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
+        </li>
+        <li class="hero-menu-linha">
+          <a class="hero-menu-link" href="#duvidas"><span class="hero-menu-item"><span class="hero-menu-num" aria-hidden="true">05</span><span class="hero-menu-texto">Dúvidas</span><svg class="hero-menu-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="hero-menu-rodape">
+      <a class="btn btn--primario btn--bloco hero-menu-cta" data-wa="nav" href="#contato">
+        <span class="btn__rotulo">Agendar avaliação</span>
+        <span class="btn__icone" aria-hidden="true">+</span>
+        <span class="sr-only">(abre o WhatsApp)</span>
+      </a>
+      <p class="hero-menu-info">
+        <span>Jardins · São Paulo – SP</span>
+        <span>Seg a sex 8h–19h · Sáb 8h–12h</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<section id="topo" class="painel hero" data-dobra="hero" aria-labelledby="topo-titulo">
+  <div class="hero-fundo" aria-hidden="true"></div>
+
+  <header class="hero-nav">
+    <a class="hero-marca" href="#topo">
+      <svg class="hero-marca-simbolo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 3C4.8 3 3 4.8 3 7.2c0 2.3.9 3.8 1.5 5.6.6 1.9.7 4.2 1.4 6.4.4 1.2 1.9 1.3 2.4.1.6-1.5.9-3.8 1.7-4.9.4-.5 1.6-.5 2 0 .8 1.1 1.1 3.4 1.7 4.9.5 1.2 2 1.1 2.4-.1.7-2.2.8-4.5 1.4-6.4.6-1.8 1.5-3.3 1.5-5.6C21 4.8 19.2 3 17 3c-1.9 0-3 1-5 1S8.9 3 7 3z" /></svg>
+      <span class="hero-marca-nome">Design System</span>
+    </a>
+    <nav class="hero-links" aria-label="Menu principal">
+      <a class="hero-link" href="#typography">Tipografia</a>
+      <a class="hero-link" href="#colors-surfaces">Cores & Superfícies</a>
+      <a class="hero-link" href="#components">Componentes</a>
+      <a class="hero-link" href="#layout-spacing">Layout & Spacing</a>
+      <a class="hero-link" href="#motion">Movimento</a>
+      <a class="hero-link" href="#icons">Ícones</a>
+    </nav>
+    <div class="hero-nav-acoes">
+      <a class="btn btn--sm btn--vidro hero-agendar" href="#components">
+        <span class="btn__rotulo">UI Kit</span>
+        <span class="btn__icone" aria-hidden="true">+</span>
+        <span class="sr-only">(abre o WhatsApp)</span>
+      </a>
+      <span class="hero-dente" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" focusable="false"><path d="M7 3C4.8 3 3 4.8 3 7.2c0 2.3.9 3.8 1.5 5.6.6 1.9.7 4.2 1.4 6.4.4 1.2 1.9 1.3 2.4.1.6-1.5.9-3.8 1.7-4.9.4-.5 1.6-.5 2 0 .8 1.1 1.1 3.4 1.7 4.9.5 1.2 2 1.1 2.4-.1.7-2.2.8-4.5 1.4-6.4.6-1.8 1.5-3.3 1.5-5.6C21 4.8 19.2 3 17 3c-1.9 0-3 1-5 1S8.9 3 7 3z" /></svg>
+      </span>
+      <button type="button" class="hero-burger" data-hero-menu aria-controls="hero-menu" aria-expanded="false" aria-label="Menu">
+        <span class="hero-burger-traco" aria-hidden="true"></span>
+        <span class="hero-burger-traco" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hero-grid">
+    <div class="hero-intro">
+      <p class="tag hero-tag">Design System · Especificação Viva</p>
+      <h1 id="topo-titulo" class="hero-titulo">
+        <span class="hero-linha"><span class="hero-linha-in h-light">Design</span></span>
+        <span class="hero-linha"><span class="hero-linha-in">System</span></span>
+      </h1>
+      <p class="hero-apoio">Guia de estilos vivo, padrões de interface e especificações canônicas extraídos diretamente do design de produção.</p>
+    </div>
+
+    <div class="hero-acoes">
+      <div class="hero-acao hero-acao--cta">
+        <a class="btn btn--primario hero-cta" href="#typography">
+          <span class="btn__rotulo">Ver Tipografia</span>
+          <span class="btn__icone" aria-hidden="true">+</span>
+          <span class="sr-only">(navega para tipografia)</span>
+        </a>
+      </div>
+      <div class="hero-acao">
+        <a class="hero-secundario" href="#components">
+          <span class="hero-secundario-texto">Ver Componentes</span>
+          <span class="hero-secundario-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 5v14M6 13l6 6 6-6" /></svg></span>
+        </a>
+      </div>
+    </div>
+
+    <ul class="hero-numeros" role="list">
+      <li class="hero-numero">
+        <strong class="hero-numero-valor num-shine" data-contar="100" data-sufixo="%">100%</strong>
+        <span class="hero-numero-rotulo">fidelidade ao design original</span>
+      </li>
+      <li class="hero-numero">
+        <strong class="hero-numero-valor num-shine" data-contar="6" data-sufixo=" seções">6</strong>
+        <span class="hero-numero-rotulo">módulos de especificação</span>
+      </li>
+    </ul>
+
+    <div class="hero-retrato">
+      <div class="hero-palco">
+        <div class="hero-brilho" data-hero-prof="-10" aria-hidden="true"><span class="hero-brilho-in"></span></div>
+        <div class="hero-foto">
+          <img class="hero-foto-img" src="./assets/doutor-hero-816-DFy0Wsyb.webp" srcset="./assets/doutor-hero-480--Tjh75Rt.webp 480w, ./assets/doutor-hero-800-C3QTpBdg.webp 800w, ./assets/doutor-hero-816-DFy0Wsyb.webp 816w" sizes="(min-width: 1024px) 620px, (min-width: 641px) 540px, 110vw" alt="Dr. Henrique Salles de jaleco branco, sorrindo, com as mãos juntas" width="816" height="1024" fetchpriority="high" decoding="async" />
+        </div>
+        <div class="hero-selos">
+          <div class="hero-selo hero-selo--a" data-hero-prof="8">
+            <p class="hero-selo-corpo vidro">
+              <span class="hero-selo-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M7 5.6C7 4.1 8.1 3 9.6 3h4.8C15.9 3 17 4.1 17 5.6c0 1.6-.8 2.9-2 3.9H9c-1.2-1-2-2.3-2-3.9Z" /><path d="M9.6 9.5h4.8l-.7 9.6L12 21l-1.7-1.9-.7-9.6Z" /><path d="M8.4 12.6h7.2M8.7 15.8h6.6" /></svg></span>
+              <span class="hero-selo-texto">Sistema de Design <br />Canônico</span>
+            </p>
+          </div>
+          <div class="hero-selo hero-selo--b" data-hero-prof="6">
+            <p class="hero-selo-corpo vidro">
+              <span class="hero-selo-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" focusable="false"><circle cx="12" cy="12" r="7.5" /><circle cx="12" cy="12" r="2.5" /><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" /></svg></span>
+              <span class="hero-selo-texto">Tipografia & <br />Componentes UI</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Casos · "Com quais problemas me procuram": leque de 5 cards (carrossel circular). -->
+
+
+      <!-- =====================================================================
+           1) TYPOGRAPHY SECTION (Spec table / vertical list)
+           ===================================================================== -->
+      <section id="typography" class="painel painel--surface" aria-labelledby="typography-titulo">
+        <div class="wrap">
+          <header class="cabeca ds-section-intro">
+            <span class="tag">01 · Especificação</span>
+            <h2 id="typography-titulo">Escala <span class="h-light">Tipográfica</span></h2>
+            <p class="apoio">
+              A hierarquia tipográfica utiliza Manrope Variable com proporções balanceadas, kerning óptico e line-heights reduzidos nos títulos para alta densidade editorial.
+            </p>
+          </header>
+
+          <div class="ds-spec-list" role="list">
+            <!-- Heading 1 -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Heading 1</span>
+              <div class="ds-spec-content">
+                <h1 class="hero-titulo">
+                  <span class="hero-linha"><span class="hero-linha-in h-light">Clínica de</span></span>
+                  <span class="hero-linha"><span class="hero-linha-in">Excelência</span></span>
+                </h1>
+              </div>
+              <span class="ds-spec-meta">clamp(2.875rem, 1rem + 5.4vw, 5.875rem) / 0.96</span>
+            </div>
+
+            <!-- Heading 2 -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Heading 2</span>
+              <div class="ds-spec-content">
+                <h2>Quando a precisão <span class="h-light">encontra a técnica</span></h2>
+              </div>
+              <span class="ds-spec-meta">clamp(2rem, 1.25rem + 2.6vw, 3.5rem) / 1.06</span>
+            </div>
+
+            <!-- Heading 3 -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Heading 3</span>
+              <div class="ds-spec-content">
+                <h3 class="a4-faixa-titulo">Planejamento e Execução Guiada</h3>
+              </div>
+              <span class="ds-spec-meta">clamp(1.125rem, 1rem + .4vw, 1.375rem) / 1.25</span>
+            </div>
+
+            <!-- Heading 4 -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Heading 4</span>
+              <div class="ds-spec-content">
+                <h4 class="a4-card-titulo">Prótese fixa sobre implantes integrados</h4>
+              </div>
+              <span class="ds-spec-meta">clamp(1.0625rem, 1rem + .2vw, 1.1875rem) / 1.3</span>
+            </div>
+
+            <!-- Bold L / Stat Display -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Bold L (Stat)</span>
+              <div class="ds-spec-content">
+                <strong class="hero-numero-valor num-shine">18+ Anos de Cirurgia</strong>
+              </div>
+              <span class="ds-spec-meta">clamp(2rem, 1.6rem + 1.4vw, 2.75rem) / 1.0</span>
+            </div>
+
+            <!-- Bold M -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Bold M</span>
+              <div class="ds-spec-content">
+                <p style="font-size: var(--fs-lead); font-weight: 700; color: var(--ink);">
+                  Especialista em Cirurgia e Reabilitação Oral de Alta Complexidade
+                </p>
+              </div>
+              <span class="ds-spec-meta">1.1875rem / 1.4 · 700</span>
+            </div>
+
+            <!-- Bold S -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Bold S</span>
+              <div class="ds-spec-content">
+                <span class="tag">Indicador de Status</span>
+                <span class="contato-card-rotulo" style="margin-left: 12px;">Localização Jardins</span>
+              </div>
+              <span class="ds-spec-meta">0.8125rem / 1.4 · 600</span>
+            </div>
+
+            <!-- Paragraph (Lead) -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Paragraph (Lead)</span>
+              <div class="ds-spec-content">
+                <p class="apoio">
+                  Cada caso clínico pede uma técnica individualizada. A indicação definitiva vem sempre após uma avaliação criteriosa com exames de imagem e planejamento 3D.
+                </p>
+              </div>
+              <span class="ds-spec-meta">clamp(1rem, .94rem + .3vw, 1.1875rem) / 1.55</span>
+            </div>
+
+            <!-- Regular L -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Regular L</span>
+              <div class="ds-spec-content">
+                <p class="sobre-bio">
+                  Há mais de 18 anos, nossa prática se dedica à implantodontia avançada, assegurando que você compreenda e participe ativamente de cada etapa antes de decidir.
+                </p>
+              </div>
+              <span class="ds-spec-meta">1.0625rem / 1.6 · 400</span>
+            </div>
+
+            <!-- Regular M (Body) -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Regular M (Body)</span>
+              <div class="ds-spec-content">
+                <p class="faq-resposta-corpo" style="padding: 0; color: var(--muted);">
+                  A cirurgia é executada com anestesia local de última geração, garantindo tranquilidade absoluta durante todo o procedimento com suporte pós-operatório completo.
+                </p>
+              </div>
+              <span class="ds-spec-meta">1.0rem (16px) / 1.6 · 400</span>
+            </div>
+
+            <!-- Regular S -->
+            <div class="ds-spec-row" role="listitem">
+              <span class="ds-spec-label">Regular S (Small)</span>
+              <div class="ds-spec-content">
+                <p class="a4-card-txt" style="margin: 0;">
+                  A prótese fica parafusada diretamente sobre os implantes e não é removida no dia a dia pelo paciente.
+                </p>
+              </div>
+              <span class="ds-spec-meta">0.9375rem / 1.5 · 400</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           2) COLORS & SURFACES SECTION
+           ===================================================================== -->
+      <section id="colors-surfaces" class="painel painel--branco" aria-labelledby="colors-titulo">
+        <div class="wrap">
+          <header class="cabeca ds-section-intro">
+            <span class="tag">02 · Paleta & Texturas</span>
+            <h2 id="colors-titulo">Cores & <span class="h-light">Superfícies</span></h2>
+            <p class="apoio">
+              A paleta de cores combina tons neutros de titânio e cinza arquitetônico com azul médico de alta intensidade e gradientes dinâmicos de luz.
+            </p>
+          </header>
+
+          <h3 class="a4-faixa-titulo" style="margin-top: var(--space-6);">Variáveis de Cor Primárias</h3>
+          <div class="ds-color-grid">
+            <!-- Blue Primary -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--blue);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Blue Primary</span>
+                <span class="ds-swatch__val">var(--blue) · #1e6bff</span>
+                <span class="ds-swatch__desc">Cor de destaque, links ativos, tags e botões.</span>
+              </div>
+            </div>
+
+            <!-- Blue Light -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--blue-light);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Blue Light</span>
+                <span class="ds-swatch__val">var(--blue-light) · #5ea2ff</span>
+                <span class="ds-swatch__desc">Ícones no fundo escuro, pontos de pulso e glows.</span>
+              </div>
+            </div>
+
+            <!-- Blue Deep -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--blue-deep);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Blue Deep</span>
+                <span class="ds-swatch__val">var(--blue-deep) · #0f4fd6</span>
+                <span class="ds-swatch__desc">Degradê do botão primário e links de expansão.</span>
+              </div>
+            </div>
+
+            <!-- Ink Primary -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--ink);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Ink Primary</span>
+                <span class="ds-swatch__val">var(--ink) · #15171c</span>
+                <span class="ds-swatch__desc">Títulos, marca e elementos de alto contraste.</span>
+              </div>
+            </div>
+
+            <!-- Ink Secondary -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--ink-2);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Ink Secondary</span>
+                <span class="ds-swatch__val">var(--ink-2) · #2b2f37</span>
+                <span class="ds-swatch__desc">Corpo de texto primário no hero.</span>
+              </div>
+            </div>
+
+            <!-- Muted -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--muted);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Muted</span>
+                <span class="ds-swatch__val">var(--muted) · #5f646d</span>
+                <span class="ds-swatch__desc">Textos de apoio, subtítulos e descrições.</span>
+              </div>
+            </div>
+
+            <!-- Dark Surface -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--dark);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Dark Surface</span>
+                <span class="ds-swatch__val">var(--dark) · #0c0f15</span>
+                <span class="ds-swatch__desc">Painel final escuro e barra flutuante.</span>
+              </div>
+            </div>
+
+            <!-- Hero Background -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--hero);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Hero Gray</span>
+                <span class="ds-swatch__val">var(--hero) · #e5e6e9</span>
+                <span class="ds-swatch__desc">Fundo com tonalidade metálica do hero.</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="a4-faixa-titulo" style="margin-top: var(--space-8);">Gradientes Canônicos</h3>
+          <div class="ds-color-grid">
+            <!-- Shimmer Gradient -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--shine);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Shine Gradient (CTA)</span>
+                <span class="ds-swatch__val">var(--shine)</span>
+                <span class="ds-swatch__desc">Aplicado no background animado dos botões primários e setas.</span>
+              </div>
+            </div>
+
+            <!-- Number Shine -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: var(--shine-num);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Number Shine</span>
+                <span class="ds-swatch__val">var(--shine-num)</span>
+                <span class="ds-swatch__desc">Gradiente metálico clipado no texto de números e métricas.</span>
+              </div>
+            </div>
+
+            <!-- Painel Surface -->
+            <div class="ds-swatch">
+              <div class="ds-swatch__preview" style="background: linear-gradient(#f1f2f4 0%, #e9eaed 100%);"></div>
+              <div class="ds-swatch__body">
+                <span class="ds-swatch__name">Painel Surface</span>
+                <span class="ds-swatch__val">linear-gradient(#f1f2f4, #e9eaed)</span>
+                <span class="ds-swatch__desc">Gradiente suave das seções secundárias (.painel--surface).</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="a4-faixa-titulo" style="margin-top: var(--space-8);">Superfícies & Efeitos de Vidro</h3>
+          <div class="ds-surface-grid">
+            <!-- Glass Pill -->
+            <div class="ds-surface-card hero-flutuante-pilula">
+              <span class="tag">Vidro Flutuante</span>
+              <p style="font-weight: 600; color: var(--ink);">
+                backdrop-filter: blur(20px) saturate(1.6);<br />
+                background: #f4f5f7b3; border: 1px solid #ffffffbf;
+              </p>
+            </div>
+
+            <!-- Selo Vidro -->
+            <div class="ds-surface-card vidro">
+              <span class="tag">Vidro Card (.vidro)</span>
+              <p style="font-weight: 600; color: var(--ink);">
+                backdrop-filter: blur(16px) saturate(1.4);<br />
+                background: #ffffff8c; box-shadow: var(--shadow-md);
+              </p>
+            </div>
+
+            <!-- Dark Glass Pill -->
+            <div class="ds-surface-card barra-pilula">
+              <span class="barra-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7 3C4.8 3 3 4.8 3 7.2c0 2.3.9 3.8 1.5 5.6.6 1.9.7 4.2 1.4 6.4.4 1.2 1.9 1.3 2.4.1.6-1.5.9-3.8 1.7-4.9.4-.5 1.6-.5 2 0 .8 1.1 1.1 3.4 1.7 4.9.5 1.2 2 1.1 2.4-.1.7-2.2.8-4.5 1.4-6.4.6-1.8 1.5-3.3 1.5-5.6C21 4.8 19.2 3 17 3c-1.9 0-3 1-5 1S8.9 3 7 3z" /></svg></span>
+              <p style="color: var(--on-dark); font-size: var(--fs-sm); font-weight: 600;">
+                Dark Glass Pill (.barra-pilula)<br />
+                background: #0c0f15cc; blur(18px);
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           3) UI COMPONENTS SECTION
+           ===================================================================== -->
+      <section id="components" class="painel painel--surface" aria-labelledby="components-titulo">
+        <div class="wrap">
+          <header class="cabeca ds-section-intro">
+            <span class="tag">03 · UI Kit</span>
+            <h2 id="components-titulo">Componentes <span class="h-light">Canônicos</span></h2>
+            <p class="apoio">
+              Catálogo interativo dos componentes de interface da aplicação exibindo estados padrão, foco, hover e variações dimensionais.
+            </p>
+          </header>
+
+          <!-- Buttons Matrix -->
+          <h3 class="a4-faixa-titulo" style="margin-top: var(--space-6);">Botões & Ações (.btn)</h3>
+          <div class="ds-matrix-grid">
+            <!-- Botão Primário -->
+            <div class="ds-component-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">Botão Primário (.btn--primario)</h4>
+              <p class="a4-card-txt">Gradiente animado contínuo com ícone giratório de 90° e texto de rolagem dupla.</p>
+              <div class="ds-state-list">
+                <div class="ds-state-item">
+                  <span class="ds-state-badge">Padrão / Hover interativo</span>
+                  <a class="btn btn--primario" href="#components">
+                    <span class="btn__rotulo">Agendar consulta</span>
+                    <span class="btn__icone" aria-hidden="true">+</span>
+                  </a>
+                </div>
+                <div class="ds-state-item">
+                  <span class="ds-state-badge">Tamanho Pequeno (.btn--sm)</span>
+                  <a class="btn btn--sm btn--primario" href="#components">
+                    <span class="btn__rotulo">Agendar</span>
+                    <span class="btn__icone" aria-hidden="true">+</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botão Vidro -->
+            <div class="ds-component-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">Botão Vidro (.btn--vidro)</h4>
+              <p class="a4-card-txt">Translucidez com backdrop blur e borda de vidro com sombreamento suave.</p>
+              <div class="ds-state-list">
+                <div class="ds-state-item">
+                  <span class="ds-state-badge">Padrão</span>
+                  <a class="btn btn--vidro" href="#components">
+                    <span class="btn__rotulo">Ver tratamentos</span>
+                    <span class="btn__icone" aria-hidden="true">+</span>
+                  </a>
+                </div>
+                <div class="ds-state-item">
+                  <span class="ds-state-badge">Compacto (.btn--sm)</span>
+                  <a class="btn btn--sm btn--vidro" href="#components">
+                    <span class="btn__rotulo">Agendar</span>
+                    <span class="btn__icone" aria-hidden="true">+</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botão Escuro -->
+            <div class="ds-component-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">Botão Escuro (.btn--escuro)</h4>
+              <p class="a4-card-txt">Corpo sólido escuro com ícone contendo o gradiente animado azul.</p>
+              <div class="ds-state-list">
+                <div class="ds-state-item">
+                  <span class="ds-state-badge">Padrão</span>
+                  <a class="btn btn--escuro" href="#components">
+                    <span class="btn__rotulo">Perguntar no WhatsApp</span>
+                    <span class="btn__icone" aria-hidden="true">+</span>
+                  </a>
+                </div>
+                <div class="ds-state-item">
+                  <span class="ds-state-badge">Compacto (.btn--sm)</span>
+                  <a class="btn btn--sm btn--escuro" href="#components">
+                    <span class="btn__rotulo">Perguntar</span>
+                    <span class="btn__icone" aria-hidden="true">+</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botão Claro -->
+            <div class="ds-component-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">Botão Claro (.btn--claro)</h4>
+              <p class="a4-card-txt">Fundo branco sólido com ícone em azul puro para contraste sobre painéis escuros.</p>
+              <div class="ds-state-list">
+                <div class="ds-state-item">
+                  <span class="ds-state-badge">Padrão</span>
+                  <a class="btn btn--claro" href="#components">
+                    <span class="btn__rotulo">Falar com especialista</span>
+                    <span class="btn__icone" aria-hidden="true">+</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Setas de Carrossel -->
+            <div class="ds-component-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">Controle de Navegação (.seta)</h4>
+              <p class="a4-card-txt">Botões de controle de slide em pílula com brilho gradiente animado.</p>
+              <div class="ds-state-list" style="flex-direction: row; gap: 16px;">
+                <button type="button" class="seta" data-dir="prev" aria-label="Anterior">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+                </button>
+                <button type="button" class="seta" data-dir="next" aria-label="Próximo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </button>
+                <button type="button" class="seta" disabled aria-label="Desabilitado">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Link Mais & Tags -->
+            <div class="ds-component-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">Badges & Expansores</h4>
+              <p class="a4-card-txt">Etiquetas de categoria e botões discretos de expansão textual.</p>
+              <div class="ds-state-list">
+                <div class="ds-state-item">
+                  <span class="tag">Tecnologia</span>
+                  <span class="tag" style="margin-top: 6px;">Cirurgia Guiada</span>
+                </div>
+                <div class="ds-state-item" style="margin-top: 8px;">
+                  <button type="button" class="link-mais">
+                    <span>Entenda o procedimento</span>
+                    <span class="link-mais__mais" aria-hidden="true">+</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cards Matrix -->
+          <h3 class="a4-faixa-titulo" style="margin-top: var(--space-8);">Cards & Contêineres de Informação</h3>
+          <div class="ds-matrix-grid">
+            <!-- All-on-4 Card -->
+            <div class="ds-component-card" style="padding: 0; background: transparent; border: 0; box-shadow: none;">
+              <span class="ds-state-badge" style="margin-bottom: 8px;">Card Padrão (.a4-card)</span>
+              <div class="a4-card" tabindex="0" style="width: 100%;">
+                <div class="a4-card-corpo">
+                  <span class="a4-card-num" aria-hidden="true"><span>01</span><i></i></span>
+                  <h4 class="a4-card-titulo">Prótese Parafusada Fixa</h4>
+                  <p class="a4-card-txt">Segurança e estabilidade total para mastigar e sorrir sem receio.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dark Contact Card -->
+            <div class="ds-component-card ds-component-card--dark" style="padding: 24px;">
+              <span class="ds-state-badge" style="margin-bottom: 8px;">Card Superfície Escura (.contato-card)</span>
+              <div class="contato-card" style="width: 100%;">
+                <span class="contato-card-icone" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.6a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.4" r="2.6" /></svg>
+                </span>
+                <div class="contato-card-texto">
+                  <span class="contato-card-rotulo">Endereço</span>
+                  <p class="contato-card-valor">Rua Bela Cintra, Jardins<br />São Paulo – SP</p>
+                  <a class="contato-card-link" href="#components">
+                    <span>Abrir no Google Maps</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion FAQ Item -->
+            <div class="ds-component-card">
+              <span class="ds-state-badge">Accordion (.faq-item)</span>
+              <div class="faq-lista" style="width: 100%;">
+                <div class="faq-item is-aberto">
+                  <h3 class="faq-pergunta">
+                    <button type="button" class="faq-botao" aria-expanded="true">
+                      <span class="faq-num" aria-hidden="true">01</span>
+                      <span class="faq-texto">O procedimento é doloroso?</span>
+                      <span class="faq-icone" aria-hidden="true"></span>
+                    </button>
+                  </h3>
+                  <div class="faq-resposta" style="visibility: visible; grid-template-rows: 1fr;">
+                    <div class="faq-resposta-clip">
+                      <div class="faq-resposta-corpo" style="padding-inline: 12px; padding-bottom: 12px;">
+                        <p>A intervenção ocorre sob anestesia local profunda, com controle medicamentoso preventivo.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           4) LAYOUT & SPACING SECTION
+           ===================================================================== -->
+      <section id="layout-spacing" class="painel painel--branco" aria-labelledby="layout-titulo">
+        <div class="wrap">
+          <header class="cabeca ds-section-intro">
+            <span class="tag">04 · Sistema de Grade</span>
+            <h2 id="layout-titulo">Layout & <span class="h-light">Espaçamentos</span></h2>
+            <p class="apoio">
+              Regras canônicas de contenção, paddings de painéis modulares e escala de espaçamento geométrico proporcional.
+            </p>
+          </header>
+
+          <h3 class="a4-faixa-titulo" style="margin-top: var(--space-6);">Escala de Espaçamento Modular</h3>
+          <div class="ds-spacing-grid">
+            <div class="ds-spacing-row">
+              <span class="ds-spacing-label">--space-1 (4px)</span>
+              <div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width: 4px;"></div></div>
+              <span class="ds-spec-meta">4px</span>
+            </div>
+            <div class="ds-spacing-row">
+              <span class="ds-spacing-label">--space-2 (8px)</span>
+              <div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width: 8px;"></div></div>
+              <span class="ds-spec-meta">8px</span>
+            </div>
+            <div class="ds-spacing-row">
+              <span class="ds-spacing-label">--space-3 (12px)</span>
+              <div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width: 12px;"></div></div>
+              <span class="ds-spec-meta">12px</span>
+            </div>
+            <div class="ds-spacing-row">
+              <span class="ds-spacing-label">--space-4 (16px)</span>
+              <div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width: 16px;"></div></div>
+              <span class="ds-spec-meta">16px</span>
+            </div>
+            <div class="ds-spacing-row">
+              <span class="ds-spacing-label">--space-5 (24px)</span>
+              <div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width: 24px;"></div></div>
+              <span class="ds-spec-meta">24px</span>
+            </div>
+            <div class="ds-spacing-row">
+              <span class="ds-spacing-label">--space-6 (32px)</span>
+              <div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width: 32px;"></div></div>
+              <span class="ds-spec-meta">32px</span>
+            </div>
+            <div class="ds-spacing-row">
+              <span class="ds-spacing-label">--space-7 (48px)</span>
+              <div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width: 48px;"></div></div>
+              <span class="ds-spec-meta">48px</span>
+            </div>
+            <div class="ds-spacing-row">
+              <span class="ds-spacing-label">--space-8 (64px)</span>
+              <div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width: 64px;"></div></div>
+              <span class="ds-spec-meta">64px</span>
+            </div>
+            <div class="ds-spacing-row">
+              <span class="ds-spacing-label">--space-9 (96px)</span>
+              <div class="ds-spacing-bar-wrap"><div class="ds-spacing-bar" style="width: 96px;"></div></div>
+              <span class="ds-spec-meta">96px</span>
+            </div>
+          </div>
+
+          <h3 class="a4-faixa-titulo" style="margin-top: var(--space-8);">Padrões de Layout Extraídos do Projeto</h3>
+          <p class="apoio">Abaixo demonstram-se as seções reais completas do projeto representando os 2 padrões arquiteturais-chave: Split Editorial e Grade de Contato em Painel Escuro.</p>
+        </div>
+      </section>
+
+      <!-- Pattern 1: All-on-4 Real Layout -->
+      <section id="all-on-4" class="painel painel--surface a4" data-dobra="allon4" aria-labelledby="all-on-4-titulo">
+  <div class="wrap">
+    <header class="cabeca a4-cabeca">
+      <span class="tag" data-reveal="fade">All-on-4</span>
+      <h2 id="all-on-4-titulo" data-split>Quando a reabilitação total é a solução <span class="h-light">indicada</span></h2>
+      <p class="apoio a4-apoio" data-reveal data-reveal-delay="0.15">
+        Para quem perdeu todos ou quase todos os dentes de uma arcada e quer voltar a mastigar e sorrir com uma prótese fixa.
+      </p>
+    </header>
+
+    <div class="a4-palco">
+      <figure class="a4-peca">
+        <div class="a4-cena">
+          <div class="a4-quadro">
+            <span class="a4-luz" aria-hidden="true"></span>
+            <span class="a4-brilho" aria-hidden="true"></span>
+            <img
+              class="a4-img"
+              src="./assets/allon4-1200-Dwr5MhEh.webp"
+              srcset="./assets/allon4-480-BOBcooyT.webp 480w, ./assets/allon4-800-Jlfa0PEk.webp 800w, ./assets/allon4-1200-Dwr5MhEh.webp 1200w, ./assets/allon4-1600-GhpQWq3V.webp 1600w"
+              sizes="(min-width: 1600px) 1000px, (min-width: 1024px) 64vw, 130vw"
+              width="1600"
+              height="1195"
+              alt="Prótese de arcada inteira, com dentes e gengiva, fixada sobre quatro implantes em um modelo transparente de mandíbula"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="a4-reflexo"
+              src="./assets/allon4-1200-Dwr5MhEh.webp"
+              srcset="./assets/allon4-480-BOBcooyT.webp 480w, ./assets/allon4-800-Jlfa0PEk.webp 800w, ./assets/allon4-1200-Dwr5MhEh.webp 1200w, ./assets/allon4-1600-GhpQWq3V.webp 1600w"
+              sizes="(min-width: 1600px) 1000px, (min-width: 1024px) 64vw, 130vw"
+              width="1600"
+              height="1195"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="a4-ponto" data-grupo="implantes" style="--x: 34.4%; --y: 50.2%; --i: 0" aria-hidden="true"></span>
+            <span class="a4-ponto" data-grupo="implantes" style="--x: 45%; --y: 53%; --i: 1" aria-hidden="true"></span>
+            <span class="a4-ponto" data-grupo="implantes" style="--x: 54.9%; --y: 53%; --i: 2" aria-hidden="true"></span>
+            <span class="a4-ponto" data-grupo="implantes" style="--x: 65.3%; --y: 50.2%; --i: 3" aria-hidden="true"></span>
+            <span class="a4-ponto a4-ponto--protese" data-grupo="protese" style="--x: 50%; --y: 45.6%" aria-hidden="true"></span>
+          </div>
+        </div>
+        <figcaption class="a4-legenda">
+          <span class="a4-legenda-traco" aria-hidden="true"></span>
+          Prótese fixa sobre 4 implantes · ilustração
+        </figcaption>
+      </figure>
+
+      <div class="a4-lado">
+        <p class="a4-explica" data-reveal>
+          Uma arcada inteira de dentes fixos apoiada em quatro implantes. Os&nbsp;dois de trás ficam inclinados para aproveitar melhor o&nbsp;osso disponível.
+        </p>
+
+        <dl class="a4-fatos">
+          <div class="a4-fato" data-alvo="implantes" data-reveal>
+            <dt class="a4-fato-num"><span class="num-shine">4</span></dt>
+            <dd class="a4-fato-txt"><strong>implantes</strong> por arcada</dd>
+          </div>
+          <div class="a4-fato" data-alvo="protese" data-reveal data-reveal-delay="0.08">
+            <dt class="a4-fato-num"><span class="num-shine">1</span></dt>
+            <dd class="a4-fato-txt"><strong>prótese fixa</strong> sobre eles</dd>
+          </div>
+        </dl>
+
+        <p class="a4-nota" data-alvo="todos" data-reveal data-reveal-delay="0.16">
+          <span class="a4-nota-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="8.5" />
+              <path d="M12 7.5V12l3 2" />
+            </svg>
+          </span>
+          <span><strong>Provisório fixo</strong>, em muitos casos, logo após a cirurgia.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Indicações: faixa arrastável (desktop) / carrossel com snap (toque).
+       Cada card é focável: Tab passa por eles e a faixa rola até o card;
+       com o foco na faixa, ← → Home End também navegam. -->
+  <div class="wrap a4-topo-faixa">
+    <h3 class="a4-faixa-titulo" id="a4-indicacoes-titulo" data-reveal>
+      Indicações mais comuns <span class="a4-faixa-conta" aria-hidden="true">05</span>
+    </h3>
+    <div class="a4-setas" data-reveal data-reveal-delay="0.1">
+      <button class="seta" type="button" data-dir="prev" aria-controls="a4-faixa" aria-label="Indicação anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+      </button>
+      <button class="seta" type="button" data-dir="next" aria-controls="a4-faixa" aria-label="Próxima indicação">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="a4-faixa" id="a4-faixa" role="region" aria-labelledby="a4-indicacoes-titulo" data-lenis-prevent-horizontal>
+    <ol class="a4-cards" role="list">
+      <li class="a4-card" tabindex="0" aria-labelledby="a4-ind-1" aria-describedby="a4-ind-1-txt">
+        <div class="a4-card-corpo">
+          <span class="a4-card-num" aria-hidden="true"><span>01</span><i></i></span>
+          <h4 class="a4-card-titulo" id="a4-ind-1">Perdeu todos ou quase todos os dentes</h4>
+          <p class="a4-card-txt" id="a4-ind-1-txt">Uma arcada inteira pode ser reabilitada sobre quatro implantes.</p>
+        </div>
+      </li>
+      <li class="a4-card" tabindex="0" aria-labelledby="a4-ind-2" aria-describedby="a4-ind-2-txt">
+        <div class="a4-card-corpo">
+          <span class="a4-card-num" aria-hidden="true"><span>02</span><i></i></span>
+          <h4 class="a4-card-titulo" id="a4-ind-2">Usa dentadura que solta ou machuca</h4>
+          <p class="a4-card-txt" id="a4-ind-2-txt">A prótese fica parafusada nos implantes e não é removida no dia a dia.</p>
+        </div>
+      </li>
+      <li class="a4-card" tabindex="0" aria-labelledby="a4-ind-3" aria-describedby="a4-ind-3-txt">
+        <div class="a4-card-corpo">
+          <span class="a4-card-num" aria-hidden="true"><span>03</span><i></i></span>
+          <h4 class="a4-card-titulo" id="a4-ind-3">Tem dentes comprometidos que não podem ser mantidos</h4>
+          <p class="a4-card-txt" id="a4-ind-3-txt">Quando indicado, extrações e implantes são planejados juntos.</p>
+        </div>
+      </li>
+      <li class="a4-card" tabindex="0" aria-labelledby="a4-ind-4" aria-describedby="a4-ind-4-txt">
+        <div class="a4-card-corpo">
+          <span class="a4-card-num" aria-hidden="true"><span>04</span><i></i></span>
+          <h4 class="a4-card-titulo" id="a4-ind-4">Tem pouco osso e quer evitar enxertos extensos, quando possível</h4>
+          <p class="a4-card-txt" id="a4-ind-4-txt">Os implantes inclinados aproveitam o osso disponível em muitos casos.</p>
+        </div>
+      </li>
+      <li class="a4-card" tabindex="0" aria-labelledby="a4-ind-5" aria-describedby="a4-ind-5-txt">
+        <div class="a4-card-corpo">
+          <span class="a4-card-num" aria-hidden="true"><span>05</span><i></i></span>
+          <h4 class="a4-card-titulo" id="a4-ind-5">Quer reduzir o tempo sem dentes</h4>
+          <p class="a4-card-txt" id="a4-ind-5-txt">Em muitos casos, um provisório fixo é instalado logo após a cirurgia.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="wrap a4-base">
+    <div class="a4-progresso" aria-hidden="true" data-reveal="fade">
+      <span class="a4-progresso-trilho"></span>
+      <span class="a4-progresso-num"><b class="a4-progresso-atual">01</b> / 05</span>
+    </div>
+
+    <div class="a4-cta" data-reveal>
+      <a class="btn btn--primario a4-btn" data-wa="allon4" href="#contato">
+        <span class="btn__rotulo">Descobrir se é indicado para mim</span>
+        <span class="btn__icone" aria-hidden="true">+</span>
+      </a>
+      <p class="a4-cta-nota">A indicação só é feita após avaliação clínica e tomografia.</p>
+    </div>
+  </div>
+
+  <p class="a4-marca" aria-hidden="true"><span class="a4-marca-txt">All-on-4</span></p>
+</section>
+
+      <!-- Pattern 2: Contato Real Dark Layout -->
+      <section id="contato" class="painel painel--escuro contato" data-dobra="contato" aria-labelledby="contato-titulo">
+  <div class="contato-aura" aria-hidden="true"></div>
+  <div class="contato-brilho" aria-hidden="true"></div>
+
+  <div class="wrap contato-wrap">
+    <header class="contato-cabeca">
+      <div class="contato-cabeca-titulo">
+        <span class="tag">Contato</span>
+        <h2 id="contato-titulo" class="contato-titulo" data-split>
+          Seu novo sorriso começa com um bom <span class="h-light">planejamento.</span>
+        </h2>
+      </div>
+      <div class="contato-cabeca-acao">
+        <p class="contato-apoio" data-reveal data-reveal-delay="0.2">
+          Na avaliação, o Dr. Henrique examina o seu caso, pede os exames necessários e explica com calma as opções
+          de tratamento.
+        </p>
+        <a class="btn btn--primario contato-cta" data-wa="contato" href="#contato" data-reveal data-reveal-delay="0.3">
+          <span class="btn__rotulo">Agendar avaliação</span>
+          <span class="btn__icone" aria-hidden="true">+</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="contato-corpo">
+      <figure class="contato-foto">
+        <div class="contato-foto-moldura">
+          <img
+            class="contato-foto-img"
+            src="./assets/clinica-1200-DRjd4FVu.webp"
+            srcset="./assets/clinica-480-D2-Y7e3u.webp 480w, ./assets/clinica-800-BKarrrN3.webp 800w, ./assets/clinica-1200-DRjd4FVu.webp 1200w, ./assets/clinica-1600-bJibUVcF.webp 1600w"
+            sizes="(min-width: 1024px) 760px, calc(100vw - 48px)"
+            alt="Recepção da clínica: balcão branco com ripas de madeira, luz azul suave e janelas amplas com vista da cidade"
+            width="1600"
+            height="893"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="contato-legenda">
+          <span class="contato-legenda-ponto" aria-hidden="true"></span>
+          Recepção · Jardins, São Paulo
+        </figcaption>
+      </figure>
+
+      <ul class="contato-infos" role="list">
+        <li class="contato-card" data-reveal>
+          <span class="contato-card-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.6a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.4" r="2.6" /></svg>
+          </span>
+          <div class="contato-card-texto">
+            <h3 class="contato-card-rotulo">Endereço</h3>
+            <address class="contato-card-valor contato-endereco">
+              <span>Rua Exemplo, 000</span>
+              <span>Jardins · <span class="contato-nowrap">São Paulo – SP</span></span>
+            </address>
+            <a
+              class="contato-card-link"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Jardins+S%C3%A3o+Paulo"
+              target="_blank"
+              rel="noopener"
+            >
+              Como chegar<span class="sr-only"> (abre o Google Maps em nova aba)</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+            </a>
+          </div>
+        </li>
+
+        <li class="contato-card" data-reveal>
+          <span class="contato-card-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg>
+          </span>
+          <div class="contato-card-texto">
+            <div class="contato-card-linha">
+              <h3 class="contato-card-rotulo">Horários</h3>
+              <span class="contato-status" data-status hidden>
+                <span class="contato-status-ponto" aria-hidden="true"></span><span data-status-texto></span>
+              </span>
+            </div>
+            <p class="contato-card-valor contato-horarios">
+              <span>Seg a sex · 8h–19h</span>
+              <span>Sáb · 8h–12h</span>
+            </p>
+          </div>
+        </li>
+
+        <li class="contato-card" data-reveal>
+          <span class="contato-card-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.6a8 8 0 0 1-11.7 7.1L4 20l1.4-4A8 8 0 1 1 20 11.6z" /><path d="M9 11.5h.01M12.5 11.5h.01M16 11.5h.01" stroke-width="2.4" /></svg>
+          </span>
+          <div class="contato-card-texto">
+            <h3 class="contato-card-rotulo">WhatsApp</h3>
+            <p class="contato-card-valor contato-nowrap" data-contato-fone>(11) 90000-0000</p>
+            <a class="contato-card-link" data-wa="contato" href="#contato">
+              Enviar mensagem<span class="sr-only"> pelo WhatsApp (abre em nova aba)</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <footer class="contato-rodape">
+      <div class="contato-rodape-topo">
+        <a class="contato-marca" href="#topo">
+          <span class="contato-marca-nome">Dr. Henrique Salles</span>
+          <span class="contato-marca-sub">Implantodontia · São Paulo</span>
+        </a>
+
+        <nav class="contato-nav" aria-label="Rodapé">
+          <ul role="list">
+            <li><a href="#tratamentos">Tratamentos</a></li>
+            <li><a href="#all-on-4">All-on-4</a></li>
+            <li><a href="#jornada">Como funciona</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#duvidas">Dúvidas</a></li>
+          </ul>
+        </nav>
+
+        <a class="contato-subir" href="#topo">
+          <span class="contato-subir-rotulo">Voltar ao topo</span>
+          <span class="contato-subir-icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+          </span>
+        </a>
+      </div>
+
+      <div class="contato-rodape-base">
+        <p class="contato-rt">Responsável técnico: Dr. Henrique Salles<span class="contato-sep"> · </span><span class="contato-nowrap contato-cro">CRO-SP 000000</span></p>
+        <p class="contato-aviso">Imagens ilustrativas. Página de demonstração com dados de exemplo.</p>
+        <p class="contato-copy">© 2026 Dr. Henrique Salles</p>
+      </div>
+    </footer>
+  </div>
+
+  <p class="contato-assinatura" aria-hidden="true">Henrique Salles</p>
+</section>
+
+      <!-- =====================================================================
+           5) MOTION & INTERACTION SECTION
+           ===================================================================== -->
+      <section id="motion" class="painel painel--surface" aria-labelledby="motion-titulo">
+        <div class="wrap">
+          <header class="cabeca ds-section-intro">
+            <span class="tag">05 · Cinemática</span>
+            <h2 id="motion-titulo">Movimento & <span class="h-light">Interações</span></h2>
+            <p class="apoio">
+              Todas as transições baseiam-se em curvas de aceleração física natural (--ease-out: cubic-bezier(.16, 1, .3, 1)) e keyframes otimizados para GPU.
+            </p>
+          </header>
+
+          <div class="ds-motion-grid">
+            <!-- Shimmer Animation -->
+            <div class="ds-motion-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">@keyframes shine</h4>
+              <p class="a4-card-txt">Deslocamento contínuo linear de gradiente (5s linear infinite).</p>
+              <div class="ds-motion-stage">
+                <a class="btn btn--primario" href="#motion">
+                  <span class="btn__rotulo">Brilho Contínuo</span>
+                  <span class="btn__icone" aria-hidden="true">+</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Orbit Spin -->
+            <div class="ds-motion-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">@keyframes tec-gira</h4>
+              <p class="a4-card-txt">Rotação suave orbital 360° para engrenagens e radares SVG.</p>
+              <div class="ds-motion-stage">
+                <div class="tec-giro" style="animation: 12s linear infinite tec-gira;">
+                  <svg width="60" height="60" viewBox="-30 -30 60 60">
+                    <circle cx="0" cy="0" r="24" stroke="var(--blue)" stroke-width="2" fill="none" stroke-dasharray="8 6" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ping Radar Pulse -->
+            <div class="ds-motion-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">@keyframes a4-ping</h4>
+              <p class="a4-card-txt">Pulso expansivo com atenuação de opacidade para pontos focais.</p>
+              <div class="ds-motion-stage">
+                <div style="position: relative; width: 24px; height: 24px; display: grid; place-items: center;">
+                  <span style="position: absolute; inset: -10px; border-radius: 50%; background: var(--blue); animation: 2s cubic-bezier(0,0,.2,1) infinite a4-ping;"></span>
+                  <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--blue); position: relative;"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hover Lift -->
+            <div class="ds-motion-card">
+              <h4 class="a4-card-titulo" style="padding-top: 0;">Hover Lift & Glow</h4>
+              <p class="a4-card-txt">Elevação de -6px e intensificação de sombra ao focar/pairar o mouse.</p>
+              <div class="ds-motion-stage">
+                <div class="a4-card" style="width: 200px;">
+                  <div class="a4-card-corpo" style="min-height: auto; padding: 14px;">
+                    <span style="font-size: var(--fs-xs); font-weight: 700; color: var(--blue);">Paire sobre mim</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           6) ICONS SECTION
+           ===================================================================== -->
+      <section id="icons" class="painel painel--branco" aria-labelledby="icons-titulo">
+        <div class="wrap">
+          <header class="cabeca ds-section-intro">
+            <span class="tag">06 · Simbologia</span>
+            <h2 id="icons-titulo">Catálogo de <span class="h-light">Ícones SVG</span></h2>
+            <p class="apoio">
+              Ícones vetoriais traçados (stroke-width: 1.8 a 2.0, linecap/linejoin arredondados) com herança de cor direta através de currentColor.
+            </p>
+          </header>
+
+          <div class="ds-icon-grid">
+            <!-- Icon 1 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7 3C4.8 3 3 4.8 3 7.2c0 2.3.9 3.8 1.5 5.6.6 1.9.7 4.2 1.4 6.4.4 1.2 1.9 1.3 2.4.1.6-1.5.9-3.8 1.7-4.9.4-.5 1.6-.5 2 0 .8 1.1 1.1 3.4 1.7 4.9.5 1.2 2 1.1 2.4-.1.7-2.2.8-4.5 1.4-6.4.6-1.8 1.5-3.3 1.5-5.6C21 4.8 19.2 3 17 3c-1.9 0-3 1-5 1S8.9 3 7 3z" /></svg>
+              </div>
+              <span class="ds-icon-name">Dente / Marca</span>
+              <span class="ds-icon-usage">Logotipo & Topo</span>
+            </div>
+
+            <!-- Icon 2 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg>
+              </div>
+              <span class="ds-icon-name">Seta Externa</span>
+              <span class="ds-icon-usage">Links e Menu</span>
+            </div>
+
+            <!-- Icon 3 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6" /></svg>
+              </div>
+              <span class="ds-icon-name">Seta para Baixo</span>
+              <span class="ds-icon-usage">Ação Secundária Hero</span>
+            </div>
+
+            <!-- Icon 4 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5.6C7 4.1 8.1 3 9.6 3h4.8C15.9 3 17 4.1 17 5.6c0 1.6-.8 2.9-2 3.9H9c-1.2-1-2-2.3-2-3.9Z" /><path d="M9.6 9.5h4.8l-.7 9.6L12 21l-1.7-1.9-.7-9.6Z" /><path d="M8.4 12.6h7.2M8.7 15.8h6.6" /></svg>
+              </div>
+              <span class="ds-icon-name">Selo Especialista</span>
+              <span class="ds-icon-usage">Medalha Hero</span>
+            </div>
+
+            <!-- Icon 5 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="7.5" /><circle cx="12" cy="2.5" /><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" /></svg>
+              </div>
+              <span class="ds-icon-name">Mira Cirúrgica</span>
+              <span class="ds-icon-usage">Cirurgia Guiada</span>
+            </div>
+
+            <!-- Icon 6 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+              </div>
+              <span class="ds-icon-name">Seta Esquerda</span>
+              <span class="ds-icon-usage">Controles Carrossel</span>
+            </div>
+
+            <!-- Icon 7 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </div>
+              <span class="ds-icon-name">Seta Direita</span>
+              <span class="ds-icon-usage">Controles Carrossel</span>
+            </div>
+
+            <!-- Icon 8 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg>
+              </div>
+              <span class="ds-icon-name">Relógio / Horário</span>
+              <span class="ds-icon-usage">Contato e Notas</span>
+            </div>
+
+            <!-- Icon 9 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 18.8 6v5.2c0 4.3-2.9 7.9-6.8 9.6-3.9-1.7-6.8-5.3-6.8-9.6V6L12 3.2Z" /><path d="m9.2 12.1 2 2 3.8-3.9" /></svg>
+              </div>
+              <span class="ds-icon-name">Escudo Validação</span>
+              <span class="ds-icon-usage">Selo CRO</span>
+            </div>
+
+            <!-- Icon 10 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.8-5.9-6.8-11.3a6.8 6.8 0 0 1 13.6 0C18.8 15.1 12 21 12 21Z" /><circle cx="12" cy="9.7" r="2.4" /></svg>
+              </div>
+              <span class="ds-icon-name">Pin Localização</span>
+              <span class="ds-icon-usage">Mapa e Endereço</span>
+            </div>
+
+            <!-- Icon 11 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.6a8 8 0 0 1-11.7 7.1L4 20l1.4-4A8 8 0 1 1 20 11.6z" /><path d="M9 11.5h.01M12.5 11.5h.01M16 11.5h.01" stroke-width="2.4" /></svg>
+              </div>
+              <span class="ds-icon-name">Balão Conversa</span>
+              <span class="ds-icon-usage">WhatsApp e Mensagem</span>
+            </div>
+
+            <!-- Icon 12 -->
+            <div class="ds-icon-cell">
+              <div class="ds-icon-preview">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+              </div>
+              <span class="ds-icon-name">Voltar ao Topo</span>
+              <span class="ds-icon-usage">Rodapé Contato</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </body>
+</html>

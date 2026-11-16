@@ -1,0 +1,748 @@
+/* =====================================================================
+   ESTILOS DEDICADOS: PÁGINA DE SERVIÇOS
+   Odontologia Dra. Gabriela Faria · Odontopediatria Humanizada
+   Inspirado na arquitetura modular e ritmo editorial da referência
+   ===================================================================== */
+
+/* 1. ESTRUTURA GERAL DA PÁGINA DE SERVIÇOS */
+.servicos-pagina {
+  background-color: var(--creme, #FBF6F2);
+  color: var(--grafite, #2B2523);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: clip;
+}
+
+/* 2. INTRODUÇÃO EDITORIAL COMPACTA (HERO DA PÁGINA) */
+.servicos-hero {
+  padding-top: clamp(120px, 14vw, 150px);
+  padding-bottom: clamp(32px, 4vw, 56px);
+  position: relative;
+  background: linear-gradient(180deg, rgba(241, 230, 222, 0.4) 0%, rgba(251, 246, 242, 0) 100%);
+}
+
+.servicos-hero__inner {
+  max-width: var(--container-width, 1360px);
+  margin-inline: auto;
+  padding-inline: var(--gutter, 24px);
+}
+
+.servicos-hero__cabeca {
+  display: grid;
+  gap: var(--space-4, 16px);
+  max-width: 860px;
+}
+
+.servicos-hero__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--areia, #F1E6DE);
+  color: var(--rosa-profundo, #8E4F4A);
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(142, 79, 74, 0.16);
+}
+
+.servicos-hero__tag::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rosa-profundo, #8E4F4A);
+}
+
+.servicos-hero__titulo {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.75rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--grafite, #2B2523);
+  text-wrap: balance;
+  margin: 0;
+}
+
+.servicos-hero__titulo .h-destaque {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--rosa-profundo, #8E4F4A);
+}
+
+.servicos-hero__apoio {
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+  line-height: 1.6;
+  color: #5A524F;
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* 3. SEÇÃO PRINCIPAL DE SERVIÇOS (JORNADA EDITORIAL) */
+.servicos-sec {
+  padding-bottom: clamp(64px, 8vw, 112px);
+  position: relative;
+}
+
+.servicos-sec__inner {
+  max-width: var(--container-width, 1360px);
+  margin-inline: auto;
+  padding-inline: var(--gutter, 24px);
+}
+
+/* GRID PRINCIPAL: 2 COLUNAS NO DESKTOP, 1 NO MOBILE */
+.jor {
+  --jor-recuo: 32px;
+  --jor-num: clamp(2.75rem, 2.2rem + 2vw, 4.25rem);
+  --jor-no: 12px;
+  --jor-i: 0;
+  position: relative;
+}
+
+.jor-corpo {
+  position: relative;
+}
+
+/* PALCO FIXO / STICKY (ESQUERDA NO DESKTOP) */
+.jor-palco {
+  display: none;
+}
+
+.jor-moldura {
+  border-radius: var(--r-card, 24px);
+  background: var(--areia, #F1E6DE);
+  box-shadow: 0 16px 48px rgba(43, 37, 35, 0.1);
+  isolation: isolate;
+  position: sticky;
+  overflow: hidden;
+}
+
+.jor-moldura::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(43, 37, 35, 0) 0%, rgba(43, 37, 35, 0.42) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.jor-quadros {
+  position: absolute;
+  inset: 0;
+}
+
+.jor-quadro {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: scale(1.03);
+}
+
+.jor-quadro.is-ativo {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.jor-quadro img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+
+/* BARRA FLUTUANTE DE LEGENDA / CONTROLES SOBRE A IMAGEM */
+.jor-legenda {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 4;
+  background: rgba(251, 246, 242, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  min-height: 52px;
+  padding: 6px 10px 6px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 28px rgba(43, 37, 35, 0.14);
+}
+
+.jor-legenda__conta {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--grafite, #2B2523);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  flex: none;
+}
+
+.jor-legenda__rolo {
+  height: 1.2em;
+  display: block;
+  overflow: hidden;
+}
+
+.jor-legenda__fita {
+  display: grid;
+  transform: translateY(calc(var(--jor-i, 0) * -1.2em));
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jor-legenda__fita > span {
+  height: 1.2em;
+  display: flex;
+  align-items: center;
+}
+
+.jor-legenda__total {
+  color: #7D7471;
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.jor-legenda__sep {
+  width: 1px;
+  height: 16px;
+  background: rgba(142, 79, 74, 0.22);
+  flex: none;
+}
+
+.jor-legenda__nomes {
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+  position: relative;
+  height: 1.3em;
+  overflow: hidden;
+  display: grid;
+}
+
+.jor-legenda__nome {
+  grid-area: 1 / 1;
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: clamp(0.8125rem, 0.78rem + 0.15vw, 0.9375rem);
+  font-weight: 600;
+  color: var(--grafite, #2B2523);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jor-legenda__nome.is-ativo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.jor-legenda__nome.is-antes {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.jor-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+}
+
+.jor-nav__btn {
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  width: 24px;
+  height: 36px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.jor-nav__btn span {
+  display: block;
+  width: 18px;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(43, 37, 35, 0.24);
+  transform: scaleX(0.65);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jor-nav__btn:hover span {
+  background: var(--grafite, #2B2523);
+  transform: scaleX(0.85);
+}
+
+.jor-nav__btn[aria-current="step"] span {
+  background: var(--rosa-profundo, #8E4F4A);
+  transform: scaleX(1);
+}
+
+.jor-nav__btn:focus-visible {
+  outline: 2px solid var(--rosa-profundo, #8E4F4A);
+  outline-offset: 2px;
+}
+
+/* 4. COLUNA DE ETAPAS E TRILHO VERTICAL (DIREITA NO DESKTOP) */
+.jor-etapas {
+  position: relative;
+  padding-left: var(--jor-recuo);
+}
+
+.jor-trilho {
+  position: absolute;
+  left: 0;
+  top: var(--jor-t0, 0px);
+  width: 1px;
+  height: var(--jor-th, 100%);
+  background: rgba(142, 79, 74, 0.16);
+  pointer-events: none;
+}
+
+.jor-trilho__fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -0.5px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--rosa-claro, #EBC4C0) 0%, var(--rosa-profundo, #8E4F4A) 100%);
+  border-radius: 2px;
+  transform-origin: 50% 0;
+  transform: scaleY(var(--jor-progresso, 0));
+  transition: transform 0.2s linear;
+}
+
+.jor-passos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: clamp(48px, 8vw, 80px);
+}
+
+.jor-passo {
+  position: relative;
+  display: grid;
+  gap: var(--space-5, 20px);
+}
+
+/* MÍDIA DO PASSO (VISÍVEL NO MOBILE / TABLET) */
+.jor-passo__midia {
+  margin: 0;
+  border-radius: var(--r-card, 20px);
+  overflow: hidden;
+  background: var(--areia, #F1E6DE);
+  aspect-ratio: 16 / 11;
+  box-shadow: 0 8px 24px rgba(43, 37, 35, 0.08);
+}
+
+.jor-passo__midia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.jor-passo__corpo {
+  position: relative;
+}
+
+/* NÓ / MARCADOR NO TRILHO VERTICAL */
+.jor-passo__no {
+  position: absolute;
+  top: calc(var(--jor-num) * 0.45 - var(--jor-no) / 2);
+  left: calc(0.5px - var(--jor-recuo) - var(--jor-no) / 2);
+  width: var(--jor-no);
+  height: var(--jor-no);
+  border-radius: 50%;
+  background: var(--creme, #FBF6F2);
+  box-shadow: inset 0 0 0 1.5px rgba(142, 79, 74, 0.3);
+  transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.jor-passo.is-ativo .jor-passo__no {
+  background: var(--rosa-profundo, #8E4F4A);
+  box-shadow: inset 0 0 0 1.5px var(--rosa-profundo, #8E4F4A),
+              0 0 0 5px rgba(142, 79, 74, 0.18);
+  transform: scale(1.15);
+}
+
+.jor-passo.is-feito .jor-passo__no {
+  background: var(--rosa-profundo, #8E4F4A);
+  box-shadow: inset 0 0 0 1.5px var(--rosa-profundo, #8E4F4A),
+              0 0 0 3px rgba(142, 79, 74, 0.12);
+}
+
+.jor-passo__num {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: var(--jor-num);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--rosa-profundo, #8E4F4A);
+  letter-spacing: -0.04em;
+  display: block;
+}
+
+.jor-passo__quando {
+  margin: var(--space-3, 12px) 0 6px;
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #7A6F6B;
+}
+
+.jor-passo h2,
+.jor-passo h3 {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: clamp(1.4rem, 1.15rem + 1vw, 2.125rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--grafite, #2B2523);
+  margin: 0;
+  scroll-margin-top: 35vh;
+}
+
+.jor-passo__texto {
+  margin-top: var(--space-3, 12px);
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
+  line-height: 1.6;
+  color: #554C49;
+  max-width: 44ch;
+}
+
+.jor-passo__lista {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-5, 20px) 0 0;
+  display: grid;
+  max-width: 46ch;
+}
+
+.jor-passo__lista li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(142, 79, 74, 0.14);
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--grafite, #2B2523);
+}
+
+.jor-passo__lista li:last-child {
+  border-bottom: 1px solid rgba(142, 79, 74, 0.14);
+}
+
+.jor-passo__lista li::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rosa-profundo, #8E4F4A);
+  box-shadow: 0 0 0 3px rgba(142, 79, 74, 0.16);
+  flex: none;
+  transform: translateY(-2px);
+}
+
+.jor-passo__acao {
+  margin-top: var(--space-5, 20px);
+}
+
+.jor-passo__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--rosa-profundo, #8E4F4A);
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.jor-passo__link svg {
+  transition: transform 0.25s ease;
+}
+
+.jor-passo__link:hover {
+  color: var(--grafite, #2B2523);
+}
+
+.jor-passo__link:hover svg {
+  transform: translateX(4px);
+}
+
+/* 5. BLOCO ESPECIAL: ACOLHIMENTO A CRIANÇAS COM NECESSIDADES ESPECIAIS */
+.servicos-especiais {
+  margin-top: clamp(64px, 9vw, 112px);
+  padding: clamp(32px, 5vw, 56px);
+  border-radius: var(--r-panel, 32px);
+  background: var(--areia, #F1E6DE);
+  border: 1px solid rgba(142, 79, 74, 0.14);
+  box-shadow: var(--shadow-suave, 0 10px 40px rgba(43, 37, 35, 0.08));
+  position: relative;
+  overflow: hidden;
+}
+
+.servicos-especiais__grade {
+  display: grid;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+}
+
+.servicos-especiais__corpo {
+  display: grid;
+  gap: var(--space-4, 16px);
+}
+
+.servicos-especiais__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(169, 183, 154, 0.35); /* tom salvia suave */
+  color: var(--salvia-profundo, #5E6E55);
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.servicos-especiais h2,
+.servicos-especiais h3 {
+  font-family: var(--font-display, "Fraunces", serif);
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--grafite, #2B2523);
+  margin: 0;
+}
+
+.servicos-especiais__texto {
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: #554C49;
+  max-width: 58ch;
+  margin: 0;
+}
+
+.servicos-especiais__pilares {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2, 8px) 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.servicos-especiais__pilares li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--grafite, #2B2523);
+}
+
+.servicos-especiais__pilares li::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--salvia-profundo, #5E6E55);
+  flex: none;
+  transform: translateY(-2px);
+}
+
+.servicos-especiais__midia {
+  margin: 0;
+  border-radius: var(--r-card, 20px);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 10px 30px rgba(43, 37, 35, 0.1);
+}
+
+.servicos-especiais__midia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 6. RODAPÉ DE CTA DA PÁGINA DE SERVIÇOS */
+.servicos-fim {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding-top: clamp(28px, 4vw, 44px);
+  border-top: 1px solid rgba(142, 79, 74, 0.16);
+  display: grid;
+  gap: var(--space-5, 20px);
+  align-items: center;
+}
+
+.servicos-fim__texto {
+  margin: 0;
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  line-height: 1.6;
+  color: #554C49;
+  max-width: 48ch;
+}
+
+.servicos-fim__texto strong {
+  color: var(--grafite, #2B2523);
+  font-weight: 700;
+}
+
+/* 7. ADAPTAÇÕES RESPONSIVAS E DESKTOP COM MOTION */
+@media (min-width: 768px) {
+  .servicos-especiais__grade {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+
+  .servicos-fim {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .jor {
+    --jor-cols: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    --jor-gap: clamp(48px, 5.5vw, 96px);
+    --jor-recuo: clamp(36px, 4vw, 56px);
+    --jor-topo: clamp(88px, 11vh, 104px);
+    --jor-base: clamp(72px, 9vh, 96px);
+    --jor-alt: clamp(460px, calc(100vh - var(--jor-topo) - var(--jor-base)), 780px);
+  }
+
+  .jor-corpo {
+    display: grid;
+    grid-template-columns: var(--jor-cols);
+    column-gap: var(--jor-gap);
+  }
+
+  /* No desktop com JS/Motion ativado: palco fixo visível */
+  html.js .jor-palco {
+    display: block;
+  }
+
+  html.js .jor-moldura {
+    top: var(--jor-topo);
+    height: var(--jor-alt);
+  }
+
+  /* Imagens em cada passo ficam ocultas no desktop porque o palco sincronizado exibe a foto ativa */
+  html.js .jor-passo__midia {
+    display: none;
+  }
+
+  html.js .jor-passos {
+    gap: 0;
+  }
+
+  html.js .jor-passo {
+    min-height: max(72vh, 520px);
+    display: flex;
+    align-items: center;
+    padding-block: clamp(32px, 5vh, 64px);
+  }
+
+  html.js .jor-passo__corpo {
+    opacity: 0.35;
+    transform: translateY(10px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html.js .jor-passo.is-ativo .jor-passo__corpo,
+  html.js .jor-passo__corpo:focus-within {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  html.js .jor-passo__lista li {
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html.js .jor-passo:not(.is-ativo) .jor-passo__lista li {
+    transform: translateX(-6px);
+  }
+}
+
+/* 8. PREFERS-REDUCED-MOTION (ACELERAÇÃO E STATIC FALLBACK) */
+@media (prefers-reduced-motion: reduce) {
+  .jor-moldura {
+    position: relative !important;
+    top: auto !important;
+  }
+
+  .jor-palco {
+    display: none !important;
+  }
+
+  .jor-passo__midia {
+    display: block !important;
+  }
+
+  .jor-passos {
+    gap: clamp(48px, 8vw, 80px) !important;
+  }
+
+  .jor-passo {
+    min-height: auto !important;
+    padding-block: 0 !important;
+  }
+
+  .jor-passo__corpo {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .jor-quadro,
+  .jor-legenda__fita,
+  .jor-legenda__nome,
+  .jor-nav__btn span,
+  .jor-passo__no,
+  .jor-trilho__fill {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
