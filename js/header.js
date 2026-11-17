@@ -47,6 +47,71 @@ export function initHeader() {
 
   // Sincroniza estado no carregamento inicial
   updateHeader();
+
+  // =========================================================================
+  // Controle de Navegação Mobile (Menu Toggle / Acessibilidade WAI-ARIA)
+  // =========================================================================
+  const nav = header.querySelector('.site-header__nav');
+  const toggleBtn = header.querySelector('.site-header__toggle');
+
+  if (toggleBtn && nav) {
+    function openMenu() {
+      header.classList.add('is-menu-open');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      toggleBtn.setAttribute('aria-label', 'Fechar menu');
+      document.body.classList.add('menu-open-scroll-lock');
+    }
+
+    function closeMenu() {
+      header.classList.remove('is-menu-open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.setAttribute('aria-label', 'Abrir menu');
+      document.body.classList.remove('menu-open-scroll-lock');
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = header.classList.contains('is-menu-open');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Fecha o menu ao selecionar qualquer link da navegação
+    nav.querySelectorAll('.site-header__link').forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    // Fecha o menu ao pressionar a tecla Escape e devolve o foco ao botão
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && header.classList.contains('is-menu-open')) {
+        closeMenu();
+        toggleBtn.focus();
+      }
+    });
+
+    // Fecha o menu ao clicar fora do cabeçalho
+    document.addEventListener('click', (e) => {
+      if (header.classList.contains('is-menu-open') && !header.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Fecha automaticamente ao redimensionar a tela para breakpoint desktop
+    window.addEventListener(
+      'resize',
+      () => {
+        if (window.innerWidth > 900 && header.classList.contains('is-menu-open')) {
+          closeMenu();
+        }
+      },
+      { passive: true }
+    );
+  }
 }
 
 if (typeof document !== 'undefined') {
