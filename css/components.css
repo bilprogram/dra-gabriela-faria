@@ -16,8 +16,8 @@
   right: 0;
   z-index: var(--z-nav);
   padding-block: clamp(14px, 2.2vw, 22px);
-  /* Proteção sutil de degradê no topo para garantir legibilidade e profundidade */
-  background: linear-gradient(180deg, rgba(30, 24, 22, 0.42) 0%, rgba(30, 24, 22, 0.16) 60%, transparent 100%);
+  /* Camada escura sutil e translúcida no topo para garantir contraste e legibilidade sobre a imagem (~20% opacidade) */
+  background: linear-gradient(180deg, rgba(30, 24, 22, 0.26) 0%, rgba(30, 24, 22, 0.21) 65%, rgba(30, 24, 22, 0.12) 100%);
   border-bottom: 1px solid transparent;
   box-shadow: 0 4px 20px transparent;
   -webkit-backdrop-filter: blur(0px);
