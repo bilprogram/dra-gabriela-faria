@@ -3,31 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Odontologia Dra. Gabriela Faria · Odontopediatria Humanizada em São José do Rio Pardo</title>
+    <title>Odontopediatra em São José do Rio Pardo · Dra. Gabriela Faria</title>
     <meta
       name="description"
       content="Clínica de odontopediatria humanizada em São José do Rio Pardo. Primeira consulta do bebê, sedação consciente com óxido nitroso e ortopedia funcional dos maxilares."
     />
     <meta name="theme-color" content="#2B2523" />
 
-    <!-- Metadados Canônicos e Redes Sociais
-         [PENDENTE DE DEFINIÇÃO DO DOMÍNIO OFICIAL]:
-         Substituir o caminho canônico relativo '/' pela URL absoluta (ex: https://dragabrielafaria.com.br/) após publicação. -->
-    <link rel="canonical" href="/" />
+    <!-- Metadados Canônicos e Redes Sociais -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://dragabrielafariaodonto.com.br/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://dragabrielafariaodonto.com.br/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Odontologia Dra. Gabriela Faria" />
     <meta property="og:title" content="Odontologia Dra. Gabriela Faria · Odontopediatria Humanizada em São José do Rio Pardo" />
     <meta property="og:description" content="Clínica de odontopediatria humanizada em São José do Rio Pardo. Primeira consulta do bebê, sedação consciente com óxido nitroso e ortopedia funcional dos maxilares." />
-    <meta property="og:url" content="/" />
-    <meta property="og:image" content="./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1280.webp" />
+    <meta property="og:url" content="https://dragabrielafariaodonto.com.br/" />
+    <meta property="og:image" content="https://dragabrielafariaodonto.com.br/assets/img/og-dra-gabriela-faria-odontopediatria-sao-jose-do-rio-pardo.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Dra. Gabriela Faria em sua clínica odontológica infantil em São José do Rio Pardo" />
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Odontologia Dra. Gabriela Faria · Odontopediatria Humanizada em São José do Rio Pardo" />
     <meta name="twitter:description" content="Clínica de odontopediatria humanizada em São José do Rio Pardo. Primeira consulta do bebê, sedação consciente com óxido nitroso e ortopedia funcional dos maxilares." />
-    <meta name="twitter:image" content="./assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1280.webp" />
+    <meta name="twitter:image" content="https://dragabrielafariaodonto.com.br/assets/img/og-dra-gabriela-faria-odontopediatria-sao-jose-do-rio-pardo.jpg" />
     <meta name="twitter:image:alt" content="Dra. Gabriela Faria em sua clínica odontológica infantil em São José do Rio Pardo" />
 
     <!-- Favicon e Ícones de Dispositivo a partir da Logo Oficial -->
@@ -45,14 +48,19 @@
       "@graph": [
         {
           "@type": "Dentist",
-          "@id": "#clinica",
+          "@id": "https://dragabrielafariaodonto.com.br/#clinica",
+          "url": "https://dragabrielafariaodonto.com.br/",
           "name": "Odontologia Dra. Gabriela Faria",
           "description": "Clínica de odontopediatria humanizada em São José do Rio Pardo. Primeira consulta do bebê, sedação consciente com óxido nitroso e ortopedia funcional dos maxilares.",
           "telephone": "+55-19-99179-3019",
-          "image": "./assets/img/_MG_2758.jpg",
+          "image": "https://dragabrielafariaodonto.com.br/assets/img/_MG_2758.jpg",
+          "logo": "https://dragabrielafariaodonto.com.br/assets/logo/logo-principal.svg",
+          "hasMap": "https://www.google.com/maps/search/?api=1&query=R.+Pref.+Jo%C3%A3o+Batista+Moreira+de+Souza%2C+902+-+Jardim+Aeroporto%2C+S%C3%A3o+Jos%C3%A9+do+Rio+Pardo+-+SP%2C+13720-508",
+          "areaServed": { "@type": "City", "name": "São José do Rio Pardo" },
+          "knowsAbout": ["Odontopediatria", "Primeira consulta do bebê", "Sedação consciente com óxido nitroso", "Ortopedia Funcional dos Maxilares", "Prevenção de cárie infantil"],
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "R. Pref. João Batista Moreira de Souza, 902",
+            "streetAddress": "R. Pref. João Batista Moreira de Souza, 902 - Jardim Aeroporto",
             "addressLocality": "São José do Rio Pardo",
             "addressRegion": "SP",
             "postalCode": "13720-508",
@@ -67,14 +75,23 @@
           ],
           "founder": {
             "@type": "Person",
+            "@id": "https://dragabrielafariaodonto.com.br/#dra-gabriela-faria",
             "name": "Dra. Gabriela Faria",
             "jobTitle": "Odontopediatra - Responsável Técnica",
             "identifier": "CROSP 95.948"
           }
         },
         {
+          "@type": "WebSite",
+          "@id": "https://dragabrielafariaodonto.com.br/#website",
+          "url": "https://dragabrielafariaodonto.com.br/",
+          "name": "Odontologia Dra. Gabriela Faria",
+          "inLanguage": "pt-BR",
+          "publisher": { "@id": "https://dragabrielafariaodonto.com.br/#clinica" }
+        },
+        {
           "@type": "FAQPage",
-          "@id": "#faq",
+          "@id": "https://dragabrielafariaodonto.com.br/#faq",
           "mainEntity": [
             {
               "@type": "Question",
@@ -202,7 +219,7 @@
           <a class="site-header__link is-active" href="/" aria-current="page">Início</a>
           <a class="site-header__link" href="#sobre">Dra. Gabriela</a>
           <a class="site-header__link" href="#cuidado">Cuidado</a>
-          <a class="site-header__link" href="servicos.html">Serviços</a>
+          <a class="site-header__link" href="/servicos">Serviços</a>
           <a class="site-header__link" href="#duvidas">Dúvidas</a>
           <a class="site-header__link" href="#contato">Contato</a>
         </nav>
@@ -1015,7 +1032,7 @@
                     <div class="jor-passo__acao">
                       <a
                         class="jor-passo__link"
-                        href="servicos.html#servico-1"
+                        href="/servicos#servico-1"
                         aria-label="Ver detalhes de Odontopediatria e atendimento humanizado na página de serviços"
                       >
                         <span>Conhecer este serviço completo</span>
@@ -1055,7 +1072,7 @@
                     <div class="jor-passo__acao">
                       <a
                         class="jor-passo__link"
-                        href="servicos.html#servico-2"
+                        href="/servicos#servico-2"
                         aria-label="Ver detalhes da Primeira consulta do bebê na página de serviços"
                       >
                         <span>Conhecer este serviço completo</span>
@@ -1095,7 +1112,7 @@
                     <div class="jor-passo__acao">
                       <a
                         class="jor-passo__link"
-                        href="servicos.html#servico-3"
+                        href="/servicos#servico-3"
                         aria-label="Ver detalhes de Prevenção e saúde bucal infantil na página de serviços"
                       >
                         <span>Conhecer este serviço completo</span>
@@ -1135,7 +1152,7 @@
                     <div class="jor-passo__acao">
                       <a
                         class="jor-passo__link"
-                        href="servicos.html#servico-4"
+                        href="/servicos#servico-4"
                         aria-label="Ver detalhes de Tratamento restaurador na página de serviços"
                       >
                         <span>Conhecer este serviço completo</span>
@@ -1175,7 +1192,7 @@
                     <div class="jor-passo__acao">
                       <a
                         class="jor-passo__link"
-                        href="servicos.html#servico-5"
+                        href="/servicos#servico-5"
                         aria-label="Ver detalhes de Ortopedia Funcional dos Maxilares na página de serviços"
                       >
                         <span>Conhecer este serviço completo</span>
@@ -1215,7 +1232,7 @@
                     <div class="jor-passo__acao">
                       <a
                         class="jor-passo__link"
-                        href="servicos.html#servico-6"
+                        href="/servicos#servico-6"
                         aria-label="Ver detalhes de Cuidados específicos e sedação consciente na página de serviços"
                       >
                         <span>Conhecer este serviço completo</span>
@@ -1236,7 +1253,7 @@
               <strong>Quer saber mais sobre cada atendimento?</strong> Conheça nossa página completa de serviços com todos os detalhes e orientações para a sua família.
             </p>
             <div class="servicos-home__rodape-acao">
-              <a class="btn btn--primary" href="servicos.html" aria-label="Conheça nossos serviços completos de odontopediatria">
+              <a class="btn btn--primary" href="/servicos" aria-label="Conheça nossos serviços completos de odontopediatria">
                 <span>Conheça todos os nossos serviços</span>
                 <span class="btn__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1721,7 +1738,7 @@
                 <li><a href="/">Início</a></li>
                 <li><a href="#sobre">Dra. Gabriela</a></li>
                 <li><a href="#cuidado">Cuidado</a></li>
-                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="/servicos">Serviços</a></li>
                 <li><a href="#duvidas">Dúvidas</a></li>
                 <li><a href="#contato">Contato</a></li>
               </ul>

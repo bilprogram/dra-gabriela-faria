@@ -1,0 +1,15 @@
+// Worker oficial do site · NÃO renomeie: os domínios
+// dragabrielafariaodonto.com.br e www estão ligados a este nome.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dra-gabriela-faria",
+  "compatibility_date": "2026-11-16",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

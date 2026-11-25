@@ -1,13 +1,23 @@
-# =====================================================================
-# robots.txt - Odontologia Dra. Gabriela Faria
-# https://wa.me/5519991793019 · São José do Rio Pardo - SP
-# =====================================================================
+# robots.txt · Odontologia Dra. Gabriela Faria
+# Odontopediatria em São José do Rio Pardo - SP
 
 User-agent: *
 Allow: /
 
-# Sitemap Canônico
-# [PENDENTE DE DEFINIÇÃO DO DOMÍNIO OFICIAL]:
-# Descomente a linha abaixo e insira o domínio definitivo após a publicação:
-# Sitemap: https://[DOMINIO_OFICIAL]/sitemap.xml
+# Buscadores de IA (ChatGPT, Claude, Perplexity, Gemini) são bem-vindos
+User-agent: GPTBot
+Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://dragabrielafariaodonto.com.br/sitemap.xml

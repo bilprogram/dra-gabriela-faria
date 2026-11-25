@@ -3,6 +3,7 @@
 > Clínica de odontopediatria humanizada localizada em São José do Rio Pardo, SP, dedicada ao atendimento odontológico acolhedor de bebês, crianças e adolescentes.
 
 ## Informações Institucionais e Contato
+- **Site oficial:** https://dragabrielafariaodonto.com.br/
 - **Clínica:** Odontologia Dra. Gabriela Faria
 - **Responsável Técnica:** Dra. Gabriela Faria · CROSP 95.948
 - **Especialidades:** Odontopediatria e Ortopedia Funcional dos Maxilares (OFM)
@@ -13,8 +14,8 @@
 - **Facebook Oficial:** https://www.facebook.com/gabrielafaria.odontologia
 
 ## Estrutura do Site
-- **Página Inicial (`/`):** Apresentação do atendimento humanizado, espaço lúdico da clínica, especialidades, carrossel de cuidados, jornada de serviços, equipe, dúvidas frequentes (FAQ) e localização.
-- **Página de Serviços (`/servicos.html`):** Detalhamento das áreas de atuação odontopediátrica e condutas clínicas para cada momento do desenvolvimento infantil.
+- **Página Inicial (https://dragabrielafariaodonto.com.br/):** Apresentação do atendimento humanizado, espaço lúdico da clínica, especialidades, carrossel de cuidados, jornada de serviços, equipe, dúvidas frequentes (FAQ) e localização.
+- **Página de Serviços (https://dragabrielafariaodonto.com.br/servicos):** Detalhamento das áreas de atuação odontopediátrica e condutas clínicas para cada momento do desenvolvimento infantil.
 
 ## Serviços Odontopediátricos Confirmados
 - **Primeira Consulta do Bebê:** Avaliação inicial das estruturas bucais, orientações aos pais sobre aleitamento, introdução de higiene e construção precoce de vínculo positivo.

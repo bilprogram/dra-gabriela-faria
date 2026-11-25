@@ -1,0 +1,16 @@
+# Arquivos que NÃO devem ser publicados no site
+.git
+.gitignore
+.assetsignore
+.env*
+.DS_Store
+wrangler.jsonc
+wrangler.toml
+node_modules
+*.md
+scripts
+referencias
+archive
+backups
+assets/originais
+assets/img_clean

@@ -37,3 +37,7 @@
 /
   Cache-Control: public, max-age=0, must-revalidate
 
+
+# Endereço técnico *.workers.dev não deve ser indexado (evita conteúdo duplicado)
+https://:project.:account.workers.dev/*
+  X-Robots-Tag: noindex

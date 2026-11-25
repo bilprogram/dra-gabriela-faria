@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  =====================================================================
-  SITEMAP: Odontologia Dra. Gabriela Faria
-  Rotas Canônicas Oficiais: Home (/) e Serviços (/servicos.html)
-  
-  [PENDENTE DE DEFINIÇÃO DO DOMÍNIO OFICIAL]:
-  Para ativar o sitemap após o registro e publicação do domínio:
-  1. Descomente os blocos <url> abaixo.
-  2. Substitua 'https://[DOMINIO_OFICIAL]' pela URL canônica definitiva (ex: https://dragabrielafaria.com.br).
-  3. Envie a URL final no Google Search Console e Bing Webmaster Tools.
-  =====================================================================
--->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!--
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://[DOMINIO_OFICIAL]/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://dragabrielafariaodonto.com.br/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <image:image>
+      <image:loc>https://dragabrielafariaodonto.com.br/assets/img/dra-gabriela-faria-dentista-infantil-sao-jose-do-rio-pardo-hero-01-1280.webp</image:loc>
+    </image:image>
   </url>
   <url>
-    <loc>https://[DOMINIO_OFICIAL]/servicos.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://dragabrielafariaodonto.com.br/servicos</loc>
+    <lastmod>2026-11-25</lastmod>
+    <image:image>
+      <image:loc>https://dragabrielafariaodonto.com.br/assets/img/_MG_2758.jpg</image:loc>
+    </image:image>
   </url>
-  -->
 </urlset>
-
