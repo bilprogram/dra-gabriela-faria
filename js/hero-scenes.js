@@ -56,34 +56,49 @@ export function initHeroScenes() {
     '03 · O consultório'
   ];
 
-  // 1. Carregamento sob demanda (Idle/Load com fallback de 3s)
-  function loadDeferredScenes() {
-    slides.slice(1).forEach((slide, idx) => {
-      const picture = slide.querySelector('picture');
-      if (!picture) return;
+  // 1. Carregamento escalonado: só a cena 1 entra no carregamento inicial.
+  //    A cena 2 é baixada depois que a página termina de carregar (em tempo ocioso)
+  //    e a cena 3 só quando a cena 2 entra em exibição. Se uma cena ainda não
+  //    estiver pronta na hora da troca, goToScene mantém a atual (isSlideReady).
+  function loadScene(index) {
+    const slide = slides[index];
+    if (!slide) return;
+    const picture = slide.querySelector('picture');
+    if (!picture) return;
 
-      const sources = picture.querySelectorAll('source[data-srcset]');
-      sources.forEach((s) => {
-        s.setAttribute('srcset', s.getAttribute('data-srcset'));
-        s.removeAttribute('data-srcset');
-      });
-
-      const img = picture.querySelector('img[data-src]');
-      if (img) {
-        img.setAttribute('src', img.getAttribute('data-src'));
-        img.removeAttribute('data-src');
-        img.addEventListener('load', () => {
-          logDebug(`Cena ${idx + 2} carregada com sucesso.`);
-        }, { once: true });
-      }
+    picture.querySelectorAll('source[data-srcset]').forEach((s) => {
+      s.setAttribute('srcset', s.getAttribute('data-srcset'));
+      s.removeAttribute('data-srcset');
     });
+
+    const img = picture.querySelector('img[data-src]');
+    if (img) {
+      img.setAttribute('loading', 'eager');
+      img.setAttribute('src', img.getAttribute('data-src'));
+      img.removeAttribute('data-src');
+      img.addEventListener('load', () => {
+        logDebug(`Cena ${index + 1} carregada com sucesso.`);
+      }, { once: true });
+    }
+  }
+
+  function scheduleIdle(fn, timeout) {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(fn, { timeout });
+    } else {
+      setTimeout(fn, 200);
+    }
+  }
+
+  function loadSecondScene() {
+    scheduleIdle(() => loadScene(1), 1500);
   }
 
   if (document.readyState === 'complete') {
-    loadDeferredScenes();
+    loadSecondScene();
   } else {
-    window.addEventListener('load', loadDeferredScenes, { once: true });
-    setTimeout(loadDeferredScenes, 3000);
+    window.addEventListener('load', loadSecondScene, { once: true });
+    setTimeout(() => loadScene(1), 4000); // segurança caso o load demore (ex.: mapa embutido)
   }
 
   // 2. Animação da barra de progresso
@@ -172,6 +187,9 @@ export function initHeroScenes() {
     }
 
     currentIndex = nextIndex;
+
+    // Pré-carrega a cena seguinte enquanto esta está em exibição
+    loadScene((nextIndex + 1) % slides.length);
 
     // Remove classes transitórias após 1.3s
     setTimeout(() => {
